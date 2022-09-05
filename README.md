@@ -2,8 +2,6 @@
 
 ### <p align="center">A simple management app for school counselors</p>
 
-Building a management app for school counselors.
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
