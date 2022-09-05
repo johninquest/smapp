@@ -1,6 +1,8 @@
-# smapp
+# <p align="center">SMAPP</p>
 
-A new Flutter project.
+### <p align="center">A simple management app for school counselors</p>
+
+Building a management app for school counselors.
 
 ## Getting Started
 
