@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/screens/home.dart';
 import '../services/router.dart';
 import '../styles/colors.dart';
 import 'about.dart';
@@ -46,42 +47,46 @@ class _LeftMenuState extends State<LeftMenu> {
                     )
                   ],
                 )),
-            /* ListTile(
+            ListTile(
               leading: Icon(
-                Icons.bar_chart,
+                Icons.group_outlined,
                 color: myBlue,
               ),
               title: Text(
-                'Analysis',
+                'Students',
                 style: TextStyle(color: myBlue),
               ),
               onTap: () {
+                // ignore: avoid_print
+                print('Tapped students button');
                 return;
               },
             ),
             ListTile(
               leading: Icon(
-                Icons.business,
+                Icons.cases_outlined,
                 color: myBlue,
               ),
               title: Text(
-                'Business',
+                'Cases',
                 style: TextStyle(color: myBlue),
               ),
-              onTap: () =>
-                  PageRouter().navigateToPage(InputPersonPage(), context),
+              // ignore: avoid_returning_null_for_void
+              onTap: () => {},
             ),
             ListTile(
                 leading: Icon(
-                  Icons.language,
+                  Icons.school_outlined,
                   color: myBlue,
                 ),
                 title: Text(
-                  'Country',
+                  'School',
                   style: TextStyle(color: myBlue),
                 ),
-                onTap: () =>
-                    PageRouter().navigateToPage(CountryPage(), context)), */
+                onTap: () {
+                  // ignore: avoid_print
+                  print('Tapped school button!');
+                }),
             ListTile(
               leading: Icon(
                 Icons.info_outline,

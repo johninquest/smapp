@@ -3,6 +3,7 @@ import '../services/date_time_helper.dart';
 import '../services/web.dart';
 import '../styles/colors.dart';
 import '../styles/style.dart';
+import 'bottom_nav_bar.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({Key? key}) : super(key: key);
@@ -46,7 +47,7 @@ class AboutPage extends StatelessWidget {
                 margin: const EdgeInsets.only(
                     left: 10.0, right: 10.0, bottom: 75.0, top: 10.0),
                 child: const Text(
-                  'The new management app for school counselors',
+                  'The school management app',
                   textAlign: TextAlign.center,
                   style: TextStyle(letterSpacing: 0.5),
                 ),
@@ -73,7 +74,7 @@ class AboutPage extends StatelessWidget {
           ),
         ),
       ),
-      // bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

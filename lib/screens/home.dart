@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/screens/left_drawer.dart';
+import 'package:smapp/screens/left_nav_bar.dart';
+
+import 'bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class HomeScreen extends StatelessWidget {
       body: const Center(
         child: Text('Welcome to the home screen!'),
       ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
