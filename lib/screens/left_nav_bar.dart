@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/screens/home.dart';
 import '../services/router.dart';
 import '../styles/colors.dart';
 import 'about.dart';
@@ -29,7 +28,7 @@ class _LeftMenuState extends State<LeftMenu> {
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-                decoration: BoxDecoration(color: myBlue),
+                decoration: const BoxDecoration(color: primaryColor),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -48,13 +47,13 @@ class _LeftMenuState extends State<LeftMenu> {
                   ],
                 )),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.group_outlined,
-                color: myBlue,
+                color: primaryColor,
               ),
-              title: Text(
+              title: const Text(
                 'Students',
-                style: TextStyle(color: myBlue),
+                style: TextStyle(color: primaryColor),
               ),
               onTap: () {
                 // ignore: avoid_print
@@ -63,38 +62,38 @@ class _LeftMenuState extends State<LeftMenu> {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.cases_outlined,
-                color: myBlue,
+                color: primaryColor,
               ),
-              title: Text(
+              title: const Text(
                 'Cases',
-                style: TextStyle(color: myBlue),
+                style: TextStyle(color: primaryColor),
               ),
               // ignore: avoid_returning_null_for_void
               onTap: () => {},
             ),
             ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.school_outlined,
-                  color: myBlue,
+                  color: primaryColor,
                 ),
-                title: Text(
+                title: const Text(
                   'School',
-                  style: TextStyle(color: myBlue),
+                  style: TextStyle(color: primaryColor),
                 ),
                 onTap: () {
                   // ignore: avoid_print
                   print('Tapped school button!');
                 }),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.info_outline,
-                color: myBlue,
+                color: primaryColor,
               ),
-              title: Text(
+              title: const Text(
                 'Info',
-                style: TextStyle(color: myBlue),
+                style: TextStyle(color: primaryColor),
               ),
               onTap: () =>
                   PageRouter().navigateToPage(const AboutPage(), context),
@@ -113,11 +112,11 @@ class _LeftMenuState extends State<LeftMenu> {
               child: ListTile(
                 leading: Icon(
                   Icons.person_outline,
-                  color: myBlue,
+                  color: primaryColor,
                 ),
                 title: Text(
                   'Users',
-                  style: TextStyle(color: myBlue),
+                  style: TextStyle(color: primaryColor),
                 ),
                 onTap: () =>
                     PageRouter().navigateToPage(UserListPage(), context),
@@ -126,11 +125,11 @@ class _LeftMenuState extends State<LeftMenu> {
             ListTile(
               leading: Icon(
                 Icons.logout,
-                color: myBlue,
+                color: primaryColor,
               ),
               title: Text(
                 'Log out',
-                style: TextStyle(color: myBlue),
+                style: TextStyle(color: primaryColor),
               ),
               onTap: () {
                 // FirebaseAuthService().logoutUser();

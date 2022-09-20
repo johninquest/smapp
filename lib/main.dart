@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/styles/colors.dart';
 import 'screens/home.dart';
 
 void main() {
@@ -14,7 +15,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorSchemeSeed: primaryColor,
+        brightness: Brightness.light,
+        // useMaterial3: true
+        // primarySwatch: Colors.indigo,
+        // textButtonTheme: TextButtonThemeData(style: ButtonStyle(colo))
       ),
       home: const HomeScreen(),
     );

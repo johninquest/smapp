@@ -15,7 +15,7 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'About app',
+          'Info',
           style: AppBarTitleStyle,
         ),
         centerTitle: true,
@@ -30,10 +30,10 @@ class AboutPage extends StatelessWidget {
             children: [
               Container(
                 margin: const EdgeInsets.only(top: 10.0),
-                child: Text(
+                child: const Text(
                   'SMA',
                   style: TextStyle(
-                      color: myBlue,
+                      color: primaryColor,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 1.0),
                 ),
@@ -47,7 +47,7 @@ class AboutPage extends StatelessWidget {
                 margin: const EdgeInsets.only(
                     left: 10.0, right: 10.0, bottom: 75.0, top: 10.0),
                 child: const Text(
-                  'The school management app',
+                  'The student management app for school counselors',
                   textAlign: TextAlign.center,
                   style: TextStyle(letterSpacing: 0.5),
                 ),
@@ -59,8 +59,8 @@ class AboutPage extends StatelessWidget {
                       WebService().openUrl('https://johnapps.de', context),
                   child: Text(
                     '\u00A9 john apps $currentYear',
-                    style: TextStyle(
-                      color: myBlue, letterSpacing: 0.5,
+                    style: const TextStyle(
+                      color: primaryColor, letterSpacing: 0.5,
                       // decoration: TextDecoration.underline
                     ),
                   ),

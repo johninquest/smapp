@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/screens/home.dart';
-
 import '../services/router.dart';
+import '../styles/colors.dart';
+import 'home.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -14,10 +14,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return BottomNavigationBar(
       currentIndex: 0,
       type: BottomNavigationBarType.fixed,
-      backgroundColor: Colors.blue,
+      backgroundColor: primaryColor,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white,
-      selectedIconTheme: IconThemeData(color: Colors.black),
+      selectedIconTheme: const IconThemeData(color: Colors.black),
       showSelectedLabels: false,
       showUnselectedLabels: false,
       // iconSize: 30,

@@ -9,9 +9,9 @@ class InfoDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Icon(
+      title: const Icon(
         Icons.info_outline,
-        color: myBlue,
+        color: primaryColor,
         size: 40.0,
       ),
       content: Text(
@@ -47,9 +47,9 @@ class ErrorDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Icon(
+      title: const Icon(
         Icons.report_outlined,
-        color: myRed,
+        color: primaryColor,
         size: 40.0,
       ),
       content: Text(
@@ -61,15 +61,15 @@ class ErrorDialog extends StatelessWidget {
             onPressed: () => Navigator.of(context).pop(),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Text(
                   'OK',
-                  style: TextStyle(fontSize: 20, color: myRed),
+                  style: TextStyle(fontSize: 20, color: primaryColor),
                 ),
               ],
             ))
       ],
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0))),
     );
   }
@@ -83,14 +83,14 @@ class ErrorDialog extends StatelessWidget {
     return AlertDialog(
       title: Icon(
         Icons.info,
-        color: myBlue,
+        color: primaryColor,
         size: 40.0,
       ),
       content: Text(
         'Log out ?',
         textAlign: TextAlign.center,
         style: TextStyle(
-            fontWeight: FontWeight.bold, color: myBlue, fontSize: 20.0),
+            fontWeight: FontWeight.bold, color: primaryColor, fontSize: 20.0),
       ),
       actions: [
         Row(
