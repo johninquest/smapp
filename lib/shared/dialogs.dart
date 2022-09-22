@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/screens/login.dart';
+import '../services/router.dart';
 import '../styles/colors.dart';
 
 class InfoDialog extends StatelessWidget {
@@ -74,6 +76,53 @@ class ErrorDialog extends StatelessWidget {
     );
   }
 }
+
+class LogoutDialog extends StatelessWidget {
+  const LogoutDialog({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Icon(
+        Icons.info,
+        color: primaryColor,
+        size: 40.0,
+      ),
+      content: const Text(
+        'Log out ?',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontWeight: FontWeight.bold, color: primaryColor, fontSize: 20.0),
+      ),
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text(
+                'NO',
+                style: TextStyle(color: warnColor, fontWeight: FontWeight.bold),
+              ),
+            ),
+            TextButton(
+                onPressed: () {
+                  PageRouter().navigateToPage(const LoginScreen(), context);
+                },
+                child: const Text(
+                  'YES',
+                  style: TextStyle(
+                      color: primaryColor, fontWeight: FontWeight.bold),
+                ))
+          ],
+        ),
+      ],
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0))),
+    );
+  }
+}
+
 
 /* class LogoutDialog extends StatelessWidget {
   const LogoutDialog({Key? key}) : super(key: key);
