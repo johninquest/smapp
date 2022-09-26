@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smapp/styles/colors.dart';
-import 'screens/home.dart';
-import 'screens/login.dart';
+import 'pages/login.dart';
 
 void main() {
   runApp(const MyApp());

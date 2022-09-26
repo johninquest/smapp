@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../services/router.dart';
 import '../styles/colors.dart';
 import 'about.dart';
+import 'school/school_info.dart';
 
 class LeftMenu extends StatefulWidget {
   const LeftMenu({Key? key}) : super(key: key);
@@ -46,7 +47,7 @@ class _LeftMenuState extends State<LeftMenu> {
                     )
                   ],
                 )),
-            ListTile(
+/*             ListTile(
               leading: const Icon(
                 Icons.group_outlined,
                 color: primaryColor,
@@ -72,7 +73,7 @@ class _LeftMenuState extends State<LeftMenu> {
               ),
               // ignore: avoid_returning_null_for_void
               onTap: () => {},
-            ),
+            ), */
             ListTile(
                 leading: const Icon(
                   Icons.school_outlined,
@@ -83,8 +84,7 @@ class _LeftMenuState extends State<LeftMenu> {
                   style: TextStyle(color: primaryColor),
                 ),
                 onTap: () {
-                  // ignore: avoid_print
-                  print('Tapped school button!');
+                  PageRouter().navigateToPage(const SchoolInfoPage(), context);
                 }),
             ListTile(
               leading: const Icon(

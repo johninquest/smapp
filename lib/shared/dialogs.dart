@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/screens/login.dart';
+import '../pages/login.dart';
 import '../services/router.dart';
 import '../styles/colors.dart';
 

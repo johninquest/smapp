@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import '../services/router.dart';
 import '../styles/colors.dart';
+import 'cases/case_list.dart';
+import 'evaluations/evaluation_list.dart';
 import 'home.dart';
+import 'students/student_list.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -28,30 +31,30 @@ class _BottomNavBarState extends State<BottomNavBar> {
             color: Colors.white,
             size: 25.0,
           ),
-          label: 'STARTSEITE',
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.timer_outlined,
+            Icons.group_outlined,
             color: Colors.white,
             size: 25.0,
           ),
-          label: 'ZEIT ERFASSEN',
+          label: 'Students',
         ),
         BottomNavigationBarItem(
             icon: Icon(
-              Icons.list_alt,
+              Icons.cases_outlined,
               color: Colors.white,
               size: 25.0,
             ),
-            label: 'AUFZEICHNUNGEN'),
+            label: 'Cases'),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.analytics_outlined,
+            Icons.bar_chart,
             color: Colors.white,
             size: 25.0,
           ),
-          label: 'AUSWERTUNGEN',
+          label: 'Evaluations',
         ),
       ],
       onTap: (index) => afterTap(index),
@@ -63,19 +66,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
       PageRouter().navigateToPage(const HomeScreen(), context);
     }
     if (currentIndex == 1) {
-      // PageRouter().navigateToPage(AutoTimingPage(), context);
+      PageRouter().navigateToPage(const StudentListPage(), context);
       // ignore: avoid_print
-      print('Tapped button');
+      // print('Tapped button');
     }
     if (currentIndex == 2) {
-      // PageRouter().navigateToPage(TimingDataPage(), context);
+      PageRouter().navigateToPage(const CaseListPage(), context);
       // ignore: avoid_print
-      print('Tapped button');
+      // print('Tapped button');
     }
     if (currentIndex == 3) {
-      // PageRouter().navigateToPage(AnalysisOverviewPage(), context);
+      PageRouter().navigateToPage(const EvaluationListPage(), context);
       // ignore: avoid_print
-      print('Tapped button');
+      // print('Tapped button');
     }
     /* else {
       print('No where to go');
