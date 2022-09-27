@@ -3,6 +3,7 @@ import '../services/router.dart';
 import '../styles/colors.dart';
 import 'about.dart';
 import 'school/school_info.dart';
+import 'user.dart';
 
 class LeftMenu extends StatefulWidget {
   const LeftMenu({Key? key}) : super(key: key);
@@ -86,6 +87,21 @@ class _LeftMenuState extends State<LeftMenu> {
                 onTap: () {
                   PageRouter().navigateToPage(const SchoolInfoPage(), context);
                 }),
+            ListTile(
+              leading: const Icon(
+                Icons.manage_accounts_outlined,
+                color: primaryColor,
+              ),
+              title: const Text(
+                'User',
+                style: TextStyle(color: primaryColor),
+              ),
+              onTap: () =>
+                  PageRouter().navigateToPage(const UserPage(), context),
+            ),
+            const SizedBox(
+              height: 25.0,
+            ),
             ListTile(
               leading: const Icon(
                 Icons.info_outline,

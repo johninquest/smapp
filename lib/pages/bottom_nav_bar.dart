@@ -5,9 +5,13 @@ import 'cases/case_list.dart';
 import 'evaluations/evaluation_list.dart';
 import 'home.dart';
 import 'students/student_list.dart';
+import 'dart:developer';
 
 class BottomNavBar extends StatefulWidget {
+  const BottomNavBar({Key? key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _BottomNavBarState createState() => _BottomNavBarState();
 }
 
@@ -23,7 +27,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
       selectedIconTheme: const IconThemeData(color: Colors.black),
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      // iconSize: 30,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(
@@ -63,22 +66,21 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   void afterTap(int currentIndex) {
     if (currentIndex == 0) {
+      log('To home page');
       PageRouter().navigateToPage(const HomeScreen(), context);
     }
     if (currentIndex == 1) {
+      // throw ('This is an error!');
+      log('To student list');
       PageRouter().navigateToPage(const StudentListPage(), context);
-      // ignore: avoid_print
-      // print('Tapped button');
     }
     if (currentIndex == 2) {
+      log('To case list');
       PageRouter().navigateToPage(const CaseListPage(), context);
-      // ignore: avoid_print
-      // print('Tapped button');
     }
     if (currentIndex == 3) {
+      log('To evaluation list');
       PageRouter().navigateToPage(const EvaluationListPage(), context);
-      // ignore: avoid_print
-      // print('Tapped button');
     }
     /* else {
       print('No where to go');
