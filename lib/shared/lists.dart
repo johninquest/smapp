@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../styles/style.dart';
 
-class DataAsList {
+class AppData {
   List<DropdownMenuItem<String>> userRoleList = [
     const DropdownMenuItem(
         value: '', child: Text('', style: DropdownListStyle)),
