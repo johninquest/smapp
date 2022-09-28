@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('###'),
         centerTitle: true,
         actions: [
           IconButton(
@@ -26,7 +26,10 @@ class HomeScreen extends StatelessWidget {
       ),
       drawer: const LeftMenu(),
       body: const Center(
-        child: Text('Welcome to the home screen!'),
+        child: Text(
+          'Welcome to the home screen!',
+          style: TextStyle(fontSize: 15),
+        ),
       ),
       bottomNavigationBar: const BottomNavBar(),
     );

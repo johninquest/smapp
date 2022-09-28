@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smapp/styles/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'pages/login.dart';
 
 void main() {
@@ -12,13 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       theme: ThemeData(
         colorSchemeSeed: primaryColor,
         brightness: Brightness.light,
         // useMaterial3: true
         // primarySwatch: Colors.indigo,
         // textButtonTheme: TextButtonThemeData(style: ButtonStyle(colo))
+        textTheme: GoogleFonts.latoTextTheme(),
       ),
       home: const LoginScreen(),
     );

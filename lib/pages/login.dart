@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/shared/snackbar_messages.dart';
 import '../services/router.dart';
 import '../styles/colors.dart';
 import 'home.dart';
@@ -64,11 +65,11 @@ class _LoginFormState extends State<LoginForm> {
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                   child: TextFormField(
                     controller: _userName,
-                    decoration: const InputDecoration(labelText: 'UserId'),
+                    decoration: const InputDecoration(labelText: 'Email'),
                     keyboardType: TextInputType.text,
                     validator: (val) {
                       if (val == null || val.isEmpty) {
-                        return 'Please enter UserId';
+                        return 'Please enter Email';
                       }
                     },
                   )),
@@ -116,15 +117,15 @@ class _LoginFormState extends State<LoginForm> {
                     const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    // ignore: avoid_print
-                    print('Tapped log in button');
+                    PageRouter().navigateToPage(const HomeScreen(), context);
                   },
                   style: ElevatedButton.styleFrom(
                       // primary: primaryColor,
                       ),
                   child: const Text(
                     'Log in',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, letterSpacing: 1.0),
                   ),
                 ),
               ),
@@ -134,15 +135,19 @@ class _LoginFormState extends State<LoginForm> {
                 margin:
                     const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
                 child: ElevatedButton(
-                  onPressed: () =>
-                      PageRouter().navigateToPage(const HomeScreen(), context),
+                  onPressed: () {
+                    // PageRouter().navigateToPage(const HomeScreen(), context);
+                    SnackBarMessage().underConstruction(context);
+                  },
                   style: ElevatedButton.styleFrom(
-                      // primary: primaryColor,
-                      ),
+                    backgroundColor: secondaryColor,
+                  ),
                   child: const Text(
                     'Sign in with Google',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor,
+                        letterSpacing: 1.0),
                   ),
                 ),
               ),

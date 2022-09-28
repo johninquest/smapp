@@ -31,7 +31,7 @@ class AboutPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 10.0),
                 child: const Text(
-                  'SMA',
+                  '###',
                   style: TextStyle(
                       color: primaryColor,
                       fontWeight: FontWeight.bold,

@@ -66,20 +66,20 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   void afterTap(int currentIndex) {
     if (currentIndex == 0) {
-      log('To home page');
+      // log('To home page');
       PageRouter().navigateToPage(const HomeScreen(), context);
     }
     if (currentIndex == 1) {
       // throw ('This is an error!');
-      log('To student list');
+      // log('To student list');
       PageRouter().navigateToPage(const StudentListPage(), context);
     }
     if (currentIndex == 2) {
-      log('To case list');
+      // log('To case list');
       PageRouter().navigateToPage(const CaseListPage(), context);
     }
     if (currentIndex == 3) {
-      log('To evaluation list');
+      // log('To evaluation list');
       PageRouter().navigateToPage(const EvaluationListPage(), context);
     }
     /* else {
