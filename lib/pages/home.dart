@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
       drawer: const LeftMenu(),
       body: const Center(
         child: Text(
-          'Welcome to the home screen!',
+          'Welcome home!',
           style: TextStyle(fontSize: 15),
         ),
       ),

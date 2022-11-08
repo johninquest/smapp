@@ -6,8 +6,9 @@ class AppData {
     const DropdownMenuItem(
         value: '', child: Text('', style: DropdownListStyle)),
     const DropdownMenuItem(
-        value: 'school_counselor',
-        child: Text('School counselor', style: DropdownListStyle)),
+        value: 'counselor', child: Text('Counselor', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'principal', child: Text('Principal', style: DropdownListStyle)),
     const DropdownMenuItem(
         value: 'teacher', child: Text('Teacher', style: DropdownListStyle)),
   ];
@@ -53,9 +54,9 @@ class AppData {
     const DropdownMenuItem(
         value: '5', child: Text('5', style: DropdownListStyle)),
     const DropdownMenuItem(
-        value: 'l6', child: Text('Lower Sixth', style: DropdownListStyle)),
+        value: 'l6', child: Text('Lower 6', style: DropdownListStyle)),
     const DropdownMenuItem(
-        value: 'u6', child: Text('Upper Sixth', style: DropdownListStyle)),
+        value: 'u6', child: Text('Upper 6', style: DropdownListStyle)),
   ];
 
   List<DropdownMenuItem<String>> classLetterList = [

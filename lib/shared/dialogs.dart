@@ -107,7 +107,7 @@ class LogoutDialog extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () {
-                  PageRouter().navigateToPage(const LoginScreen(), context);
+                  PageRouter().navigateToPage(const LoginPage(), context);
                 },
                 child: const Text(
                   'YES',

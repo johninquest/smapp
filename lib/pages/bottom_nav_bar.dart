@@ -37,14 +37,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.group_outlined,
-            color: Colors.white,
-            size: 25.0,
-          ),
-          label: 'Students',
-        ),
-        BottomNavigationBarItem(
             icon: Icon(
               Icons.cases_outlined,
               color: Colors.white,
@@ -59,6 +51,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           label: 'Evaluations',
         ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.group_outlined,
+            color: Colors.white,
+            size: 25.0,
+          ),
+          label: 'Students',
+        ),
       ],
       onTap: (index) => afterTap(index),
     );
@@ -70,17 +70,17 @@ class _BottomNavBarState extends State<BottomNavBar> {
       PageRouter().navigateToPage(const HomeScreen(), context);
     }
     if (currentIndex == 1) {
-      // throw ('This is an error!');
-      // log('To student list');
-      PageRouter().navigateToPage(const StudentListPage(), context);
-    }
-    if (currentIndex == 2) {
       // log('To case list');
       PageRouter().navigateToPage(const CaseListPage(), context);
     }
-    if (currentIndex == 3) {
+    if (currentIndex == 2) {
       // log('To evaluation list');
       PageRouter().navigateToPage(const EvaluationListPage(), context);
+    }
+    if (currentIndex == 3) {
+      // throw ('This is an error!');
+      // log('To student list');
+      PageRouter().navigateToPage(const StudentListPage(), context);
     }
     /* else {
       print('No where to go');

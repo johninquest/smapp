@@ -47,7 +47,7 @@ class AboutPage extends StatelessWidget {
                 margin: const EdgeInsets.only(
                     left: 10.0, right: 10.0, bottom: 75.0, top: 10.0),
                 child: const Text(
-                  'The student management app for school counselors',
+                  'The management app for school counselors',
                   textAlign: TextAlign.center,
                   style: TextStyle(letterSpacing: 0.5),
                 ),
@@ -60,7 +60,7 @@ class AboutPage extends StatelessWidget {
                   child: Text(
                     '\u00A9 john apps $currentYear',
                     style: const TextStyle(
-                      color: primaryColor, letterSpacing: 0.5,
+                      color: primaryColor, letterSpacing: 0.3,
                       // decoration: TextDecoration.underline
                     ),
                   ),

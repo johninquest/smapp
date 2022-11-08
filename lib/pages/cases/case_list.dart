@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/pages/cases/add_case.dart';
+import 'package:smapp/services/router.dart';
+import 'package:smapp/styles/colors.dart';
 import '../bottom_nav_bar.dart';
 
 class CaseListPage extends StatelessWidget {
@@ -14,7 +17,15 @@ class CaseListPage extends StatelessWidget {
       body: const Center(
         child: Text('Case list!'),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: primaryColor,
+        child: const Icon(
+          Icons.add,
+        ),
+        onPressed: () =>
+            PageRouter().navigateToPage(const AddCasePage(), context),
+      ),
     );
   }
 }

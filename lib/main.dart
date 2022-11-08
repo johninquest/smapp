@@ -17,12 +17,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorSchemeSeed: primaryColor,
         brightness: Brightness.light,
-        // useMaterial3: true
+        // useMaterial3: true,
         // primarySwatch: Colors.indigo,
         // textButtonTheme: TextButtonThemeData(style: ButtonStyle(colo))
-        textTheme: GoogleFonts.latoTextTheme(),
+        textTheme: GoogleFonts.quicksandTextTheme(),
       ),
-      home: const LoginScreen(),
+      home: const LoginPage(),
     );
   }
 }
