@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/styles/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'pages/login.dart';
+/* import 'package:supabase_flutter/supabase_flutter.dart'; */
+import 'styles/colors.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -26,3 +27,20 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/* Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: SupabaseCred().projUrl,
+    anonKey: SupabaseCred().projAnonKey,
+  );
+  runApp(const MyApp());
+}
+
+class SupabaseCred {
+  final String projUrl = 'https://cyifcmqsbowqfnwycvjk.supabase.co';
+  final String projAnonKey =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN5aWZjbXFzYm93cWZud3ljdmprIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgwOTI2NDUsImV4cCI6MTk4MzY2ODY0NX0.nuI2Y6NO_QusYOJwW3u-h97wpxu5xcznsg7CGbYuq00';
+}
+ */

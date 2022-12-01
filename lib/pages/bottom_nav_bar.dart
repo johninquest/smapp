@@ -4,6 +4,7 @@ import '../styles/colors.dart';
 import 'cases/case_list.dart';
 import 'evaluations/evaluation_list.dart';
 import 'home.dart';
+import 'requests/requests_list.dart';
 import 'students/student_list.dart';
 import 'dart:developer';
 
@@ -59,6 +60,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           label: 'Students',
         ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.mail_outlined,
+            color: Colors.white,
+            size: 25.0,
+          ),
+          label: 'Requests',
+        ),
       ],
       onTap: (index) => afterTap(index),
     );
@@ -81,6 +90,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
       // throw ('This is an error!');
       // log('To student list');
       PageRouter().navigateToPage(const StudentListPage(), context);
+    }
+    if (currentIndex == 4) {
+      // throw ('This is an error!');
+      // log('To student list');
+      PageRouter().navigateToPage(const RequestsForCounselingPage(), context);
     }
     /* else {
       print('No where to go');

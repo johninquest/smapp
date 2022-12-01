@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/styles/colors.dart';
 import '../bottom_nav_bar.dart';
 
 class StudentListPage extends StatelessWidget {
@@ -12,9 +13,12 @@ class StudentListPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: const Center(
-        child: Text('Student list!'),
+        child: Text(
+          'Still under construction!',
+          style: TextStyle(color: warnColor, fontWeight: FontWeight.bold),
+        ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

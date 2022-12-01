@@ -6,8 +6,7 @@ const PageHeaderStyle = TextStyle(
 
 const AppBarTitleStyle = TextStyle(letterSpacing: 1.0);
 
-const BodyStyle =
-    TextStyle(color: Color(0xFF0D47A1), fontWeight: FontWeight.bold);
+const BodyStyle = TextStyle(color: primaryColor, fontWeight: FontWeight.bold);
 
 const DropdownListStyle = TextStyle(fontWeight: FontWeight.normal);
 

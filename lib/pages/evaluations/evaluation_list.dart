@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../styles/colors.dart';
 import '../bottom_nav_bar.dart';
 
 class EvaluationListPage extends StatelessWidget {
@@ -11,10 +12,22 @@ class EvaluationListPage extends StatelessWidget {
         title: const Text('Evaluation list'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text('Evaluation list'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text('Evaluation list'),
+            SizedBox(
+              height: 50.0,
+            ),
+            Text(
+              'Still under construction!',
+              style: TextStyle(color: warnColor, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

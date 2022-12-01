@@ -82,7 +82,8 @@ class _LeftMenuState extends State<LeftMenu> {
                 ),
                 title: const Text(
                   'School',
-                  style: TextStyle(color: primaryColor),
+                  style: TextStyle(
+                      color: primaryColor, fontWeight: FontWeight.bold),
                 ),
                 onTap: () {
                   PageRouter().navigateToPage(const SchoolInfoPage(), context);
@@ -94,7 +95,8 @@ class _LeftMenuState extends State<LeftMenu> {
               ),
               title: const Text(
                 'User',
-                style: TextStyle(color: primaryColor),
+                style:
+                    TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
               ),
               onTap: () =>
                   PageRouter().navigateToPage(const UserPage(), context),
@@ -109,7 +111,8 @@ class _LeftMenuState extends State<LeftMenu> {
               ),
               title: const Text(
                 'Info',
-                style: TextStyle(color: primaryColor),
+                style:
+                    TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
               ),
               onTap: () =>
                   PageRouter().navigateToPage(const AboutPage(), context),

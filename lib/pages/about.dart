@@ -20,7 +20,7 @@ class AboutPage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width * 0.95,
         height: MediaQuery.of(context).size.width * 0.95,
         child: Center(
@@ -60,9 +60,11 @@ class AboutPage extends StatelessWidget {
                   child: Text(
                     '\u00A9 john apps $currentYear',
                     style: const TextStyle(
-                      color: primaryColor, letterSpacing: 0.3,
-                      // decoration: TextDecoration.underline
-                    ),
+                        color: primaryColor,
+                        letterSpacing: 0.3,
+                        fontWeight: FontWeight.bold
+                        // decoration: TextDecoration.underline
+                        ),
                   ),
                 ),
               ),
@@ -74,7 +76,7 @@ class AboutPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

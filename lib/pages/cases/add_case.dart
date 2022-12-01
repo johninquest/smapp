@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/pages/bottom_nav_bar.dart';
 
 class AddCasePage extends StatelessWidget {
   const AddCasePage({super.key});
@@ -13,6 +14,7 @@ class AddCasePage extends StatelessWidget {
       body: const Center(
         child: Text('Add case page'),
       ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
