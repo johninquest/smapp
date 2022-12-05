@@ -62,9 +62,22 @@ class DateTimeHelper {
   }
 
   toUiDateTime(String? dbDateTime) {
+    print(dbDateTime.runtimeType);
     if (dbDateTime != null && dbDateTime != '') {
       DateTime parsedDateTime = DateTime.parse(dbDateTime);
       DateFormat fDateTimeFormat = DateFormat('dd/MM/yyyy HH:mm');
+      String uiDateTime = fDateTimeFormat.format(parsedDateTime);
+      return uiDateTime;
+    } else {
+      return '--/--/---- --:--';
+    }
+  }
+
+  isoToCmrDateFormat(String? dbDateTime) {
+    // print(dbDateTime.runtimeType);
+    if (dbDateTime != null && dbDateTime != '') {
+      DateTime parsedDateTime = DateTime.parse(dbDateTime);
+      DateFormat fDateTimeFormat = DateFormat('dd/MM/yyyy');
       String uiDateTime = fDateTimeFormat.format(parsedDateTime);
       return uiDateTime;
     } else {
