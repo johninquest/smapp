@@ -4,6 +4,7 @@ import '../../services/web.dart';
 import '../../shared/wigs.dart';
 import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';
+import 'package:intl/intl.dart';
 
 class RequestsForCounselingPage extends StatelessWidget {
   const RequestsForCounselingPage({super.key});
@@ -156,7 +157,7 @@ class _TableOfContactRequestsState extends State<TableOfContactRequests> {
                 maxWidth: MediaQuery.of(context).size.width * 0.20,
               ),
               child: Text(
-                e['request_category'] ?? '',
+                toBeginningOfSentenceCase(e['request_category']) ?? '',
                 style: TableItemStyle,
                 textAlign: TextAlign.left,
                 overflow: TextOverflow.ellipsis,
@@ -180,16 +181,16 @@ class _TableOfContactRequestsState extends State<TableOfContactRequests> {
   void onSort(int columnIndex, bool ascending) {
     if (columnIndex == 0) {
       widget.tableData!.sort((item1, item2) =>
-          compareString(ascending, item1['picked_date'], item2['picked_date']));
+          compareString(ascending, item1['created_at'], item2['created_at']));
     } else if (columnIndex == 1) {
       widget.tableData!.sort((item1, item2) =>
-          compareString(ascending, item1['cost_area'], item2['cost_area']));
+          compareString(ascending, item1['surname'], item2['surname']));
     } else if (columnIndex == 2) {
-      widget.tableData!.sort((item1, item2) =>
-          compareString(ascending, item1['item_name'], item2['item_name']));
+      widget.tableData!.sort((item1, item2) => compareString(
+          ascending, item1['request_category'], item2['request_category']));
     } else if (columnIndex == 3) {
       widget.tableData!.sort((item1, item2) => compareString(
-          ascending, item1['payment_status'], item2['payment_status']));
+          ascending, item1['class_number'], item2['class_number']));
     }
 
     setState(() {

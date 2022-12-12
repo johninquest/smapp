@@ -6,7 +6,7 @@ import 'evaluations/evaluation_list.dart';
 import 'home.dart';
 import 'requests/requests_list.dart';
 import 'students/student_list.dart';
-import 'dart:developer';
+// import 'dart:developer';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -62,7 +62,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.mail_outlined,
+            Icons.mark_email_unread,
             color: Colors.white,
             size: 25.0,
           ),
