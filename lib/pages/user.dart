@@ -29,29 +29,11 @@ class UserForm extends StatefulWidget {
 
 class _UserFormState extends State<UserForm> {
   final userFormKey = GlobalKey<FormState>();
-  // final TextEditingController _businessName = TextEditingController();
   final TextEditingController _givenNames = TextEditingController();
   final TextEditingController _surname = TextEditingController();
-  // final TextEditingController _role = TextEditingController();
-  // final TextEditingController _address = TextEditingController();
-  // final TextEditingController _city = TextEditingController();
   final TextEditingController _phone = TextEditingController();
   final TextEditingController _email = TextEditingController();
   String? _role;
-
-/*   @override
-  void initState() {
-    super.initState();
-    SharedPreferencesHelper().readData('currentUserData').then((value) {
-      if (value != null) {
-        setState(() {
-          _businessName.text =
-              DataParser().strToMap(value)['businessName'] ?? '';
-          _city.text = DataParser().strToMap(value)['businessLocation'] ?? '';
-        });
-      }
-    });
-  } */
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +41,6 @@ class _UserFormState extends State<UserForm> {
       key: userFormKey,
       child: SingleChildScrollView(
           child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             alignment: Alignment.center,

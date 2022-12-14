@@ -165,11 +165,11 @@ class _TableOfContactRequestsState extends State<TableOfContactRequests> {
             )),
             DataCell(Row(
               children: [
-                Text(e['class_number'] ?? '',
-                    // style: StyleHandler().paymentStatus(e['payment_status']),
-                    textAlign: TextAlign.right),
+                Text(e['class_number'] ?? '', textAlign: TextAlign.right),
+                const SizedBox(
+                  width: 3.0,
+                ),
                 Text((e['class_letter']).toUpperCase() ?? '',
-                    // style: StyleHandler().paymentStatus(e['payment_status']),
                     textAlign: TextAlign.right),
               ],
             )),

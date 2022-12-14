@@ -20,8 +20,11 @@ class CaseListPage extends StatelessWidget {
       bottomNavigationBar: const BottomNavBar(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
-        child: const Icon(
-          Icons.add,
+        child: const Tooltip(
+          message: 'Add new case',
+          child: Icon(
+            Icons.add,
+          ),
         ),
         onPressed: () =>
             PageRouter().navigateToPage(const AddCasePage(), context),
