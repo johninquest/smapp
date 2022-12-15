@@ -16,14 +16,7 @@ class EvaluationListPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
-            Text('Evaluation list'),
-            SizedBox(
-              height: 50.0,
-            ),
-            Text(
-              'Still under construction!',
-              style: TextStyle(color: warnColor, fontWeight: FontWeight.bold),
-            ),
+            Text('Evaluations list!'),
           ],
         ),
       ),

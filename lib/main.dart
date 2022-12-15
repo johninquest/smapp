@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'pages/login.dart';
 /* import 'package:supabase_flutter/supabase_flutter.dart'; */
 import 'styles/colors.dart';
@@ -16,13 +15,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       theme: ThemeData(
-        colorSchemeSeed: primaryColor,
-        brightness: Brightness.light,
-        // useMaterial3: true,
-        // primarySwatch: Colors.indigo,
-        // textButtonTheme: TextButtonThemeData(style: ButtonStyle(colo))
-        textTheme: GoogleFonts.quicksandTextTheme(),
-      ),
+          colorSchemeSeed: primaryColor,
+          brightness: Brightness.light,
+          // useMaterial3: true,
+          // primarySwatch: Colors.indigo,
+          // textButtonTheme: TextButtonThemeData(style: ButtonStyle(colo))
+          // textTheme: GoogleFonts.quicksandTextTheme(),
+          fontFamily: 'Quicksand'),
       home: const LoginPage(),
     );
   }

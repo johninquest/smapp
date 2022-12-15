@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/services/date_time_helper.dart';
+import 'package:intl/intl.dart';
+import '../../services/date_time_helper.dart';
 import '../../services/web.dart';
 import '../../shared/wigs.dart';
 import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';
-import 'package:intl/intl.dart';
 
 class RequestsForCounselingPage extends StatelessWidget {
   const RequestsForCounselingPage({super.key});
@@ -14,7 +14,10 @@ class RequestsForCounselingPage extends StatelessWidget {
     final reqData = SupabaseService().fetchData();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Requests for counseling'),
+        title: const Text(
+          'Requests for counseling',
+          style: appBarTitleStyle,
+        ),
         centerTitle: true,
       ),
       body: FutureBuilder(
@@ -27,12 +30,6 @@ class RequestsForCounselingPage extends StatelessWidget {
           }
           if (snapshot.hasData) {
             List<dynamic> sbData = snapshot.data as List;
-            // log(_data.toString());
-            // print(data.length);
-            // print(data[0]);
-            /*  return Center(
-              child: Text('Has data! \n $data'),
-            ); */
             return TableOfContactRequests(tableData: sbData);
           } else {
             return const Center(
@@ -128,23 +125,20 @@ class _TableOfContactRequestsState extends State<TableOfContactRequests> {
             }
           }, */
           cells: [
-            DataCell(
-                Text(DateTimeHelper().isoToCmrDateFormat(e['created_at']) ?? '',
-                    // e['created_at'] ?? '',
-                    style: TableItemStyle,
-                    textAlign: TextAlign.left)),
+            DataCell(Text(
+                DateTimeHelper().isoToCmrDateFormat(e['created_at']) ?? '',
+                style: TableItemStyle,
+                textAlign: TextAlign.left)),
             DataCell(Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  // Formatter().dbToUiValue(e['cost_area']) ?? '',
                   e['surname'] ?? '',
                   style: TableItemStyle,
                   textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  // Formatter().dbToUiValue(e['cost_area']) ?? '',
                   e['given_names'] ?? '',
                   style: TableItemStyle,
                   textAlign: TextAlign.left,

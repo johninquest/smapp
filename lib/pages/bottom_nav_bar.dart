@@ -62,7 +62,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.mark_email_unread,
+            Icons.mail_outline,
             color: Colors.white,
             size: 25.0,
           ),

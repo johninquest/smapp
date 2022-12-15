@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smapp/pages/cases/add_case.dart';
 import 'package:smapp/services/router.dart';
 import 'package:smapp/styles/colors.dart';
+import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';
 
 class CaseListPage extends StatelessWidget {
@@ -11,7 +12,10 @@ class CaseListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Case list'),
+        title: const Text(
+          'Case list',
+          style: appBarTitleStyle,
+        ),
         centerTitle: true,
       ),
       body: const Center(

@@ -4,7 +4,7 @@ import 'colors.dart';
 const PageHeaderStyle = TextStyle(
     fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 2.0);
 
-const AppBarTitleStyle = TextStyle(letterSpacing: 1.0);
+const appBarTitleStyle = TextStyle(letterSpacing: 1.0);
 
 const BodyStyle = TextStyle(color: primaryColor, fontWeight: FontWeight.bold);
 

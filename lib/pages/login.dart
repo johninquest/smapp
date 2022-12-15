@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/shared/snackbar_messages.dart';
 import '../services/router.dart';
+import '../shared/snackbar_messages.dart';
 import '../styles/colors.dart';
 import 'home.dart';
 
@@ -13,7 +13,6 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('###',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
               letterSpacing: 1.0,
               color: Colors.white,
             )),

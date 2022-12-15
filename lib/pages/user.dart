@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../shared/lists.dart';
 import '../styles/colors.dart';
+import '../styles/style.dart';
 import 'bottom_nav_bar.dart';
 import 'dart:developer';
 
@@ -11,7 +12,10 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User'),
+        title: const Text(
+          'User',
+          style: appBarTitleStyle,
+        ),
         centerTitle: true,
       ),
       body: const Center(child: UserForm()),
@@ -142,11 +146,12 @@ class _UserFormState extends State<UserForm> {
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.grey,
+                    backgroundColor: Colors.black,
                   ),
                   child: const Text(
                     'CANCEL',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, letterSpacing: 1.0),
                   ),
                 ),
               ),
@@ -156,10 +161,12 @@ class _UserFormState extends State<UserForm> {
                   onPressed: () {
                     log('Tapped save button!');
                   },
-                  style: ElevatedButton.styleFrom(primary: primaryColor),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: primaryColor),
                   child: const Text(
                     'SAVE',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, letterSpacing: 1.0),
                   ),
                 ),
               ),

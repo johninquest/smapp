@@ -16,7 +16,7 @@ class AboutPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Info',
-          style: AppBarTitleStyle,
+          style: appBarTitleStyle,
         ),
         centerTitle: true,
       ),

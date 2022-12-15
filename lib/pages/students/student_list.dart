@@ -14,8 +14,7 @@ class StudentListPage extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'Still under construction!',
-          style: TextStyle(color: warnColor, fontWeight: FontWeight.bold),
+          'Students list!',
         ),
       ),
       bottomNavigationBar: const BottomNavBar(),
