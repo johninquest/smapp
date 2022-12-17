@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../services/date_time_helper.dart';
 import '../../services/web.dart';
-import '../../shared/wigs.dart';
+import '../../shared/custom_widgets.dart';
 import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';
 

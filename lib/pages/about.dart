@@ -53,18 +53,17 @@ class AboutPage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 10.0),
+                margin: const EdgeInsets.only(top: 13.0),
                 child: GestureDetector(
                   onTap: () =>
                       WebService().openUrl('https://johnapps.de', context),
                   child: Text(
-                    '\u00A9 john apps $currentYear',
+                    '\u00A9 JOHN APPS $currentYear',
                     style: const TextStyle(
                         color: primaryColor,
-                        letterSpacing: 0.3,
-                        fontWeight: FontWeight.bold
-                        // decoration: TextDecoration.underline
-                        ),
+                        wordSpacing: 1.0,
+                        fontSize: 13.0,
+                        fontStyle: FontStyle.italic),
                   ),
                 ),
               ),

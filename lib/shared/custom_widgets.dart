@@ -17,22 +17,21 @@ class EmptyTable extends StatelessWidget {
             // style: BodyStyle,
           ),
         ),
-        Container(
-            child: ElevatedButton(
-                onPressed: () =>
-                    PageRouter().navigateToPage(const HomeScreen(), context),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: primaryColor,
-                  padding: const EdgeInsets.all(10.0),
+        ElevatedButton(
+            onPressed: () =>
+                PageRouter().navigateToPage(const HomeScreen(), context),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: primaryColor,
+              padding: const EdgeInsets.all(10.0),
+            ),
+            child: Column(
+              children: const [
+                Icon(
+                  Icons.add,
+                  size: 25.0,
                 ),
-                child: Column(
-                  children: const [
-                    Icon(
-                      Icons.add,
-                      size: 25.0,
-                    ),
-                  ],
-                ))),
+              ],
+            )),
       ],
     );
   }
