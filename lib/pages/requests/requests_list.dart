@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:smapp/pages/requests/request_detail.dart';
 import '../../services/date_time_helper.dart';
+import '../../services/router.dart';
 import '../../services/web.dart';
 import '../../shared/custom_widgets.dart';
 import '../../styles/style.dart';
@@ -118,12 +120,12 @@ class _TableOfContactRequestsState extends State<TableOfContactRequests> {
         (e) => DataRow(
           color: MaterialStateProperty.all(Colors.transparent),
           selected: false,
-/*           onSelectChanged: (val) {
+          onSelectChanged: (val) {
             if (val == true) {
               return PageRouter()
-                  .navigateToPage(ItemDetailPage(rowData: e), context);
+                  .navigateToPage(RequestDetailsPage(rowData: e), context);
             }
-          }, */
+          },
           cells: [
             DataCell(Text(
                 DateTimeHelper().isoToCmrDateFormat(e['created_at']) ?? '',
