@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
 
+const appBarTitleStyle = TextStyle(letterSpacing: 0.5);
+
 const PageHeaderStyle = TextStyle(
     fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 2.0);
-
-const appBarTitleStyle = TextStyle(letterSpacing: 1.0);
 
 const BodyStyle = TextStyle(color: primaryColor, fontWeight: FontWeight.bold);
 

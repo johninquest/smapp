@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/router.dart';
+import '../utils/router.dart';
 import '../shared/snackbar_messages.dart';
 import '../styles/colors.dart';
 import 'home.dart';

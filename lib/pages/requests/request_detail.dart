@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smapp/pages/bottom_nav_bar.dart';
-import 'package:smapp/services/date_time_helper.dart';
+import 'package:smapp/utils/date_time_helper.dart';
 import 'package:smapp/styles/colors.dart';
 
 class RequestDetailsPage extends StatelessWidget {

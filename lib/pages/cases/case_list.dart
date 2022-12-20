@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smapp/pages/cases/add_case.dart';
-import 'package:smapp/services/router.dart';
+import 'package:smapp/utils/router.dart';
 import 'package:smapp/styles/colors.dart';
 import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';

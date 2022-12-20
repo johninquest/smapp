@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/login.dart';
-import '../services/router.dart';
+import '../utils/router.dart';
 import '../styles/colors.dart';
 
 class InfoDialog extends StatelessWidget {
@@ -84,7 +84,7 @@ class LogoutDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Icon(
-        Icons.info,
+        Icons.info_outline,
         color: primaryColor,
         size: 40.0,
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/home.dart';
-import '../services/router.dart';
+import '../utils/router.dart';
 import '../styles/colors.dart';
 
 class EmptyTable extends StatelessWidget {

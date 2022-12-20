@@ -26,8 +26,9 @@ class SupabaseService {
   final _supabase =
       SupabaseClient(SupabaseCred().projUrl, SupabaseCred().projAnonKey);
 
-  fetchData() async {
-    final res = await _supabase.from('requests').select('*');
-    return res;
+  Future<List<dynamic>> fetchData() async {
+    final res =
+        await _supabase.from('requests').select('*').order('created_at');
+    return res as List;
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../services/date_time_helper.dart';
-import '../services/web.dart';
+import '../utils/date_time_helper.dart';
+import '../utils/web.dart';
 import '../styles/colors.dart';
 import '../styles/style.dart';
 import 'bottom_nav_bar.dart';
@@ -39,8 +39,8 @@ class AboutPage extends StatelessWidget {
                 ),
               ),
               const Divider(
-                indent: 100.0,
-                endIndent: 100.0,
+                indent: 110.0,
+                endIndent: 110.0,
                 thickness: 1.0,
               ),
               Container(
@@ -54,23 +54,28 @@ class AboutPage extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(top: 13.0),
+                // ignore: sort_child_properties_last
                 child: GestureDetector(
                   onTap: () =>
                       WebService().openUrl('https://johnapps.de', context),
                   child: Text(
                     '\u00A9 JOHN APPS $currentYear',
                     style: const TextStyle(
-                        color: primaryColor,
-                        wordSpacing: 1.0,
-                        fontSize: 13.0,
-                        fontStyle: FontStyle.italic),
+                      color: primaryColor,
+                      wordSpacing: 1.0,
+                      fontSize: 11.0,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
+                decoration: const BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(width: 0.5, color: primaryColor)),
+                ),
+              )
+              /* const SizedBox(
                 height: 25.0,
-              ),
-              // AppInfo()
+              ), */
+              // AppVersionInfo()
             ],
           ),
         ),

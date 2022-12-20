@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:smapp/pages/requests/request_detail.dart';
-import '../../services/date_time_helper.dart';
-import '../../services/router.dart';
-import '../../services/web.dart';
+import '../../utils/date_time_helper.dart';
+import '../../utils/router.dart';
+import '../../utils/web.dart';
 import '../../shared/custom_widgets.dart';
 import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';
@@ -25,9 +25,14 @@ class RequestsForCounselingPage extends StatelessWidget {
       body: FutureBuilder(
         future: reqData,
         builder: ((context, snapshot) {
+          if (snapshot.connectionState != ConnectionState.done) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
           if (snapshot.hasError) {
             return const Center(
-              child: Text('An error occured'),
+              child: Text('An error occured!'),
             );
           }
           if (snapshot.hasData) {

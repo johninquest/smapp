@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/router.dart';
+import '../utils/router.dart';
 import '../styles/colors.dart';
 import 'about.dart';
 import 'school/school_info.dart';
