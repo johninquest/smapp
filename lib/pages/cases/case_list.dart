@@ -28,6 +28,7 @@ class CaseListPage extends StatelessWidget {
           message: 'Add new case',
           child: Icon(
             Icons.add,
+            color: Colors.white,
           ),
         ),
         onPressed: () =>

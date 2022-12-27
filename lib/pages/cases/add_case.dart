@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import '../../styles/colors.dart';
 import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';
 
@@ -34,6 +31,7 @@ class AddCaseForm extends StatefulWidget {
 }
 
 class _AddCaseFormState extends State<AddCaseForm> {
+  int _currentStep = 0;
   final _addCaseFormKey = GlobalKey<FormState>();
 
   final TextEditingController _givenNames = TextEditingController();
@@ -41,153 +39,49 @@ class _AddCaseFormState extends State<AddCaseForm> {
   final TextEditingController _phone = TextEditingController();
   final TextEditingController _email = TextEditingController();
   String? _role;
-/* 
-  final List<Map<String, dynamic>> _items = List.generate(
-      5,
-      (index) => {
-            'id': index,
-            'title': 'Item $index',
-            'description':
-                'This is the description of the item $index. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            'isExpanded': false
-          }); */
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          /*   Container(
-            child: const Text('Case information'),
-          ), */
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.95,
-            child: ExpansionPanelList(
-              elevation: 3,
-              // Controlling the expansion behavior
-              expansionCallback: (index, isExpanded) {
-                setState(() {
-                  _items[index]['isExpanded'] = !isExpanded;
-                });
-              },
-              animationDuration: const Duration(milliseconds: 600),
-              children: _items
-                  .map(
-                    (item) => ExpansionPanel(
-                      canTapOnHeader: true,
-                      /* backgroundColor: item['isExpanded'] == true
-                          ? Colors.cyan[100]
-                          : Colors.white, */
-                      headerBuilder: (_, isExpanded) => Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 30),
-                          child: Text(
-                            item['title'],
-                            style: const TextStyle(fontSize: 20),
-                          )),
-                      body: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 30),
-                        child: TextFormField(
-                          // initialValue: 'Name',
-                          decoration:
-                              const InputDecoration(label: Text('Name')),
-                        ),
-                      ),
-                      isExpanded: item['isExpanded'],
-                    ),
-                  )
-                  .toList(),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 10.0),
-                child: ElevatedButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                  ),
-                  child: const Text(
-                    'CANCEL',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, letterSpacing: 1.0),
-                  ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 10.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    log('Tapped save button!');
-                  },
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: primaryColor),
-                  child: const Text(
-                    'SAVE',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, letterSpacing: 1.0),
-                  ),
-                ),
-              ),
-              /* Container(
-                  margin: const EdgeInsets.only(top: 10.0),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
-                    child: const Text('PRINT'),
-                  )) */
-            ],
-          ),
+        child: Center(
+      child: Stepper(
+        currentStep: _currentStep,
+        onStepTapped: (index) => setState(() {
+          _currentStep = index;
+        }),
+        onStepContinue: () {
+          if (_currentStep != 4) {
+            setState(() => _currentStep++);
+          }
+        },
+        onStepCancel: () {
+          if (_currentStep != 0) {
+            setState(() => _currentStep--);
+          }
+        },
+        steps: [
+          Step(
+              isActive: _currentStep >= 0,
+              title: const Text('Student information'),
+              content: const Text('Student info fields!')),
+          Step(
+              isActive: _currentStep >= 1,
+              title: const Text('Parent information'),
+              content: const Text('Parent info fields!')),
+          Step(
+              isActive: _currentStep >= 2,
+              title: const Text('Problem'),
+              content: const Text('Problem info fields!')),
+          Step(
+              isActive: _currentStep >= 3,
+              title: const Text('Method'),
+              content: const Text('Method info fields!')),
+          Step(
+              isActive: _currentStep >= 4,
+              title: const Text('Solution'),
+              content: const Text('Solution info fields!'))
         ],
       ),
-    );
+    ));
   }
-
-  final List<Map<String, dynamic>> _items = List.generate(
-      5,
-      (index) => {
-            'id': index,
-            'title': 'Item $index',
-            'description':
-                'This is the description of the item $index. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            'isExpanded': false
-          });
-  final List<ExpansionPanel> items = [
-    ExpansionPanel(
-      canTapOnHeader: true,
-      /* backgroundColor:
-          item['isExpanded'] == true ? Colors.cyan[100] : Colors.white, */
-      headerBuilder: (_, isExpanded) => Container(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-          child: const Text(
-            'title 0',
-            style: TextStyle(fontSize: 20),
-          )),
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-        child: const Text('description 0'),
-      ),
-      isExpanded: false,
-    ),
-    ExpansionPanel(
-      canTapOnHeader: true,
-      /* backgroundColor:
-          item['isExpanded'] == true ? Colors.cyan[100] : Colors.white, */
-      headerBuilder: (_, isExpanded) => Container(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-          child: const Text(
-            'title 1',
-            style: TextStyle(fontSize: 20),
-          )),
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-        child: const Text('description 1'),
-      ),
-      isExpanded: false,
-    ),
-  ];
 }

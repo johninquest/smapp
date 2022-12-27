@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import '../styles/colors.dart';
 import '../utils/router.dart';
-/* import '../shared/snackbar_messages.dart';
-import '../styles/colors.dart'; */
 import 'home.dart';
 
 class LoginPage extends StatelessWidget {
@@ -12,9 +11,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counseye',
-            style: TextStyle(
-              letterSpacing: 1.0,
-            )),
+            style: TextStyle(letterSpacing: 1.0, color: primaryColor)),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -57,6 +54,15 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Container(
+                margin:
+                    const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 10.0),
+                child: const Text(
+                  'The management app for school counselors',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(letterSpacing: 0.5),
+                ),
+              ),
               Container(
                   width: MediaQuery.of(context).size.width * 0.75,
                   margin: const EdgeInsets.only(bottom: 10.0, top: 40.0),
