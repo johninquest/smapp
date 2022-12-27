@@ -37,10 +37,10 @@ class RequestDetailsPage extends StatelessWidget {
               rowName: 'Is urgent?',
               rowData: rowData['is_urgent'] ?? '',
             ),
-            const MyTableRow(
+            MyTableRowDetails(
               rowName: 'Additional details',
-              /* rowData: rowData['request_details'] ?? '', */
-              rowData: 'Under construction!',
+              rowData: rowData['request_details'] ?? '',
+              /*  rowData: 'Under construction!', */
             ),
             MyTableRow(
               rowName: 'Registration number',
@@ -70,20 +70,6 @@ class RequestDetailsPage extends StatelessWidget {
   }
 }
 
-/* class RequestDetailsData extends StatefulWidget {
-  const RequestDetailsData({super.key});
-
-  @override
-  State<RequestDetailsData> createState() => _RequestDetailsDataState();
-}
-
-class _RequestDetailsDataState extends State<RequestDetailsData> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-} */
-
 class MyTableRow extends StatelessWidget {
   final String? rowName;
   final String? rowData;
@@ -112,6 +98,52 @@ class MyTableRow extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 1.0, right: 5.0),
             padding: const EdgeInsets.only(bottom: 1.0, right: 5.0),
             child: Text(rowData!.toUpperCase(),
+                style: const TextStyle(/* fontWeight: FontWeight.bold */)),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class MyTableRowDetails extends StatelessWidget {
+  final String? rowName;
+  final String? rowData;
+  const MyTableRowDetails({Key? key, this.rowName, this.rowData})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10.0),
+      width: MediaQuery.of(context).size.width * 0.90,
+      decoration: const BoxDecoration(
+          border: Border(bottom: BorderSide(color: primaryColor, width: 1.0))),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(bottom: 1.0, left: 5.0),
+                padding: const EdgeInsets.only(bottom: 1.0, left: 5.0),
+                child: Text(
+                  rowName!,
+                  style: const TextStyle(
+                      color: primaryColor, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                  margin: const EdgeInsets.only(bottom: 1.0, right: 5.0),
+                  padding: const EdgeInsets.only(bottom: 1.0, right: 5.0),
+                  child: const Text('')),
+            ],
+          ),
+          Container(
+            margin: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
+            padding: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
+            child: Text(rowData!,
+                textAlign: TextAlign.left,
                 style: const TextStyle(/* fontWeight: FontWeight.bold */)),
           )
         ],

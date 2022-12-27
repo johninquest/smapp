@@ -143,7 +143,7 @@ class _UserFormState extends State<UserForm> {
             children: [
               Container(
                 margin: const EdgeInsets.only(top: 10.0),
-                child: ElevatedButton(
+                child: OutlinedButton(
                   onPressed: () => Navigator.of(context).pop(),
                   /* style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black, 
@@ -151,9 +151,9 @@ class _UserFormState extends State<UserForm> {
                   child: const Text(
                     'CANCEL',
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.0,
-                        color: textBlackColor),
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.0,
+                    ),
                   ),
                 ),
               ),

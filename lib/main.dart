@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pages/login.dart';
-/* import 'package:supabase_flutter/supabase_flutter.dart'; */
 import 'styles/colors.dart';
+/* import 'package:supabase_flutter/supabase_flutter.dart'; */
 
 void main() async {
   runApp(const MyApp());
