@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('###',
+        title: const Text('Counseye',
             style: TextStyle(
               letterSpacing: 1.0,
               color: Colors.white,
@@ -128,7 +128,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
               ),
-              Container(
+              /* Container(
                 width: MediaQuery.of(context).size.width * 0.50,
                 height: 45.0,
                 margin:
@@ -145,15 +145,15 @@ class _LoginFormState extends State<LoginForm> {
                     'Sign in with Google',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: primaryColor,
+                        color: Colors.black,
                         letterSpacing: 1.0),
                   ),
                 ),
               ),
-              /* Container(
-                margin: EdgeInsets.only(top: 10.0),
+               Container(
+                margin: const EdgeInsets.only(top: 10.0),
                 width: MediaQuery.of(context).size.width * 0.90,
-                child: Image(
+                child: const Image(
                   image: AssetImage('assets/images/btn_google_signin.png'),
                 ),
               ), */

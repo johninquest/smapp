@@ -145,13 +145,15 @@ class _UserFormState extends State<UserForm> {
                 margin: const EdgeInsets.only(top: 10.0),
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                  ),
+                  /* style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black, 
+                  ), */
                   child: const Text(
                     'CANCEL',
                     style: TextStyle(
-                        fontWeight: FontWeight.bold, letterSpacing: 1.0),
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.0,
+                        color: textBlackColor),
                   ),
                 ),
               ),
@@ -161,8 +163,8 @@ class _UserFormState extends State<UserForm> {
                   onPressed: () {
                     log('Tapped save button!');
                   },
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: primaryColor),
+                  /* style:
+                      ElevatedButton.styleFrom(backgroundColor: primaryColor), */
                   child: const Text(
                     'SAVE',
                     style: TextStyle(

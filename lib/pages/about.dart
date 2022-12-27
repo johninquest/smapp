@@ -31,7 +31,7 @@ class AboutPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 10.0),
                 child: const Text(
-                  '###',
+                  'Counseye',
                   style: TextStyle(
                       color: primaryColor,
                       fontWeight: FontWeight.bold,
@@ -61,7 +61,6 @@ class AboutPage extends StatelessWidget {
                   child: Text(
                     '\u00A9 JOHN APPS $currentYear',
                     style: const TextStyle(
-                      color: primaryColor,
                       wordSpacing: 1.0,
                       fontSize: 11.0,
                     ),
