@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/router.dart';
-import '../shared/snackbar_messages.dart';
-import '../styles/colors.dart';
+/* import '../shared/snackbar_messages.dart';
+import '../styles/colors.dart'; */
 import 'home.dart';
 
 class LoginPage extends StatelessWidget {
@@ -14,7 +14,6 @@ class LoginPage extends StatelessWidget {
         title: const Text('Counseye',
             style: TextStyle(
               letterSpacing: 1.0,
-              color: Colors.white,
             )),
         centerTitle: true,
         automaticallyImplyLeading: false,
