@@ -142,9 +142,10 @@ class MyTableRowDetails extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
             padding: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
-            child: Text(rowData!,
-                textAlign: TextAlign.left,
-                style: const TextStyle(/* fontWeight: FontWeight.bold */)),
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              rowData!,
+            ),
           )
         ],
       ),
