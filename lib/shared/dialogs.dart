@@ -91,8 +91,7 @@ class LogoutDialog extends StatelessWidget {
       content: const Text(
         'Log out ?',
         textAlign: TextAlign.center,
-        style: TextStyle(
-            fontWeight: FontWeight.bold, color: primaryColor, fontSize: 20.0),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
       ),
       actions: [
         Row(
@@ -102,7 +101,8 @@ class LogoutDialog extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
               child: const Text(
                 'NO',
-                style: TextStyle(color: warnColor, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: textBlackColor),
               ),
             ),
             TextButton(

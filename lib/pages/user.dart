@@ -150,10 +150,7 @@ class _UserFormState extends State<UserForm> {
                   ), */
                   child: const Text(
                     'CANCEL',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.0,
-                        color: textBlackColor),
+                    style: TextStyle(letterSpacing: 1.0, color: textBlackColor),
                   ),
                 ),
               ),

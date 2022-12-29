@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:smapp/pages/requests/request_detail.dart';
 import '../../utils/date_time_helper.dart';
 import '../../utils/router.dart';
 import '../../utils/web.dart';
 import '../../shared/custom_widgets.dart';
 import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';
+import 'request_detail.dart';
 
 class RequestsForCounselingPage extends StatelessWidget {
   const RequestsForCounselingPage({super.key});
@@ -114,7 +114,7 @@ class _TableOfContactRequestsState extends State<TableOfContactRequests> {
       .map((String column) => DataColumn(
             label: Text(
               column,
-              // style: ListTitleStyle,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             onSort: onSort,
           ))

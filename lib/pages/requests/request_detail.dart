@@ -25,10 +25,25 @@ class RequestDetailsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            /*  MyTableRow(
+            MyTableRow(
               rowName: 'Date',
-              rowData: rowData['created_at'] ?? '',
-            ), */
+              rowData:
+                  dateFormatter.isoToCmrDateFormat(rowData['created_at']) ?? '',
+            ),
+            MyTableRow(
+              rowName: 'Registration number',
+              rowData: rowData['registration_number'] ?? '',
+            ),
+            MyTableRow(
+              rowName: 'Class',
+              rowData:
+                  '${rowData['class_number'] ?? ''} ${rowData['class_letter'] ?? ''}',
+            ),
+            MyTableRow(
+              rowName: 'Student name(s)',
+              rowData:
+                  '${rowData['given_names'] ?? ''} ${rowData['surname'] ?? ''}',
+            ),
             MyTableRow(
               rowName: 'Category',
               rowData: rowData['request_category'] ?? '',
@@ -42,26 +57,12 @@ class RequestDetailsPage extends StatelessWidget {
               rowData: rowData['request_details'] ?? '',
               /*  rowData: 'Under construction!', */
             ),
-            MyTableRow(
-              rowName: 'Registration number',
-              rowData: rowData['registration_number'] ?? '',
-            ),
-            MyTableRow(
-              rowName: 'Class',
-              rowData:
-                  '${rowData['class_number'] ?? ''} ${rowData['class_letter'] ?? ''}',
-            ),
-            MyTableRow(
-              rowName: 'Submitted by',
-              rowData:
-                  '${rowData['given_names'] ?? ''} ${rowData['surname'] ?? ''}',
-            ),
-            MyTableRow(
+            /* MyTableRow(
               rowName: 'Date',
               rowData:
                   dateFormatter.isoToCmrDateFormat(rowData['created_at']) ?? '',
             ),
-            /* Text('$rowData') */
+            Text('$rowData') */
           ],
         ),
       )),

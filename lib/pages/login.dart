@@ -60,7 +60,7 @@ class _LoginFormState extends State<LoginForm> {
                 child: const Text(
                   'The management app for school counselors',
                   textAlign: TextAlign.center,
-                  style: TextStyle(letterSpacing: 0.5),
+                  style: TextStyle(letterSpacing: 0.5, fontSize: 16.0),
                 ),
               ),
               Container(

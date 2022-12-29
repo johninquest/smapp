@@ -44,14 +44,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
               size: 25.0,
             ),
             label: 'Cases'),
-        BottomNavigationBarItem(
+        /*  BottomNavigationBarItem(
           icon: Icon(
             Icons.bar_chart,
             color: Colors.white,
             size: 25.0,
           ),
           label: 'Evaluations',
-        ),
+        ), */
         BottomNavigationBarItem(
           icon: Icon(
             Icons.group_outlined,
@@ -82,16 +82,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
       // log('To case list');
       PageRouter().navigateToPage(const CaseListPage(), context);
     }
-    if (currentIndex == 2) {
+    /*  if (currentIndex == 2) {
       // log('To evaluation list');
       PageRouter().navigateToPage(const EvaluationListPage(), context);
-    }
-    if (currentIndex == 3) {
+    } */
+    if (currentIndex == 2) {
       // throw ('This is an error!');
       // log('To student list');
       PageRouter().navigateToPage(const StudentListPage(), context);
     }
-    if (currentIndex == 4) {
+    if (currentIndex == 3) {
       // throw ('This is an error!');
       // log('To student list');
       PageRouter().navigateToPage(const RequestsForCounselingPage(), context);

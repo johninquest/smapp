@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
       body: const Center(
         child: Text(
           'Welcome home!',
-          style: TextStyle(fontSize: 15),
+          style: TextStyle(fontSize: 16),
         ),
       ),
       bottomNavigationBar: const BottomNavBar(),
