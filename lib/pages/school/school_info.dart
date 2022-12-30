@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';
 
 class SchoolInfoPage extends StatelessWidget {
@@ -8,7 +9,10 @@ class SchoolInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('School info'),
+        title: const Text(
+          'School info',
+          style: appBarTitleStyle,
+        ),
         centerTitle: true,
       ),
       body: const Center(

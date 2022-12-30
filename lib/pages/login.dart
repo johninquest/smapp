@@ -69,7 +69,7 @@ class _LoginFormState extends State<LoginForm> {
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                   child: TextFormField(
                     controller: _userName,
-                    decoration: const InputDecoration(labelText: 'Email'),
+                    decoration: const InputDecoration(labelText: 'LoginId'),
                     keyboardType: TextInputType.text,
                     validator: (val) {
                       if (val == null || val.isEmpty) {

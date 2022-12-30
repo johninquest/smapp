@@ -80,5 +80,11 @@ class AppData {
         value: 'i', child: Text('I', style: DropdownListStyle)),
     const DropdownMenuItem(
         value: 'j', child: Text('J', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'k', child: Text('K', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'l', child: Text('L', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'm', child: Text('M', style: DropdownListStyle)),
   ];
 }

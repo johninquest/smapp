@@ -13,13 +13,13 @@ class UserPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'User',
+          'User info',
           style: appBarTitleStyle,
         ),
         centerTitle: true,
       ),
       body: const Center(child: UserForm()),
-      bottomNavigationBar: const BottomNavBar(),
+      /*  bottomNavigationBar: const BottomNavBar(), */
     );
   }
 }

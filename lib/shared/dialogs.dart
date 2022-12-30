@@ -91,7 +91,7 @@ class LogoutDialog extends StatelessWidget {
       content: const Text(
         'Log out ?',
         textAlign: TextAlign.center,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+        style: TextStyle(fontSize: 20.0),
       ),
       actions: [
         Row(

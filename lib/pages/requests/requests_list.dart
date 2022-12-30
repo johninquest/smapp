@@ -138,6 +138,7 @@ class _TableOfContactRequestsState extends State<TableOfContactRequests> {
                 textAlign: TextAlign.left)),
             DataCell(Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   e['surname'] ?? '',

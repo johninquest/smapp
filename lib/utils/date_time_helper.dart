@@ -56,13 +56,30 @@ class DateTimeHelper {
     return dtToString;
   }
 
+  dateToCmrDateString(DateTime? ts) {
+    if (ts != null) {
+      DateFormat toDateFormat = DateFormat('dd/MM/yyyy');
+      String formatted = toDateFormat.format(ts);
+      return formatted;
+    } else {
+      return '--/--/----';
+    }
+  }
+
+  displayedDateString(DateTime datetime) {
+    DateFormat dbDateTimeFormat = DateFormat('dd/MM/yyyy');
+    DateTime dt = DateTime.now();
+    String dtToString = dbDateTimeFormat.format(dt);
+    return dtToString;
+  }
+
   currentYear(DateTime now) {
     String yearToString = DateFormat('yyyy').format(now);
     return yearToString;
   }
 
   toUiDateTime(String? dbDateTime) {
-    print(dbDateTime.runtimeType);
+    // print(dbDateTime.runtimeType);
     if (dbDateTime != null && dbDateTime != '') {
       DateTime parsedDateTime = DateTime.parse(dbDateTime);
       DateFormat fDateTimeFormat = DateFormat('dd/MM/yyyy HH:mm');

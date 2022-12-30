@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smapp/pages/bottom_nav_bar.dart';
+import 'package:smapp/styles/style.dart';
 import 'package:smapp/utils/date_time_helper.dart';
 import 'package:smapp/styles/colors.dart';
 
@@ -12,7 +13,10 @@ class RequestDetailsPage extends StatelessWidget {
     final dateFormatter = DateTimeHelper();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Request details'),
+        title: const Text(
+          'Request details',
+          style: appBarTitleStyle,
+        ),
         centerTitle: true,
       ),
       body: Center(
@@ -31,6 +35,11 @@ class RequestDetailsPage extends StatelessWidget {
                   dateFormatter.isoToCmrDateFormat(rowData['created_at']) ?? '',
             ),
             MyTableRow(
+              rowName: 'Student name(s)',
+              rowData:
+                  '${rowData['given_names'] ?? ''} ${rowData['surname'] ?? ''}',
+            ),
+            MyTableRow(
               rowName: 'Registration number',
               rowData: rowData['registration_number'] ?? '',
             ),
@@ -40,12 +49,7 @@ class RequestDetailsPage extends StatelessWidget {
                   '${rowData['class_number'] ?? ''} ${rowData['class_letter'] ?? ''}',
             ),
             MyTableRow(
-              rowName: 'Student name(s)',
-              rowData:
-                  '${rowData['given_names'] ?? ''} ${rowData['surname'] ?? ''}',
-            ),
-            MyTableRow(
-              rowName: 'Category',
+              rowName: 'Request category',
               rowData: rowData['request_category'] ?? '',
             ),
             MyTableRow(

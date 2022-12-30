@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smapp/styles/colors.dart';
+import '../../styles/style.dart';
 import '../../utils/router.dart';
 import '../bottom_nav_bar.dart';
 import 'add_student.dart';
@@ -11,7 +12,10 @@ class StudentListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student list'),
+        title: const Text(
+          'Student list',
+          style: appBarTitleStyle,
+        ),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
