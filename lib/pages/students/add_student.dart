@@ -48,7 +48,7 @@ class _AddStudentFormState extends State<AddStudentForm> {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: currentDate,
-        firstDate: DateTime(1990, 1),
+        firstDate: DateTime(1970, 1),
         lastDate: DateTime(2101));
     if (picked != null && picked != currentDate) {
       setState(() {

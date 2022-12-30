@@ -12,7 +12,7 @@ class DateTimeHelper {
   ageFromDate(DateTime pickedDate) {
     DateTime currentDateTime = DateTime.now();
     int diffInDays = currentDateTime.difference(pickedDate).inDays;
-    String diffInYears = (diffInDays / 365).toStringAsFixed(0);
+    String diffInYears = (diffInDays / 365).toStringAsFixed(1);
     return diffInYears;
   }
 
