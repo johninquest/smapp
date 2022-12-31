@@ -87,4 +87,34 @@ class AppData {
     const DropdownMenuItem(
         value: 'm', child: Text('M', style: DropdownListStyle)),
   ];
+
+  List<DropdownMenuItem<String>> studentStatusList = [
+    const DropdownMenuItem(
+        value: '', child: Text('', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'new', child: Text('New', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'old', child: Text('Old', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'repeater', child: Text('Repeater', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'other', child: Text('Other(s)', style: DropdownListStyle)),
+  ];
+
+  List<DropdownMenuItem<String>> problemCategoryList = [
+    const DropdownMenuItem(
+        value: '', child: Text('', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'academic', child: Text('Academic', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'career', child: Text('Career', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'psychosocial',
+        child: Text('Psychosocial', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'vocational',
+        child: Text('Vocational', style: DropdownListStyle)),
+    const DropdownMenuItem(
+        value: 'other', child: Text('Other(s)', style: DropdownListStyle)),
+  ];
 }

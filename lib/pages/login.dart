@@ -54,7 +54,7 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+/*               Container(
                 margin:
                     const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 10.0),
                 child: const Text(
@@ -62,7 +62,7 @@ class _LoginFormState extends State<LoginForm> {
                   textAlign: TextAlign.center,
                   style: TextStyle(letterSpacing: 0.5, fontSize: 16.0),
                 ),
-              ),
+              ), */
               Container(
                   width: MediaQuery.of(context).size.width * 0.75,
                   margin: const EdgeInsets.only(bottom: 10.0, top: 40.0),
