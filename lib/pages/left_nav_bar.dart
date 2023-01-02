@@ -42,9 +42,7 @@ class _LeftMenuState extends State<LeftMenu> {
                     Text(
                       _currentUserName ?? '',
                       style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
+                          fontWeight: FontWeight.bold, fontSize: 20.0),
                     )
                   ],
                 )),
@@ -82,8 +80,6 @@ class _LeftMenuState extends State<LeftMenu> {
                 ),
                 title: const Text(
                   'School',
-                  style: TextStyle(
-                      color: primaryColor, fontWeight: FontWeight.bold),
                 ),
                 onTap: () {
                   PageRouter().navigateToPage(const SchoolInfoPage(), context);
@@ -93,11 +89,7 @@ class _LeftMenuState extends State<LeftMenu> {
                 Icons.manage_accounts_outlined,
                 color: primaryColor,
               ),
-              title: const Text(
-                'User',
-                style:
-                    TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
-              ),
+              title: const Text('User'),
               onTap: () =>
                   PageRouter().navigateToPage(const UserPage(), context),
             ),
@@ -111,8 +103,6 @@ class _LeftMenuState extends State<LeftMenu> {
               ),
               title: const Text(
                 'Info',
-                style:
-                    TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
               ),
               onTap: () =>
                   PageRouter().navigateToPage(const AboutPage(), context),

@@ -15,13 +15,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       theme: ThemeData(
-          colorSchemeSeed: primaryColor,
-          brightness: Brightness.light,
-          useMaterial3: true,
-          // primarySwatch: Colors.indigo,
-          // textButtonTheme: TextButtonThemeData(style: ButtonStyle(colo))
-          // textTheme: GoogleFonts.quicksandTextTheme(),
-          fontFamily: 'Quicksand'),
+        colorSchemeSeed: primaryColor,
+        brightness: Brightness.light,
+        useMaterial3: true,
+        // primarySwatch: Colors.indigo,
+        // textButtonTheme: TextButtonThemeData(style: ButtonStyle(colo))
+        // textTheme: GoogleFonts.quicksandTextTheme(),
+        fontFamily: 'Quicksand',
+        // textTheme: const TextTheme(bodyText2: TextStyle(color: textBlackColor)),
+      ),
       home: const LoginPage(),
     );
   }

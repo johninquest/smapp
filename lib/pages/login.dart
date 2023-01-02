@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../shared/version.dart';
 import '../styles/colors.dart';
 import '../utils/router.dart';
 import 'home.dart';
@@ -69,11 +70,11 @@ class _LoginFormState extends State<LoginForm> {
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                   child: TextFormField(
                     controller: _userName,
-                    decoration: const InputDecoration(labelText: 'LoginId'),
+                    decoration: const InputDecoration(labelText: 'Username'),
                     keyboardType: TextInputType.text,
                     validator: (val) {
                       if (val == null || val.isEmpty) {
-                        return 'Please enter Email';
+                        return 'Please enter username';
                       }
                     },
                   )),
@@ -102,7 +103,7 @@ class _LoginFormState extends State<LoginForm> {
                 child: Row(
                   children: [
                     Checkbox(
-                      checkColor: Colors.white,
+                      // checkColor: Colors.white,
                       // fillColor: MaterialStateProperty.resolveWith(getColor),
                       value: isChecked,
                       onChanged: (bool? value) {
@@ -121,7 +122,7 @@ class _LoginFormState extends State<LoginForm> {
                     const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    PageRouter().navigateToPage(const HomeScreen(), context);
+                    PageRouter().navigateToPage(const HomePage(), context);
                   },
                   style: ElevatedButton.styleFrom(
                       // primary: primaryColor,
@@ -133,6 +134,7 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
               ),
+
               /* Container(
                 width: MediaQuery.of(context).size.width * 0.50,
                 height: 45.0,

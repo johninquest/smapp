@@ -19,7 +19,7 @@ class EmptyTable extends StatelessWidget {
         ),
         ElevatedButton(
             onPressed: () =>
-                PageRouter().navigateToPage(const HomeScreen(), context),
+                PageRouter().navigateToPage(const HomePage(), context),
             style: ElevatedButton.styleFrom(
               backgroundColor: primaryColor,
               padding: const EdgeInsets.all(10.0),

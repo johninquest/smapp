@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../shared/dialogs.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:developer';
 
 class SupabaseCred {
   final String projUrl = 'https://cyifcmqsbowqfnwycvjk.supabase.co';
@@ -32,9 +33,10 @@ class SupabaseService {
     return res as List;
   }
 
-  /* Future<dynamic> tableSize(String tableName) async {
+  Future<dynamic> tableSize(String tableName) async {
     final res =
         await _supabase.rpc('tableSize', params: {'table_name': tableName});
+    log('Table sitze => $res');
     return res;
-  } */
+  }
 }

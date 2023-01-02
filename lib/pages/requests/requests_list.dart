@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:smapp/styles/colors.dart';
 import '../../utils/date_time_helper.dart';
 import '../../utils/router.dart';
 import '../../utils/web.dart';
@@ -8,8 +9,8 @@ import '../../styles/style.dart';
 import '../bottom_nav_bar.dart';
 import 'request_detail.dart';
 
-class RequestsForCounselingPage extends StatelessWidget {
-  const RequestsForCounselingPage({super.key});
+class RequestsListPage extends StatelessWidget {
+  const RequestsListPage({super.key});
 
   @override
   Widget build(BuildContext context) {

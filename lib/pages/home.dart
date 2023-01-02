@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/shared/version.dart';
 import '../shared/dialogs.dart';
 import '../styles/colors.dart';
 import '../utils/router.dart';
@@ -10,8 +11,8 @@ import 'requests/requests_list.dart';
 import 'students/student_list.dart';
 // import 'dart:developer';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,65 +48,99 @@ class HomeDashBoard extends StatefulWidget {
 class _HomeDashBoardState extends State<HomeDashBoard> {
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      direction: Axis.horizontal,
-      alignment: WrapAlignment.spaceBetween,
-      spacing: 32.0,
-      runSpacing: 64.0,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        GestureDetector(
-          onTap: () =>
-              PageRouter().navigateToPage(const CaseListPage(), context),
-          child: Card(
-            elevation: 20.0,
-            // color: Colors.deepOrange,
-            child: Container(
-                alignment: Alignment.center,
-                height: 100,
-                width: 120,
-                child: Text(
-                  'Cases'.toUpperCase(),
-                  style: const TextStyle(
-                      color: primaryColor, fontWeight: FontWeight.bold),
-                )),
-          ),
+        Wrap(
+          direction: Axis.horizontal,
+          alignment: WrapAlignment.spaceBetween,
+          spacing: 32.0,
+          runSpacing: 64.0,
+          children: [
+            GestureDetector(
+              onTap: () =>
+                  PageRouter().navigateToPage(const CaseListPage(), context),
+              child: Card(
+                elevation: 20.0,
+                // color: Colors.deepOrange,
+                child: Container(
+                    alignment: Alignment.center,
+                    height: 100,
+                    width: 120,
+                    child: Text(
+                      'Cases'.toUpperCase(),
+                      style: const TextStyle(
+                          color: primaryColor, fontWeight: FontWeight.bold),
+                    )),
+              ),
+            ),
+            GestureDetector(
+              onTap: () => PageRouter()
+                  .navigateToPage(const RequestsListPage(), context),
+              child: Card(
+                elevation: 20.0,
+                // color: Colors.tealAccent,
+                child: Container(
+                    alignment: Alignment.center,
+                    height: 100,
+                    width: 120,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Requests'.toUpperCase(),
+                          style: const TextStyle(
+                              color: primaryColor, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 5.0,
+                        ),
+                        const RequestTableSize()
+                      ],
+                    )),
+              ),
+            ),
+            GestureDetector(
+              onTap: () =>
+                  PageRouter().navigateToPage(const StudentListPage(), context),
+              child: Card(
+                elevation: 20.0,
+                child: Container(
+                    alignment: Alignment.center,
+                    height: 100,
+                    width: 120,
+                    child: Text(
+                      'Students'.toUpperCase(),
+                      style: const TextStyle(
+                          color: primaryColor, fontWeight: FontWeight.bold),
+                    )),
+              ),
+            ),
+            Card(
+              elevation: 20.0,
+              child: Container(
+                  alignment: Alignment.center,
+                  height: 100,
+                  width: 120,
+                  child: const Text(
+                    'Other(s)',
+                    style: TextStyle(
+                        color: primaryColor, fontWeight: FontWeight.bold),
+                  )),
+            ),
+          ],
         ),
-        const RequestData(),
-        GestureDetector(
-          onTap: () =>
-              PageRouter().navigateToPage(const StudentListPage(), context),
-          child: Card(
-            elevation: 20.0,
-            child: Container(
-                alignment: Alignment.center,
-                height: 100,
-                width: 120,
-                child: Text(
-                  'Students'.toUpperCase(),
-                  style: const TextStyle(
-                      color: primaryColor, fontWeight: FontWeight.bold),
-                )),
-          ),
-        ),
-        Card(
-          elevation: 20.0,
-          child: Container(
-              alignment: Alignment.center,
-              height: 100,
-              width: 120,
-              child: const Text(
-                'Other(s)',
-                style:
-                    TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
-              )),
-        ),
+        Container(
+          margin: const EdgeInsets.only(top: 55.0),
+          child: const VersionInfo(),
+        )
       ],
     );
   }
 }
 
-class RequestData extends StatelessWidget {
-  const RequestData({super.key});
+class RequestTableSize extends StatelessWidget {
+  const RequestTableSize({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -125,35 +160,11 @@ class RequestData extends StatelessWidget {
         }
         if (snapshot.hasData) {
           List<dynamic> sbData = snapshot.data as List;
+          int? rowCount = sbData.length;
           // return TableOfContactRequests(tableData: sbData);
-          return GestureDetector(
-            onTap: () => PageRouter()
-                .navigateToPage(const RequestsForCounselingPage(), context),
-            child: Card(
-              elevation: 20.0,
-              // color: Colors.tealAccent,
-              child: Container(
-                  alignment: Alignment.center,
-                  height: 100,
-                  width: 120,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Requests'.toUpperCase(),
-                        style: const TextStyle(
-                            color: primaryColor, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(
-                        height: 5.0,
-                      ),
-                      Text(
-                        '${sbData.length}',
-                        style: const TextStyle(fontSize: 20.0),
-                      )
-                    ],
-                  )),
-            ),
+          return Text(
+            '$rowCount',
+            style: const TextStyle(fontSize: 20.0),
           );
         } else {
           return const Center(
