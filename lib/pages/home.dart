@@ -48,7 +48,7 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      direction: Axis.vertical,
+      direction: Axis.horizontal,
       alignment: WrapAlignment.spaceBetween,
       spacing: 32.0,
       runSpacing: 64.0,
@@ -63,31 +63,14 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
                 alignment: Alignment.center,
                 height: 100,
                 width: 120,
-                child: const Text(
-                  'Cases',
-                  style: TextStyle(
+                child: Text(
+                  'Cases'.toUpperCase(),
+                  style: const TextStyle(
                       color: primaryColor, fontWeight: FontWeight.bold),
                 )),
           ),
         ),
         const RequestData(),
-/*         GestureDetector(
-          onTap: () => PageRouter()
-              .navigateToPage(const RequestsForCounselingPage(), context),
-          child: Card(
-            elevation: 20.0,
-            // color: Colors.tealAccent,
-            child: Container(
-                alignment: Alignment.center,
-                height: 100,
-                width: 120,
-                child: const Text(
-                  'Requests',
-                  style: TextStyle(
-                      color: primaryColor, fontWeight: FontWeight.bold),
-                )),
-          ),
-        ), */
         GestureDetector(
           onTap: () =>
               PageRouter().navigateToPage(const StudentListPage(), context),
@@ -97,12 +80,24 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
                 alignment: Alignment.center,
                 height: 100,
                 width: 120,
-                child: const Text(
-                  'Students',
-                  style: TextStyle(
+                child: Text(
+                  'Students'.toUpperCase(),
+                  style: const TextStyle(
                       color: primaryColor, fontWeight: FontWeight.bold),
                 )),
           ),
+        ),
+        Card(
+          elevation: 20.0,
+          child: Container(
+              alignment: Alignment.center,
+              height: 100,
+              width: 120,
+              child: const Text(
+                'Other(s)',
+                style:
+                    TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+              )),
         ),
       ],
     );
@@ -144,10 +139,13 @@ class RequestData extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'Requests',
-                        style: TextStyle(
+                      Text(
+                        'Requests'.toUpperCase(),
+                        style: const TextStyle(
                             color: primaryColor, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 5.0,
                       ),
                       Text(
                         '${sbData.length}',

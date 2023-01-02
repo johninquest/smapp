@@ -32,8 +32,9 @@ class SupabaseService {
     return res as List;
   }
 
-  Future<dynamic> tableSize(String tableName) async {
-    final res = await _supabase.from(tableName).select('*');
+  /* Future<dynamic> tableSize(String tableName) async {
+    final res =
+        await _supabase.rpc('tableSize', params: {'table_name': tableName});
     return res;
-  }
+  } */
 }
