@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/pages/bottom_nav_bar.dart';
-import 'package:smapp/styles/style.dart';
-import 'package:smapp/utils/date_time_helper.dart';
-import 'package:smapp/styles/colors.dart';
+import 'package:smapp/pages/cases/add_case.dart';
+import 'package:smapp/utils/router.dart';
+import 'dart:developer';
+
+import '../../styles/colors.dart';
+import '../../styles/style.dart';
+import '../../utils/date_time_helper.dart';
+import '../bottom_nav_bar.dart';
 
 class RequestDetailsPage extends StatelessWidget {
   final dynamic rowData;
@@ -61,12 +65,19 @@ class RequestDetailsPage extends StatelessWidget {
               rowData: rowData['request_details'] ?? '',
               /*  rowData: 'Under construction!', */
             ),
-            /* MyTableRow(
-              rowName: 'Date',
-              rowData:
-                  dateFormatter.isoToCmrDateFormat(rowData['created_at']) ?? '',
-            ),
-            Text('$rowData') */
+            Container(
+              margin: const EdgeInsets.only(top: 13.0),
+              child: Tooltip(
+                message: 'Use this information to create a new case',
+                child: OutlinedButton(
+                  child: Text('new case'.toUpperCase()),
+                  onPressed: () {
+                    log('Create new case case with => $rowData');
+                    PageRouter().navigateToPage(const AddCasePage(), context);
+                  },
+                ),
+              ),
+            )
           ],
         ),
       )),
