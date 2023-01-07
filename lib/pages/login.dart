@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../shared/version.dart';
 import '../styles/colors.dart';
 import '../utils/router.dart';
 import 'home.dart';
@@ -25,13 +24,13 @@ class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
 
   @override
-  _LoginFormState createState() => _LoginFormState();
+  State<LoginForm> createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final _loginFormKey = GlobalKey<FormState>();
-  final TextEditingController _userName = TextEditingController();
-  final TextEditingController _userPassword = TextEditingController();
+  final loginFormKey = GlobalKey<FormState>();
+  final TextEditingController userId = TextEditingController();
+  final TextEditingController userPassword = TextEditingController();
   bool? isChecked = false;
 
 /*   @override
@@ -48,7 +47,7 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _loginFormKey,
+      key: loginFormKey,
       child: Center(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -69,12 +68,12 @@ class _LoginFormState extends State<LoginForm> {
                   margin: const EdgeInsets.only(bottom: 10.0, top: 40.0),
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                   child: TextFormField(
-                    controller: _userName,
-                    decoration: const InputDecoration(labelText: 'Username'),
+                    controller: userId,
+                    decoration: const InputDecoration(labelText: 'UserId'),
                     keyboardType: TextInputType.text,
                     validator: (val) {
                       if (val == null || val.isEmpty) {
-                        return 'Please enter username';
+                        return 'Please enter userId';
                       }
                     },
                   )),
@@ -83,7 +82,7 @@ class _LoginFormState extends State<LoginForm> {
                   margin: const EdgeInsets.only(bottom: 20.0),
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                   child: TextFormField(
-                    controller: _userPassword,
+                    controller: userPassword,
                     obscureText: true,
                     enableSuggestions: false,
                     autocorrect: false,
