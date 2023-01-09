@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/pages/nav_page.dart';
+import 'package:smapp/utils/supabase/auth.dart';
 import '../styles/colors.dart';
 import '../utils/router.dart';
 import 'home.dart';
@@ -46,6 +48,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final supabaseAuth = SupabaseAuth();
     return Form(
       key: loginFormKey,
       child: Center(
@@ -70,7 +73,7 @@ class _LoginFormState extends State<LoginForm> {
                   child: TextFormField(
                     controller: userId,
                     decoration: const InputDecoration(labelText: 'UserId'),
-                    keyboardType: TextInputType.text,
+                    keyboardType: TextInputType.emailAddress,
                     validator: (val) {
                       if (val == null || val.isEmpty) {
                         return 'Please enter userId';
@@ -121,7 +124,12 @@ class _LoginFormState extends State<LoginForm> {
                     const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    PageRouter().navigateToPage(const HomePage(), context);
+                    /*  var authRequest = supabaseAuth.authenticateUser(
+                        userId.text, userPassword.text);
+                    authRequest
+                        .then((value) => debugPrint('Login success => $value'))
+                        .catchError((err) => debugPrint('Auth error => $err')); */
+                    PageRouter().navigateToPage(const NavPage(), context);
                   },
                   style: ElevatedButton.styleFrom(
                       // primary: primaryColor,

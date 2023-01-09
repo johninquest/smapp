@@ -4,7 +4,6 @@ import '../../shared/lists.dart';
 import '../../styles/colors.dart';
 import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
-import 'dart:developer';
 
 class AddStudentPage extends StatelessWidget {
   const AddStudentPage({super.key});

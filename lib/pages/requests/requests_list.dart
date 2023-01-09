@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:smapp/styles/colors.dart';
 import '../../utils/date_time_helper.dart';
 import '../../utils/router.dart';
 import '../../utils/web.dart';
@@ -46,7 +45,7 @@ class RequestsListPage extends StatelessWidget {
           }
         }),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      /*  bottomNavigationBar: const BottomNavBar(), */
     );
   }
 }

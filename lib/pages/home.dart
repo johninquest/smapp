@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/shared/snackbar_messages.dart';
 import 'package:smapp/shared/version.dart';
 import '../shared/dialogs.dart';
 import '../styles/colors.dart';
@@ -33,7 +34,7 @@ class HomePage extends StatelessWidget {
       ),
       drawer: const LeftMenu(),
       body: const Center(child: HomeDashBoard()),
-      bottomNavigationBar: const BottomNavBar(),
+      /* bottomNavigationBar: const BottomNavBar(), */
     );
   }
 }
@@ -116,17 +117,20 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
                     )),
               ),
             ),
-            Card(
-              elevation: 20.0,
-              child: Container(
-                  alignment: Alignment.center,
-                  height: 100,
-                  width: 120,
-                  child: const Text(
-                    'Other(s)',
-                    style: TextStyle(
-                        color: primaryColor, fontWeight: FontWeight.bold),
-                  )),
+            GestureDetector(
+              onTap: () => SnackBarMessage().underConstruction(context),
+              child: Card(
+                elevation: 20.0,
+                child: Container(
+                    alignment: Alignment.center,
+                    height: 100,
+                    width: 120,
+                    child: const Text(
+                      'Other(s)',
+                      style: TextStyle(
+                          color: primaryColor, fontWeight: FontWeight.bold),
+                    )),
+              ),
             ),
           ],
         ),

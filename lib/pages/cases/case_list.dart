@@ -21,7 +21,7 @@ class CaseListPage extends StatelessWidget {
       body: const Center(
         child: Text('Case list!'),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      /*  bottomNavigationBar: const BottomNavBar(), */
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         child: const Tooltip(

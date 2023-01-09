@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../styles/style.dart';
-import '../bottom_nav_bar.dart';
 
 class SchoolInfoPage extends StatelessWidget {
   const SchoolInfoPage({Key? key}) : super(key: key);
@@ -18,7 +17,7 @@ class SchoolInfoPage extends StatelessWidget {
       body: const Center(
         child: Text('School info'),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      /* bottomNavigationBar: BottomNavBar(), */
     );
   }
 }
