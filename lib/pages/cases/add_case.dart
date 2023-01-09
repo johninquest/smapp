@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smapp/shared/snackbar_messages.dart';
 import 'package:smapp/styles/colors.dart';
+import '../../providers/request_provider.dart';
 import '../../shared/lists.dart';
 import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
@@ -390,6 +392,11 @@ class _AddCaseFormState extends State<AddCaseForm> {
                   )
                 ],
               ),
+              Container(
+                child: Text(
+                    'Request data => ${context.watch<RequestProvider>().reqData}' ??
+                        ''),
+              )
             ],
           )),
     );

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/pages/cases/add_case.dart';
-import 'package:smapp/utils/router.dart';
-import 'dart:developer';
-
+import 'package:provider/provider.dart';
+import '../../providers/request_provider.dart';
 import '../../styles/colors.dart';
 import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
+import '../../utils/router.dart';
 import '../bottom_nav_bar.dart';
+import '../cases/add_case.dart';
+import 'dart:developer';
 
 class RequestDetailsPage extends StatelessWidget {
   final dynamic rowData;
@@ -73,6 +74,7 @@ class RequestDetailsPage extends StatelessWidget {
                   child: Text('new case'.toUpperCase()),
                   onPressed: () {
                     log('Create new case case with => $rowData');
+                    context.read<RequestProvider>().setItem(rowData);
                     PageRouter().navigateToPage(const AddCasePage(), context);
                   },
                 ),
