@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:smapp/shared/snackbar_messages.dart';
-import 'package:smapp/styles/colors.dart';
-import '../../providers/request_provider.dart';
+/* import 'package:provider/provider.dart';
+import '../../providers/request_provider.dart'; */
 import '../../shared/lists.dart';
+import '../../shared/snackbar_messages.dart';
+import '../../styles/colors.dart';
 import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
 
@@ -75,10 +75,16 @@ class _AddCaseFormState extends State<AddCaseForm> {
     super.initState();
     //  _pickedDate.text = DateTimeHelper().dateToCmrDateString(DateTime.now());
     _pickedDate.text = '--/--/----';
+    /*  final dynamic requestData = ModalRoute.of(context)!.settings.arguments;
+    log('Received request data => $requestData');
+    _surname.text = requestData['surname'] ?? ''; */
   }
 
   @override
   Widget build(BuildContext context) {
+    final dynamic requestData = ModalRoute.of(context)!.settings.arguments;
+    _setRoutedData(requestData);
+
     return Form(
       key: _addCaseFormKey,
       child: SingleChildScrollView(
@@ -176,6 +182,7 @@ class _AddCaseFormState extends State<AddCaseForm> {
                                     decoration: const InputDecoration(
                                         labelText: 'Class number'),
                                     items: AppData().classNumberList,
+                                    value: _classNumber,
                                     validator: (val) =>
                                         val == null ? 'Class number ?' : null,
                                     onChanged: (val) => setState(() {
@@ -192,6 +199,7 @@ class _AddCaseFormState extends State<AddCaseForm> {
                                     decoration: const InputDecoration(
                                         labelText: 'Letter'),
                                     items: AppData().classLetterList,
+                                    value: _classLetter,
                                     /* validator: (val) =>
                           val == null ? 'Please select payment method' : null, */
                                     onChanged: (val) => setState(() {
@@ -244,6 +252,7 @@ class _AddCaseFormState extends State<AddCaseForm> {
                               decoration:
                                   const InputDecoration(labelText: 'Sex'),
                               items: AppData().genderList,
+                              value: _gender,
                               validator: (val) =>
                                   val == null ? ' Please enter sex?' : null,
                               onChanged: (val) => setState(() {
@@ -260,6 +269,7 @@ class _AddCaseFormState extends State<AddCaseForm> {
                               decoration:
                                   const InputDecoration(labelText: 'Status'),
                               items: AppData().studentStatusList,
+                              value: _studentStatus,
                               validator: (val) =>
                                   val == null ? ' Please select status?' : null,
                               onChanged: (val) => setState(() {
@@ -292,6 +302,7 @@ class _AddCaseFormState extends State<AddCaseForm> {
                               decoration:
                                   const InputDecoration(labelText: 'Category'),
                               items: AppData().problemCategoryList,
+                              value: _problemCategory,
                               validator: (val) => val == null
                                   ? ' Please select category!'
                                   : null,
@@ -392,13 +403,33 @@ class _AddCaseFormState extends State<AddCaseForm> {
                   )
                 ],
               ),
-              Container(
-                child: Text(
-                    'Request data => ${context.watch<RequestProvider>().reqData}' ??
-                        ''),
-              )
+/*               Container(
+                padding: const EdgeInsets.all(5.0),
+                child: Column(
+                  children: [
+                    Text(
+                        /*   'Request data => ${context.watch<RequestProvider>().reqData}' */
+                        'Request data type => ${requestData.runtimeType}'),
+                    Text(
+                        /*   'Request data => ${context.watch<RequestProvider>().reqData}' */
+                        'Request data => $requestData'),
+                  ],
+                ),
+              ) */
             ],
           )),
     );
+  }
+
+  _setRoutedData(dynamic routedData) {
+    if (routedData != null) {
+      _registrationNr.text = routedData['registration_number'] ?? '';
+      _surname.text = routedData['surname'] ?? '';
+      _givenNames.text = routedData['given_names'] ?? '';
+      _classNumber = routedData['class_number'].toLowerCase() ?? '';
+      _classLetter = routedData['class_letter'] ?? '';
+      _problemCategory = routedData['request_category'].toLowerCase() ?? '';
+      _problemDetails.text = routedData['request_details'] ?? '';
+    }
   }
 }

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../providers/request_provider.dart';
+/* import 'package:provider/provider.dart';
+import '../../providers/request_provider.dart'; */
 import '../../styles/colors.dart';
 import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
 import '../../utils/router.dart';
-import '../bottom_nav_bar.dart';
 import '../cases/add_case.dart';
 import 'dart:developer';
 
@@ -73,9 +72,10 @@ class RequestDetailsPage extends StatelessWidget {
                 child: OutlinedButton(
                   child: Text('new case'.toUpperCase()),
                   onPressed: () {
-                    log('Create new case case with => $rowData');
-                    context.read<RequestProvider>().setItem(rowData);
-                    PageRouter().navigateToPage(const AddCasePage(), context);
+                    log('Create new case with => $rowData');
+                    /* context.read<RequestProvider>().setItem(rowData); */
+                    PageRouter().navigateToPageWithData(
+                        const AddCasePage(), context, rowData);
                   },
                 ),
               ),
@@ -83,7 +83,7 @@ class RequestDetailsPage extends StatelessWidget {
           ],
         ),
       )),
-      bottomNavigationBar: const BottomNavBar(),
+      /*  bottomNavigationBar: const BottomNavBar(), */
     );
   }
 }
