@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'dart:developer';
 
@@ -10,7 +9,7 @@ class SupabaseAuth {
   final authClient = SupabaseClient(projUrl, projAnonKey);
 
   Future<dynamic> authenticateUser(String userId, String userPassword) async {
-    debugPrint('Submitted Id, Password => $userId, $userPassword');
+    log('Submitted Id, Password => $userId, $userPassword');
     /* final AuthResponse res = await authClient.auth
         .signInWithPassword(email: userId, password: userPassword); */
     try {
@@ -24,7 +23,7 @@ class SupabaseAuth {
   }
 
   Future<dynamic> authViaOtp(String username) async {
-    debugPrint('Submitted Id, Password => $username');
+    log('Submitted Id, Password => $username');
     /* final AuthResponse res = await authClient.auth
         .signInWithPassword(email: userId, password: userPassword); */
     await authClient.auth.signInWithOtp(email: username);

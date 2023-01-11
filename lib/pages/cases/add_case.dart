@@ -426,9 +426,10 @@ class _AddCaseFormState extends State<AddCaseForm> {
       _registrationNr.text = routedData['registration_number'] ?? '';
       _surname.text = routedData['surname'] ?? '';
       _givenNames.text = routedData['given_names'] ?? '';
-      _classNumber = routedData['class_number'].toLowerCase() ?? '';
+      _classNumber = routedData['class_number'] ?? '';
       _classLetter = routedData['class_letter'] ?? '';
-      _problemCategory = routedData['request_category'].toLowerCase() ?? '';
+      _gender = routedData['gender'] ?? '';
+      _problemCategory = routedData['request_category'] ?? '';
       _problemDetails.text = routedData['request_details'] ?? '';
     }
   }
