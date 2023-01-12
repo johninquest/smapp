@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/pages/nav_page.dart';
-import 'package:smapp/utils/supabase/auth.dart';
 import '../styles/colors.dart';
 import '../utils/router.dart';
-import 'home.dart';
+// import 'home.dart';
+import 'dart:developer';
+
+import 'nav_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    final supabaseAuth = SupabaseAuth();
+    // final supabaseAuth = SupabaseAuth();
     return Form(
       key: loginFormKey,
       child: Center(
@@ -92,15 +93,15 @@ class _LoginFormState extends State<LoginForm> {
                     decoration: const InputDecoration(labelText: 'Password'),
                     keyboardType: TextInputType.text,
                     enabled: true,
-                    /*                   validator: (val) {
+                    validator: (val) {
                       if (val == null || val.isEmpty) {
                         return 'Please enter password';
                       }
-                    }, */
+                    },
                   )),
               Container(
                 width: MediaQuery.of(context).size.width * 0.75,
-                margin: const EdgeInsets.only(bottom: 20.0),
+                margin: const EdgeInsets.only(bottom: 8.0),
                 padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                 child: Row(
                   children: [
@@ -120,8 +121,8 @@ class _LoginFormState extends State<LoginForm> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.50,
-                margin:
-                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+                margin: const EdgeInsets.only(
+                    left: 10.0, right: 10.0, top: 10.0, bottom: 13.0),
                 child: ElevatedButton(
                   onPressed: () {
                     /*  var authRequest = supabaseAuth.authenticateUser(
@@ -129,13 +130,35 @@ class _LoginFormState extends State<LoginForm> {
                     authRequest
                         .then((value) => debugPrint('Login success => $value'))
                         .catchError((err) => debugPrint('Auth error => $err')); */
-                    PageRouter().navigateToPage(const NavPage(), context);
+                    /* PageRouter().navigateToPage(const NavPage(), context); */
+                    if (loginFormKey.currentState!.validate()) {
+                      log('Form is ok');
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       // primary: primaryColor,
                       ),
                   child: const Text(
                     'Log in',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, letterSpacing: 1.0),
+                  ),
+                ),
+              ),
+              const Divider(
+                indent: 34,
+                endIndent: 34,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.50,
+                margin:
+                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 13.0),
+                child: OutlinedButton(
+                  onPressed: () {
+                    PageRouter().navigateToPage(const NavPage(), context);
+                  },
+                  child: const Text(
+                    'Demo',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, letterSpacing: 1.0),
                   ),
