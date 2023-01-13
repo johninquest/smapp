@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'pages/login.dart';
-import 'providers/request_provider.dart';
 import 'styles/colors.dart';
-/* import 'package:supabase_flutter/supabase_flutter.dart'; */
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() async {
-  runApp(
-    MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => RequestProvider())],
-      child: const MyApp(),
-    ),
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: SupabaseCred().projUrl,
+    anonKey: SupabaseCred().projAnonKey,
   );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -44,11 +43,10 @@ class MyApp extends StatelessWidget {
     anonKey: SupabaseCred().projAnonKey,
   );
   runApp(const MyApp());
-}
+} */
 
 class SupabaseCred {
   final String projUrl = 'https://cyifcmqsbowqfnwycvjk.supabase.co';
   final String projAnonKey =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN5aWZjbXFzYm93cWZud3ljdmprIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgwOTI2NDUsImV4cCI6MTk4MzY2ODY0NX0.nuI2Y6NO_QusYOJwW3u-h97wpxu5xcznsg7CGbYuq00';
 }
- */

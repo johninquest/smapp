@@ -30,7 +30,6 @@ class _NavPageState extends State<NavPage> {
           backgroundColor: primaryColor */
             ),
         child: NavigationBar(
-          // height: 60,
           selectedIndex: currentIndex ?? 0,
           onDestinationSelected: (index) => setState(() {
             currentIndex = index;
@@ -51,14 +50,6 @@ class _NavPageState extends State<NavPage> {
                   size: 25.0,
                 ),
                 label: 'Cases'),
-            /*  BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bar_chart,
-              color: Colors.white,
-              size: 25.0,
-            ),
-            label: 'Evaluations',
-          ), */
             NavigationDestination(
               icon: Icon(
                 Icons.group,
@@ -76,7 +67,6 @@ class _NavPageState extends State<NavPage> {
               label: 'Requests',
             ),
           ],
-          // onTap: (index) => afterTap(index),
         ),
       ),
       body: pages[currentIndex],
