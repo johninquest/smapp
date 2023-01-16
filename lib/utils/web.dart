@@ -39,16 +39,20 @@ class SupabaseService {
     return res;
   }
 
-  Future<bool?> addRow(String tableName, Map<String, dynamic> rowData) async {
+  Future<dynamic> addRow(String tableName, Map<String, dynamic> rowData) async {
     try {
       final response = await _supabase.from(tableName).insert(rowData);
-      if (response.error == null) {
+      log(response);
+      return response;
+/*       if (response.error == null) {
         return true;
       } else {
         return false;
-      }
+      } */
     } catch (e) {
-      throw Exception('Failed to insert row!');
+      log('Error $e');
+      // throw Exception('Failed to insert row!');
+
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/utils/web.dart';
 import '../../shared/lists.dart';
 import '../../shared/snackbar_messages.dart';
 import '../../styles/colors.dart';
@@ -120,12 +121,9 @@ class _AddCaseFormState extends State<AddCaseForm> {
                                     labelText: 'Registration number'),
                                 keyboardType: TextInputType.text,
                                 textCapitalization: TextCapitalization.words,
-                                validator: (val) => val!.isEmpty
+                                /* validator: (val) => val!.isEmpty
                                     ? 'Please enter registration number'
-                                    : null,
-                                /* onChanged: (val) => setState(() {
-                  surname = val;
-                }), */
+                                    : null, */
                               )),
                           Container(
                               width: MediaQuery.of(context).size.width * 0.90,
@@ -265,8 +263,8 @@ class _AddCaseFormState extends State<AddCaseForm> {
                                   const InputDecoration(labelText: 'Status'),
                               items: AppData().studentStatusList,
                               value: _studentStatus,
-                              validator: (val) =>
-                                  val == null ? ' Please select status?' : null,
+                              /*  validator: (val) =>
+                                  val == null ? ' Please select status?' : null, */
                               onChanged: (val) => setState(() {
                                 _studentStatus = val as String?;
                               }),
@@ -319,9 +317,9 @@ class _AddCaseFormState extends State<AddCaseForm> {
                                 keyboardType: TextInputType.text,
                                 textCapitalization: TextCapitalization.words,
                                 maxLines: 3,
-                                validator: (val) => val!.isEmpty
+                                /* validator: (val) => val!.isEmpty
                                     ? 'Please enter problem details'
-                                    : null,
+                                    : null, */
                               )),
                         ],
                       )),
@@ -340,8 +338,8 @@ class _AddCaseFormState extends State<AddCaseForm> {
                           keyboardType: TextInputType.text,
                           textCapitalization: TextCapitalization.words,
                           maxLines: 3,
-                          validator: (val) =>
-                              val!.isEmpty ? 'Please enter method!' : null,
+                          /* validator: (val) =>
+                              val!.isEmpty ? 'Please enter method!' : null, */
                         )),
                   ),
                   Step(
@@ -359,8 +357,8 @@ class _AddCaseFormState extends State<AddCaseForm> {
                           keyboardType: TextInputType.text,
                           textCapitalization: TextCapitalization.words,
                           maxLines: 3,
-                          validator: (val) =>
-                              val!.isEmpty ? 'Please enter solution!' : null,
+                          /* validator: (val) =>
+                              val!.isEmpty ? 'Please enter solution!' : null, */
                         )),
                   )
                 ],
@@ -393,18 +391,18 @@ class _AddCaseFormState extends State<AddCaseForm> {
                           "surname": _surname.text,
                           "given_names": _givenNames.text,
                           "class_number": _classNumber,
-                          "class_letter": _classLetter,
+                          "class_letter": _classLetter ?? "",
                           "date_of_birth":
                               dtHelper.toDbDateFormat(_pickedDate.text),
                           "gender": _gender,
-                          "status": _studentStatus
+                          "status": _studentStatus ?? ""
                         };
                         Map<String, dynamic> parentData = {};
                         Map<String, dynamic> problemData = {
                           "problem_category": _problemCategory,
                           "problem_details": _problemDetails.text
                         };
-                        Map casePayload = {
+                        Map<String, dynamic> casePayload = {
                           "created_at": dtHelper.timestampForDB(DateTime.now()),
                           "created_by": "demo",
                           "student_data": studentData,
@@ -412,12 +410,18 @@ class _AddCaseFormState extends State<AddCaseForm> {
                           "problem": problemData,
                           "method": _method.text,
                           "solution": _solution.text,
-                          "last_update_at": "",
-                          "last_update_by": ""
                         };
                         if (_addCaseFormKey.currentState!.validate()) {
                           log('Case payload => $casePayload');
-                          SnackBarMessage().underConstruction(context);
+                          // SnackBarMessage().underConstruction(context);
+                          var res =
+                              SupabaseService().addRow('cases', casePayload);
+                          res.then((value) {
+                            if (value != null) {
+                              SnackBarMessage().customSuccessMessage(
+                                  'Case added successfully!', context);
+                            }
+                          });
                         }
                       },
                       child: const Text(
