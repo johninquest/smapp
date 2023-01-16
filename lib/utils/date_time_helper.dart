@@ -23,7 +23,7 @@ class DateTimeHelper {
       DateTime parsedDateTime = DateTime.parse(storedDate);
       DateTime currentDateTime = DateTime.now();
       int diffInDays = currentDateTime.difference(parsedDateTime).inDays;
-      String diffInYears = (diffInDays / 365).toStringAsFixed(0);
+      String diffInYears = (diffInDays / 365).toStringAsFixed(1);
       return diffInYears;
     } else {
       return '0';
@@ -121,6 +121,18 @@ class DateTimeHelper {
       return uiDateTime;
     } else {
       return '--/--/---- --:--';
+    }
+  }
+
+  isoToCmrDateFormat2(String? dbDate) {
+    // print(dbDateTime.runtimeType);
+    if (dbDate != null && dbDate != '') {
+      DateTime parsedDateTime = DateTime.parse(dbDate);
+      DateFormat fDateTimeFormat = DateFormat('dd/MM/yyyy');
+      String uiDateTime = fDateTimeFormat.format(parsedDateTime);
+      return uiDateTime;
+    } else {
+      return '--/--/----';
     }
   }
 }

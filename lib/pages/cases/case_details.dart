@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/pages/requests/request_detail.dart';
 import 'package:smapp/shared/snackbar_messages.dart';
 import '../../styles/colors.dart';
 import '../../utils/date_time_helper.dart';
@@ -23,71 +24,120 @@ class CaseDetailsPage extends StatelessWidget {
         margin: const EdgeInsets.only(left: 3.0, right: 3.0),
         padding: const EdgeInsets.only(left: 3.0, right: 3.0),
         // child: Text('$rowData')
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            /*  MyTableRow(
-          rowName: 'Date',
-          rowData:
-              dateFormatter.isoToCmrDateFormat(rowData['created_at']) ?? '',
-        ), */
-            MyTableRow(
-              rowName: 'Registration number',
-              rowData: rowData['student_data']['registration_number'] ?? '',
-            ),
-            MyTableRow(
-              rowName: 'Student name(s)',
-              rowData:
-                  '${rowData['student_data']['given_names'] ?? ''} ${rowData['student_data']['surname'] ?? ''}',
-            ),
-            MyTableRow(
-              rowName: 'Class',
-              rowData:
-                  '${rowData['student_data']['class_number'] ?? ''} ${rowData['student_data']['class_letter'] ?? ''}',
-            ),
-            /*   MyTableRow(
-          rowName: 'Request category',
-          rowData: rowData['request_category'] ?? '',
-        ), */
-            MyTableRow(
-              rowName: 'Date of birth',
-              rowData: rowData['student_data']['date_of_birth'] ?? '',
-            ),
-            const MyTableRow(
-              rowName: 'Age',
-              /*  rowData: DateTimeHelper().ageFromDate(rowData['student_data']['date_of_birth']) ?? '', */
-              rowData: '',
-            ),
-            MyTableRow(
-              rowName: 'Status',
-              rowData: rowData['student_data']['status'] ?? '',
-            ),
-            /*  MyTableRow(
-              rowName: 'Is urgent?',
-              rowData: rowData['is_urgent'] ?? '',
-            ),
-            MyTableRowDetails(
-              rowName: 'Additional details',
-              rowData: rowData['request_details'] ?? '',
-            ), */
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                OutlinedButton(
-                    onPressed: (() => Navigator.pop(context)),
-                    child: const Text(
-                      'BACK',
-                      style: TextStyle(color: textBlackColor),
-                    )),
-                ElevatedButton(
-                    onPressed: (() => SnackBarMessage()
-                        .customErrorMessage('Tapped update button!', context)),
-                    child: const Text('UPDATE'))
-              ],
-            )
-          ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              /*  MyTableRow(
+            rowName: 'Date',
+            rowData:
+                dateFormatter.isoToCmrDateFormat(rowData['created_at']) ?? '',
+          ), */
+              SizedBox(
+                height: 34.0,
+                child: Text(
+                  'student'.toUpperCase(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              MyTableRow(
+                rowName: 'Registration number',
+                rowData: rowData['student_data']['registration_number'] ?? '',
+              ),
+              MyTableRow(
+                rowName: 'Student name(s)',
+                rowData:
+                    '${rowData['student_data']['given_names'] ?? ''} ${rowData['student_data']['surname'] ?? ''}',
+              ),
+              MyTableRow(
+                rowName: 'Class',
+                rowData:
+                    '${rowData['student_data']['class_number'] ?? ''} ${rowData['student_data']['class_letter'] ?? ''}',
+              ),
+              /*   MyTableRow(
+            rowName: 'Request category',
+            rowData: rowData['request_category'] ?? '',
+          ), */
+              MyTableRow(
+                rowName: 'Date of birth',
+                rowData: dateFormatter.isoToCmrDateFormat2(
+                    rowData['student_data']['date_of_birth']),
+              ),
+              MyTableRow(
+                rowName: 'Age',
+                rowData: dateFormatter
+                    .ageFromDateStr(rowData['student_data']['date_of_birth']),
+                /* rowData: '', */
+              ),
+              MyTableRow(
+                rowName: 'Status',
+                rowData: rowData['student_data']['status'] ?? '',
+              ),
+              SizedBox(
+                height: 34.0,
+                child: Text(
+                  'parent'.toUpperCase(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              const MyTableRow(
+                rowName: 'Parent name(s)',
+                rowData: 'coming soon',
+              ),
+              /* MyTableRowDetails(
+                rowName: 'Additional details',
+                rowData: rowData['request_details'] ?? '',
+              ), */
+              SizedBox(
+                height: 34.0,
+                child: Text(
+                  'problem'.toUpperCase(),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              MyTableRow(
+                rowName: 'Problem',
+                rowData: rowData['problem']['problem_category'],
+              ),
+              MyTableRowDetails(
+                rowName: 'Additional details',
+                rowData: rowData['problem']['problem_details'],
+              ),
+              MyTableRowDetails(
+                rowName: 'Method',
+                rowData: rowData['method'],
+              ),
+              MyTableRowDetails(
+                rowName: 'Solution',
+                rowData: rowData['solution'],
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 13.0, top: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    OutlinedButton(
+                        onPressed: (() => Navigator.pop(context)),
+                        child: const Text(
+                          'BACK',
+                          style: TextStyle(
+                              color: textBlackColor, letterSpacing: 1.0),
+                        )),
+                    ElevatedButton(
+                        onPressed: (() => SnackBarMessage().customErrorMessage(
+                            'Tapped update button!', context)),
+                        child: const Text(
+                          'EDIT',
+                          style: TextStyle(letterSpacing: 1.0),
+                        ))
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
       /* bottomNavigationBar: const BottomNavBar(), */
@@ -169,7 +219,7 @@ class MyTableRowDetails extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
             alignment: Alignment.bottomLeft,
             child: Text(
-              rowData!,
+              rowData ?? '',
             ),
           )
         ],
