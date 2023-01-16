@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'dart:developer';
 
 class DateTimeHelper {
   timestampForDB(DateTime dt) {
@@ -49,6 +51,18 @@ class DateTimeHelper {
     }
   }
 
+  toDbDateFormat(String? inputDateStr) {
+    if (inputDateStr != null &&
+        inputDateStr != '' &&
+        inputDateStr != '--/--/----') {
+      DateTime inputToDateTime = DateFormat('dd/MM/yyyy').parse(inputDateStr);
+      String toDbFormat = DateFormat('yyyy-MM-dd').format(inputToDateTime);
+      return toDbFormat;
+    } else {
+      return '0000-00-00';
+    }
+  }
+
   timestampAsString(DateTime datetime) {
     DateFormat dbDateTimeFormat = DateFormat('yyMMddHHmmss');
     DateTime dt = DateTime.now();
@@ -56,7 +70,15 @@ class DateTimeHelper {
     return dtToString;
   }
 
+  timestampToDateStr(DateTime ts) {
+    DateFormat dbDateTimeFormat = DateFormat('yyyy-MM-dd');
+    // DateTime dt = DateTime.now();
+    String dateToString = dbDateTimeFormat.format(ts);
+    return dateToString;
+  }
+
   dateToCmrDateString(DateTime? ts) {
+    log('Selected date => $ts');
     if (ts != null) {
       DateFormat toDateFormat = DateFormat('dd/MM/yyyy');
       String formatted = toDateFormat.format(ts);

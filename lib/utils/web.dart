@@ -27,9 +27,8 @@ class SupabaseService {
   final _supabase =
       SupabaseClient(SupabaseCred().projUrl, SupabaseCred().projAnonKey);
 
-  Future<List<dynamic>> fetchData() async {
-    final res =
-        await _supabase.from('requests').select('*').order('created_at');
+  Future<List<dynamic>> fetchData(String tableName) async {
+    final res = await _supabase.from(tableName).select('*').order('created_at');
     return res as List;
   }
 
@@ -38,5 +37,18 @@ class SupabaseService {
         await _supabase.rpc('tableSize', params: {'table_name': tableName});
     log('Table sitze => $res');
     return res;
+  }
+
+  Future<bool?> addRow(String tableName, Map<String, dynamic> rowData) async {
+    try {
+      final response = await _supabase.from(tableName).insert(rowData);
+      if (response.error == null) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      throw Exception('Failed to insert row!');
+    }
   }
 }

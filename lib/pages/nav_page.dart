@@ -30,7 +30,7 @@ class _NavPageState extends State<NavPage> {
           backgroundColor: primaryColor */
             ),
         child: NavigationBar(
-          selectedIndex: currentIndex ?? 0,
+          selectedIndex: currentIndex,
           onDestinationSelected: (index) => setState(() {
             currentIndex = index;
           }),

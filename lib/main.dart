@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'pages/login.dart';
 import 'styles/colors.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+/* import 'package:supabase_flutter/supabase_flutter.dart'; */
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+/*   WidgetsFlutterBinding.ensureInitialized();
 
   await Supabase.initialize(
     url: SupabaseCred().projUrl,
     anonKey: SupabaseCred().projAnonKey,
-  );
+  ); */
   runApp(const MyApp());
 }
 

@@ -1,10 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:smapp/shared/snackbar_messages.dart';
-import 'package:smapp/utils/supabase/auth.dart';
 import '../styles/colors.dart';
 import '../utils/router.dart';
-import 'dart:developer';
 import 'nav_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -88,12 +85,12 @@ class _LoginFormState extends State<LoginForm> {
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                   child: TextFormField(
                     controller: userId,
-                    enabled: false,
+                    enabled: true,
                     decoration: const InputDecoration(labelText: 'UserId'),
                     keyboardType: TextInputType.emailAddress,
                     validator: (val) {
                       if (val == null || val.isEmpty) {
-                        return 'Please enter userId';
+                        return 'UserId required!';
                       }
                       return null;
                     },
@@ -109,10 +106,10 @@ class _LoginFormState extends State<LoginForm> {
                     autocorrect: false,
                     decoration: const InputDecoration(labelText: 'Password'),
                     keyboardType: TextInputType.text,
-                    enabled: false,
+                    enabled: true,
                     validator: (val) {
                       if (val == null || val.isEmpty) {
-                        return 'Please enter password';
+                        return 'Password required!';
                       }
                       return null;
                     },

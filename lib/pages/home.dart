@@ -148,7 +148,7 @@ class RequestTableSize extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final reqData = SupabaseService().fetchData();
+    final reqData = SupabaseService().fetchData('requests');
     return FutureBuilder(
       future: reqData,
       builder: ((context, snapshot) {

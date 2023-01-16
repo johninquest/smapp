@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-/* import 'package:provider/provider.dart';
-import '../../providers/request_provider.dart'; */
 import '../../shared/lists.dart';
 import '../../shared/snackbar_messages.dart';
 import '../../styles/colors.dart';
 import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
+import 'dart:developer';
 
 class AddCasePage extends StatelessWidget {
   const AddCasePage({super.key});
@@ -73,11 +72,7 @@ class _AddCaseFormState extends State<AddCaseForm> {
   @override
   void initState() {
     super.initState();
-    //  _pickedDate.text = DateTimeHelper().dateToCmrDateString(DateTime.now());
     _pickedDate.text = '--/--/----';
-    /*  final dynamic requestData = ModalRoute.of(context)!.settings.arguments;
-    log('Received request data => $requestData');
-    _surname.text = requestData['surname'] ?? ''; */
   }
 
   @override
@@ -391,8 +386,40 @@ class _AddCaseFormState extends State<AddCaseForm> {
                     margin: const EdgeInsets.only(
                         left: 10.0, right: 10.0, top: 5.0, bottom: 10.0),
                     child: ElevatedButton(
-                      onPressed: () =>
-                          SnackBarMessage().underConstruction(context),
+                      onPressed: () {
+                        final dtHelper = DateTimeHelper();
+                        Map<String, dynamic> studentData = {
+                          "registration_number": _registrationNr.text,
+                          "surname": _surname.text,
+                          "given_names": _givenNames.text,
+                          "class_number": _classNumber,
+                          "class_letter": _classLetter,
+                          "date_of_birth":
+                              dtHelper.toDbDateFormat(_pickedDate.text),
+                          "gender": _gender,
+                          "status": _studentStatus
+                        };
+                        Map<String, dynamic> parentData = {};
+                        Map<String, dynamic> problemData = {
+                          "problem_category": _problemCategory,
+                          "problem_details": _problemDetails.text
+                        };
+                        Map casePayload = {
+                          "created_at": dtHelper.timestampForDB(DateTime.now()),
+                          "created_by": "demo",
+                          "student_data": studentData,
+                          "parent_data": parentData,
+                          "problem": problemData,
+                          "method": _method.text,
+                          "solution": _solution.text,
+                          "last_update_at": "",
+                          "last_update_by": ""
+                        };
+                        if (_addCaseFormKey.currentState!.validate()) {
+                          log('Case payload => $casePayload');
+                          SnackBarMessage().underConstruction(context);
+                        }
+                      },
                       child: const Text(
                         'SAVE',
                         style: TextStyle(
@@ -403,19 +430,6 @@ class _AddCaseFormState extends State<AddCaseForm> {
                   )
                 ],
               ),
-/*               Container(
-                padding: const EdgeInsets.all(5.0),
-                child: Column(
-                  children: [
-                    Text(
-                        /*   'Request data => ${context.watch<RequestProvider>().reqData}' */
-                        'Request data type => ${requestData.runtimeType}'),
-                    Text(
-                        /*   'Request data => ${context.watch<RequestProvider>().reqData}' */
-                        'Request data => $requestData'),
-                  ],
-                ),
-              ) */
             ],
           )),
     );
@@ -434,3 +448,19 @@ class _AddCaseFormState extends State<AddCaseForm> {
     }
   }
 }
+
+/*  
+// Provider usage
+             Container(
+                padding: const EdgeInsets.all(5.0),
+                child: Column(
+                  children: [
+                    Text(
+                        /*   'Request data => ${context.watch<RequestProvider>().reqData}' */
+                        'Request data type => ${requestData.runtimeType}'),
+                    Text(
+                        /*   'Request data => ${context.watch<RequestProvider>().reqData}' */
+                        'Request data => $requestData'),
+                  ],
+                ),
+              ) */

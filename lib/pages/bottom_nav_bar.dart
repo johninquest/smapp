@@ -47,7 +47,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
       child: NavigationBar(
         // height: 60,
-        selectedIndex: currentIndex ?? 0,
+        selectedIndex: currentIndex,
         onDestinationSelected: (index) => setState(() {
           currentIndex = index;
           PageRouter().navigateToPage(pages[index], context);

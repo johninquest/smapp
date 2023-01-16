@@ -5,7 +5,6 @@ import '../../utils/router.dart';
 import '../../utils/web.dart';
 import '../../shared/custom_widgets.dart';
 import '../../styles/style.dart';
-import '../bottom_nav_bar.dart';
 import 'request_detail.dart';
 
 class RequestsListPage extends StatelessWidget {
@@ -13,7 +12,7 @@ class RequestsListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final reqData = SupabaseService().fetchData();
+    final reqData = SupabaseService().fetchData('requests');
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -37,7 +36,7 @@ class RequestsListPage extends StatelessWidget {
           }
           if (snapshot.hasData) {
             List<dynamic> sbData = snapshot.data as List;
-            return TableOfContactRequests(tableData: sbData);
+            return RequestsListData(tableData: sbData);
           } else {
             return const Center(
               child: CircularProgressIndicator(),
@@ -50,22 +49,21 @@ class RequestsListPage extends StatelessWidget {
   }
 }
 
-class TableOfContactRequests extends StatefulWidget {
+class RequestsListData extends StatefulWidget {
   final List? tableData;
-  const TableOfContactRequests({Key? key, required this.tableData})
-      : super(key: key);
+  const RequestsListData({Key? key, required this.tableData}) : super(key: key);
 
   @override
-  State<TableOfContactRequests> createState() => _TableOfContactRequestsState();
+  State<RequestsListData> createState() => _RequestsListDataState();
 }
 
-class _TableOfContactRequestsState extends State<TableOfContactRequests> {
+class _RequestsListDataState extends State<RequestsListData> {
   int? sortColumnIndex;
   bool isAscending = false;
 
   @override
   Widget build(BuildContext context) {
-    List daybookRecords = widget.tableData as List;
+    List crRecords = widget.tableData as List;
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Center(
@@ -75,7 +73,7 @@ class _TableOfContactRequestsState extends State<TableOfContactRequests> {
           children: [
             Container(
               alignment: Alignment.center,
-              child: buildTable(daybookRecords),
+              child: buildTable(crRecords),
             ),
           ],
         ),
