@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/pages/requests/request_detail.dart';
-import 'package:smapp/shared/snackbar_messages.dart';
+import '../../shared/snackbar_messages.dart';
 import '../../styles/colors.dart';
 import '../../utils/date_time_helper.dart';
-import 'dart:developer';
 
 class CaseDetailsPage extends StatelessWidget {
   final Map rowData;
