@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/pages/cases/case_list.dart';
+import 'package:smapp/utils/router.dart';
 import 'package:smapp/utils/web.dart';
 import '../../shared/lists.dart';
 import '../../shared/snackbar_messages.dart';
@@ -412,14 +414,16 @@ class _AddCaseFormState extends State<AddCaseForm> {
                           "solution": _solution.text,
                         };
                         if (_addCaseFormKey.currentState!.validate()) {
-                          log('Case payload => $casePayload');
+                          // log('Case payload => $casePayload');
                           // SnackBarMessage().underConstruction(context);
                           var res =
                               SupabaseService().addRow('cases', casePayload);
                           res.then((value) {
-                            if (value != null) {
+                            if (value == true) {
                               SnackBarMessage().customSuccessMessage(
                                   'Case added successfully!', context);
+                              PageRouter().navigateToPage(
+                                  const CaseListPage(), context);
                             }
                           });
                         }

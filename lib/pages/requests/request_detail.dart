@@ -39,6 +39,22 @@ class RequestDetailsPage extends StatelessWidget {
                   dateFormatter.isoToCmrDateFormat(rowData['created_at']) ?? '',
             ),
             MyTableRow(
+              rowName: 'Request category',
+              rowData: rowData['request_category'] ?? '',
+            ),
+            MyTableRow(
+              rowName: 'Is urgent?',
+              rowData: rowData['is_urgent'] ?? '',
+            ),
+            MyTableRowDetails(
+              rowName: 'Additional details',
+              rowData: rowData['request_details'] ?? '',
+              /*  rowData: 'Under construction!', */
+            ),
+            const SizedBox(
+              height: 13.0,
+            ),
+            MyTableRow(
               rowName: 'Student name(s)',
               rowData:
                   '${rowData['given_names'] ?? ''} ${rowData['surname'] ?? ''}',
@@ -53,17 +69,8 @@ class RequestDetailsPage extends StatelessWidget {
                   '${rowData['class_number'] ?? ''} ${rowData['class_letter'] ?? ''}',
             ),
             MyTableRow(
-              rowName: 'Request category',
-              rowData: rowData['request_category'] ?? '',
-            ),
-            MyTableRow(
-              rowName: 'Is urgent?',
-              rowData: rowData['is_urgent'] ?? '',
-            ),
-            MyTableRowDetails(
-              rowName: 'Additional details',
-              rowData: rowData['request_details'] ?? '',
-              /*  rowData: 'Under construction!', */
+              rowName: 'Sex',
+              rowData: rowData['gender'] ?? '',
             ),
             Container(
               margin: const EdgeInsets.only(top: 13.0),
@@ -135,8 +142,8 @@ class MyTableRowDetails extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 10.0),
       width: MediaQuery.of(context).size.width * 0.90,
-      decoration: const BoxDecoration(
-          border: Border(bottom: BorderSide(color: primaryColor, width: 1.0))),
+      /* decoration: const BoxDecoration(
+          border: Border(bottom: BorderSide(color: primaryColor, width: 1.0))), */
       child: Column(
         children: [
           Row(

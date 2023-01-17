@@ -30,16 +30,12 @@ class CaseDetailsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              /*  MyTableRow(
-            rowName: 'Date',
-            rowData:
-                dateFormatter.isoToCmrDateFormat(rowData['created_at']) ?? '',
-          ), */
-              SizedBox(
-                height: 34.0,
-                child: Text(
-                  'student'.toUpperCase(),
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+              Container(
+                margin: const EdgeInsets.only(top: 13.0, bottom: 8.0),
+                padding: const EdgeInsets.all(3.0),
+                child: const Text(
+                  'STUDENT',
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
               MyTableRow(
@@ -56,10 +52,6 @@ class CaseDetailsPage extends StatelessWidget {
                 rowData:
                     '${rowData['student_data']['class_number'] ?? ''} ${rowData['student_data']['class_letter'] ?? ''}',
               ),
-              /*   MyTableRow(
-            rowName: 'Request category',
-            rowData: rowData['request_category'] ?? '',
-          ), */
               MyTableRow(
                 rowName: 'Date of birth',
                 rowData: dateFormatter.isoToCmrDateFormat2(
@@ -75,26 +67,24 @@ class CaseDetailsPage extends StatelessWidget {
                 rowName: 'Status',
                 rowData: rowData['student_data']['status'] ?? '',
               ),
-              SizedBox(
-                height: 34.0,
-                child: Text(
-                  'parent'.toUpperCase(),
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+              Container(
+                margin: const EdgeInsets.only(top: 13.0, bottom: 8.0),
+                padding: const EdgeInsets.all(3.0),
+                child: const Text(
+                  'PARENT',
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
               const MyTableRow(
                 rowName: 'Parent name(s)',
                 rowData: 'coming soon',
               ),
-              /* MyTableRowDetails(
-                rowName: 'Additional details',
-                rowData: rowData['request_details'] ?? '',
-              ), */
-              SizedBox(
-                height: 34.0,
-                child: Text(
-                  'problem'.toUpperCase(),
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+              Container(
+                margin: const EdgeInsets.only(top: 13.0, bottom: 8.0),
+                padding: const EdgeInsets.all(3.0),
+                child: const Text(
+                  'PROBLEM',
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
               MyTableRow(
@@ -128,11 +118,19 @@ class CaseDetailsPage extends StatelessWidget {
                         )),
                     ElevatedButton(
                         onPressed: (() => SnackBarMessage().customErrorMessage(
-                            'Tapped update button!', context)),
+                            'Tapped edit button!', context)),
                         child: const Text(
                           'EDIT',
                           style: TextStyle(letterSpacing: 1.0),
-                        ))
+                        )),
+                    OutlinedButton(
+                        onPressed: (() => SnackBarMessage().customErrorMessage(
+                            'Tapped delete button!', context)),
+                        child: const Text(
+                          'DELETE',
+                          style:
+                              TextStyle(color: warnColor, letterSpacing: 1.0),
+                        )),
                   ],
                 ),
               )
