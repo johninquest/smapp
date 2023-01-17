@@ -86,7 +86,7 @@ class CaseDetailsPage extends StatelessWidget {
                 ),
               ),
               MyTableRow(
-                rowName: 'Problem',
+                rowName: 'Problem category',
                 rowData: rowData['problem']['problem_category'],
               ),
               MyTableRowDetails(
@@ -213,6 +213,7 @@ class MyTableRowDetails extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
             padding: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
+            height: 34.0,
             alignment: Alignment.bottomLeft,
             child: Text(
               rowData ?? '',
