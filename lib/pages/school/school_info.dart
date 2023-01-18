@@ -8,8 +8,8 @@ class SchoolInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'School info',
+        title: Text(
+          'school info'.toUpperCase(),
           style: appBarTitleStyle,
         ),
         centerTitle: true,

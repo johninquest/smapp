@@ -14,8 +14,8 @@ class AboutPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Info',
+        title: Text(
+          'Info'.toUpperCase(),
           style: appBarTitleStyle,
         ),
         centerTitle: true,

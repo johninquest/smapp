@@ -17,8 +17,8 @@ class CaseListPage extends StatelessWidget {
     final reqData = SupabaseService().fetchData('cases');
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Case list',
+        title: Text(
+          'Case list'.toUpperCase(),
           style: appBarTitleStyle,
         ),
         centerTitle: true,

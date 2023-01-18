@@ -12,8 +12,8 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'User info',
+        title: Text(
+          'user information'.toUpperCase(),
           style: appBarTitleStyle,
         ),
         centerTitle: true,

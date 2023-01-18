@@ -12,8 +12,8 @@ class StudentListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Student list',
+        title: Text(
+          'Student list'.toUpperCase(),
           style: appBarTitleStyle,
         ),
         centerTitle: true,

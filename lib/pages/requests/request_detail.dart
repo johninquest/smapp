@@ -6,7 +6,6 @@ import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
 import '../../utils/router.dart';
 import '../cases/add_case.dart';
-import 'dart:developer';
 
 class RequestDetailsPage extends StatelessWidget {
   final dynamic rowData;
@@ -17,8 +16,8 @@ class RequestDetailsPage extends StatelessWidget {
     final dateFormatter = DateTimeHelper();
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Request details',
+        title: Text(
+          'Request details'.toUpperCase(),
           style: appBarTitleStyle,
         ),
         centerTitle: true,
@@ -77,10 +76,10 @@ class RequestDetailsPage extends StatelessWidget {
               child: Tooltip(
                 message: 'Use this information to create a new case',
                 child: OutlinedButton(
-                  child: Text('new case'.toUpperCase()),
+                  child: const Text('NEW CASE'),
                   onPressed: () {
-                    log('Create new case with => $rowData');
-                    /* context.read<RequestProvider>().setItem(rowData); */
+                    /* log('Create new case with => $rowData');
+                    context.read<RequestProvider>().setItem(rowData); */
                     PageRouter().navigateToPageWithData(
                         const AddCasePage(), context, rowData);
                   },
@@ -90,7 +89,6 @@ class RequestDetailsPage extends StatelessWidget {
           ],
         ),
       )),
-      /*  bottomNavigationBar: const BottomNavBar(), */
     );
   }
 }
@@ -142,8 +140,8 @@ class MyTableRowDetails extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 10.0),
       width: MediaQuery.of(context).size.width * 0.90,
-      /* decoration: const BoxDecoration(
-          border: Border(bottom: BorderSide(color: primaryColor, width: 1.0))), */
+      decoration: const BoxDecoration(
+          border: Border(bottom: BorderSide(color: primaryColor, width: 1.0))),
       child: Column(
         children: [
           Row(
@@ -166,7 +164,8 @@ class MyTableRowDetails extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
-            padding: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
+            padding: const EdgeInsets.only(
+                bottom: 5.0, top: 3.0, left: 5.0, right: 1.0),
             alignment: Alignment.bottomLeft,
             child: Text(
               rowData!,

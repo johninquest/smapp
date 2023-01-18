@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
 import '../../shared/snackbar_messages.dart';
 import '../../styles/colors.dart';
+import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
+import '../../utils/router.dart';
+import '../../utils/web.dart';
+import 'case_list.dart';
 
-class CaseDetailsPage extends StatelessWidget {
+class CaseDetailsPage extends StatefulWidget {
   final Map rowData;
   const CaseDetailsPage({super.key, required this.rowData});
 
   @override
+  State<CaseDetailsPage> createState() => _CaseDetailsPageState();
+}
+
+class _CaseDetailsPageState extends State<CaseDetailsPage> {
+  late int rowId;
+
+  @override
   Widget build(BuildContext context) {
     final dateFormatter = DateTimeHelper();
+    rowId = widget.rowData['id'];
+    /*  log('Case data => ${widget.rowData}'); */
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Case details',
+        title: Text(
+          'Case details'.toUpperCase(),
+          style: appBarTitleStyle,
         ),
         centerTitle: true,
       ),
@@ -21,7 +35,6 @@ class CaseDetailsPage extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.95,
         margin: const EdgeInsets.only(left: 3.0, right: 3.0),
         padding: const EdgeInsets.only(left: 3.0, right: 3.0),
-        // child: Text('$rowData')
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
@@ -33,44 +46,47 @@ class CaseDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.all(3.0),
                 child: const Text(
                   'STUDENT',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, letterSpacing: 1.0),
                 ),
               ),
               MyTableRow(
                 rowName: 'Registration number',
-                rowData: rowData['student_data']['registration_number'] ?? '',
+                rowData:
+                    widget.rowData['student_data']['registration_number'] ?? '',
               ),
               MyTableRow(
                 rowName: 'Student name(s)',
                 rowData:
-                    '${rowData['student_data']['given_names'] ?? ''} ${rowData['student_data']['surname'] ?? ''}',
+                    '${widget.rowData['student_data']['given_names'] ?? ''} ${widget.rowData['student_data']['surname'] ?? ''}',
               ),
               MyTableRow(
                 rowName: 'Class',
                 rowData:
-                    '${rowData['student_data']['class_number'] ?? ''} ${rowData['student_data']['class_letter'] ?? ''}',
+                    '${widget.rowData['student_data']['class_number'] ?? ''} ${widget.rowData['student_data']['class_letter'] ?? ''}',
               ),
               MyTableRow(
                 rowName: 'Date of birth',
                 rowData: dateFormatter.isoToCmrDateFormat2(
-                    rowData['student_data']['date_of_birth']),
+                    widget.rowData['student_data']['date_of_birth']),
               ),
               MyTableRow(
                 rowName: 'Age',
-                rowData: dateFormatter
-                    .ageFromDateStr(rowData['student_data']['date_of_birth']),
+                rowData: dateFormatter.ageFromDateStr(
+                    widget.rowData['student_data']['date_of_birth']),
                 /* rowData: '', */
               ),
               MyTableRow(
                 rowName: 'Status',
-                rowData: rowData['student_data']['status'] ?? '',
+                rowData: widget.rowData['student_data']['status'] ?? '',
               ),
               Container(
                 margin: const EdgeInsets.only(top: 13.0, bottom: 8.0),
                 padding: const EdgeInsets.all(3.0),
                 child: const Text(
                   'PARENT',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, letterSpacing: 1.0),
                 ),
               ),
               const MyTableRow(
@@ -82,24 +98,25 @@ class CaseDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.all(3.0),
                 child: const Text(
                   'PROBLEM',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, letterSpacing: 1.0),
                 ),
               ),
               MyTableRow(
                 rowName: 'Problem category',
-                rowData: rowData['problem']['problem_category'],
+                rowData: widget.rowData['problem']['problem_category'],
               ),
               MyTableRowDetails(
                 rowName: 'Additional details',
-                rowData: rowData['problem']['problem_details'],
+                rowData: widget.rowData['problem']['problem_details'],
               ),
               MyTableRowDetails(
                 rowName: 'Method',
-                rowData: rowData['method'],
+                rowData: widget.rowData['method'],
               ),
               MyTableRowDetails(
                 rowName: 'Solution',
-                rowData: rowData['solution'],
+                rowData: widget.rowData['solution'],
               ),
               Container(
                 margin: const EdgeInsets.only(bottom: 13.0, top: 8.0),
@@ -122,8 +139,8 @@ class CaseDetailsPage extends StatelessWidget {
                           style: TextStyle(letterSpacing: 1.0),
                         )),
                     OutlinedButton(
-                        onPressed: (() => SnackBarMessage().customErrorMessage(
-                            'Tapped delete button!', context)),
+                        onPressed: () => showDialog(
+                            context: context, builder: (_) => _deleteDialog()),
                         child: const Text(
                           'DELETE',
                           style:
@@ -137,6 +154,64 @@ class CaseDetailsPage extends StatelessWidget {
         ),
       ),
       /* bottomNavigationBar: const BottomNavBar(), */
+    );
+  }
+
+  Widget _deleteDialog() {
+    return AlertDialog(
+      title: const Icon(
+        Icons.warning_amber_outlined,
+        size: 55.0,
+        color: primaryColor,
+      ),
+      content: const Text(
+        'Delete?',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 21.0, letterSpacing: 1.0),
+      ),
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text(
+                'NO',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: textBlackColor,
+                    letterSpacing: 1.0),
+              ),
+            ),
+            TextButton(
+                onPressed: () {
+                  /*  log('Row id => $rowId'); */
+                  SupabaseService()
+                      .deleteRow('cases', 'id', rowId)
+                      .then((value) {
+                    if (value == 'delete-success') {
+                      SnackBarMessage().customSuccessMessage(
+                          'Case deleted successfully', context);
+                      PageRouter()
+                          .navigateToPage(const CaseListPage(), context);
+                    }
+                    if (value == 'delete-failed') {
+                      SnackBarMessage()
+                          .customErrorMessage('Case delete failed', context);
+                    }
+                  });
+                },
+                child: const Text(
+                  'YES',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, letterSpacing: 1.0),
+                ))
+          ],
+        ),
+      ],
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0))),
     );
   }
 }
@@ -212,8 +287,8 @@ class MyTableRowDetails extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
-            padding: const EdgeInsets.only(bottom: 1.0, left: 5.0, right: 1.0),
-            height: 34.0,
+            padding: const EdgeInsets.only(
+                bottom: 5.0, top: 3.0, left: 5.0, right: 1.0),
             alignment: Alignment.bottomLeft,
             child: Text(
               rowData ?? '',

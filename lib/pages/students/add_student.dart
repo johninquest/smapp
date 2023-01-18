@@ -12,7 +12,7 @@ class AddStudentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add new student', style: appBarTitleStyle),
+        title: Text('new student'.toUpperCase(), style: appBarTitleStyle),
         centerTitle: true,
       ),
       body: const Center(
@@ -54,8 +54,6 @@ class _AddStudentFormState extends State<AddStudentForm> {
         currentDate = picked;
         _pickedDate.text = DateTimeHelper().dateToCmrDateString(picked);
         _age.text = DateTimeHelper().ageFromDate(picked);
-        // print('Picked date => $picked');
-        // log('Age => $_age');
       });
     }
   }
@@ -134,6 +132,7 @@ class _AddStudentFormState extends State<AddStudentForm> {
                     decoration:
                         const InputDecoration(labelText: 'Class number'),
                     items: AppData().classNumberList,
+                    value: _classNumber,
                     validator: (val) => val == null ? 'Class number ?' : null,
                     onChanged: (val) => setState(() {
                       _classNumber = val as String?;
@@ -148,6 +147,7 @@ class _AddStudentFormState extends State<AddStudentForm> {
                     decoration:
                         const InputDecoration(labelText: 'Class letter'),
                     items: AppData().classLetterList,
+                    value: _classLetter,
                     /* validator: (val) =>
                           val == null ? 'Please select payment method' : null, */
                     onChanged: (val) => setState(() {
@@ -196,22 +196,13 @@ class _AddStudentFormState extends State<AddStudentForm> {
             child: DropdownButtonFormField(
               decoration: const InputDecoration(labelText: 'Sex'),
               items: AppData().genderList,
+              value: _gender,
               validator: (val) => val == null ? ' Please enter sex?' : null,
               onChanged: (val) => setState(() {
-                _classNumber = val as String?;
+                _gender = val as String?;
               }),
             ),
           ),
-          /*  Container(
-              width: MediaQuery.of(context).size.width * 0.95,
-              margin: const EdgeInsets.only(bottom: 5.0),
-              padding: const EdgeInsets.only(left: 25.0, right: 25.0),
-              child: TextFormField(
-                controller: _email,
-                enabled: true,
-                decoration: const InputDecoration(labelText: 'E-mail'),
-                keyboardType: TextInputType.emailAddress,
-              )), */
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -239,7 +230,7 @@ class _AddStudentFormState extends State<AddStudentForm> {
                     'SAVE',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      letterSpacing: 1.0,
+                      letterSpacing: 3.0,
                     ),
                   ),
                 ),

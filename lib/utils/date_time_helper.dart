@@ -78,7 +78,6 @@ class DateTimeHelper {
   }
 
   dateToCmrDateString(DateTime? ts) {
-    log('Selected date => $ts');
     if (ts != null) {
       DateFormat toDateFormat = DateFormat('dd/MM/yyyy');
       String formatted = toDateFormat.format(ts);

@@ -15,8 +15,8 @@ class RequestsListPage extends StatelessWidget {
     final reqData = SupabaseService().fetchData('requests');
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Requests for counseling',
+        title: Text(
+          'Requests list'.toUpperCase(),
           style: appBarTitleStyle,
         ),
         centerTitle: true,

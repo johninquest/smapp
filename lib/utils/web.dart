@@ -42,17 +42,30 @@ class SupabaseService {
   Future<dynamic> addRow(String tableName, Map<String, dynamic> rowData) async {
     try {
       final response = await _supabase.from(tableName).insert(rowData);
-      log('Response at service => ${response.runtimeType}');
-      //  return response;
+      /*  log('Response at service => ${response.runtimeType}');
+      return response; */
       if (response == null) {
         return true;
       } else {
         return false;
       }
     } catch (e) {
-      log('Error => $e');
-      // throw Exception('Failed to insert row!');
+      log('Insert exception => $e');
+    }
+  }
 
+  Future<dynamic> deleteRow(String tableName, String colName, int rowId) async {
+    try {
+      final List<dynamic> deleteResponse =
+          await _supabase.from(tableName).delete().eq(colName, rowId);
+      if (deleteResponse.isNotEmpty) {
+        return 'delete-success';
+      }
+      if (deleteResponse.isEmpty) {
+        return 'deleted-failed';
+      }
+    } catch (e) {
+      log('Delete exception => $e');
     }
   }
 }
