@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/pages/cases/update_case.dart';
 import '../../shared/snackbar_messages.dart';
 import '../../styles/colors.dart';
 import '../../styles/style.dart';
@@ -132,8 +133,13 @@ class _CaseDetailsPageState extends State<CaseDetailsPage> {
                               color: textBlackColor, letterSpacing: 1.0),
                         )),
                     ElevatedButton(
-                        onPressed: (() => SnackBarMessage().customErrorMessage(
-                            'Tapped edit button!', context)),
+                        onPressed: (() {
+                          PageRouter().navigateToPage(
+                              UpdateCasePage(caseData: widget.rowData),
+                              context);
+                          SnackBarMessage().customErrorMessage(
+                              'Tapped edit button!', context);
+                        }),
                         child: const Text(
                           'EDIT',
                           style: TextStyle(letterSpacing: 1.0),
