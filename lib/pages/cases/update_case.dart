@@ -20,7 +20,7 @@ class UpdateCasePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'new case'.toUpperCase(),
+          'edit case'.toUpperCase(),
           style: appBarTitleStyle,
         ),
         centerTitle: true,
