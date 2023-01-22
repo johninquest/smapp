@@ -19,7 +19,7 @@ class UserPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: const Center(child: UserForm()),
-      /*  bottomNavigationBar: const BottomNavBar(), */
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

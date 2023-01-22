@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/shared/snackbar_messages.dart';
-import 'package:smapp/shared/version.dart';
 import '../shared/dialogs.dart';
+import '../shared/snackbar_messages.dart';
+import '../shared/version.dart';
 import '../styles/colors.dart';
 import '../utils/router.dart';
 import '../utils/web.dart';
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
       ),
       drawer: const LeftMenu(),
       body: const Center(child: HomeDashBoard()),
-      /* bottomNavigationBar: const BottomNavBar(), */
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

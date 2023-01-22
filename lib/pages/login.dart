@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smapp/pages/home.dart';
 import 'package:smapp/shared/snackbar_messages.dart';
 import '../styles/colors.dart';
 import '../utils/router.dart';
@@ -178,7 +179,7 @@ class _LoginFormState extends State<LoginForm> {
                     /*  final Session? session = response.session;
                     final User? user = response.user; */
 
-                    PageRouter().navigateToPage(const NavPage(), context);
+                    PageRouter().navigateToPage(const HomePage(), context);
                     /*   final auth = AuthService();
                     auth
                         .signInUserViaEmailAndPassword(

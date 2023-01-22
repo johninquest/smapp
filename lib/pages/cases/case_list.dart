@@ -6,6 +6,7 @@ import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
 import '../../utils/router.dart';
 import '../../utils/web.dart';
+import '../bottom_nav_bar.dart';
 import 'add_case.dart';
 import 'case_details.dart';
 
@@ -49,7 +50,7 @@ class CaseListPage extends StatelessWidget {
           }
         }),
       ),
-      /*  bottomNavigationBar: const BottomNavBar(), */
+      bottomNavigationBar: const BottomNavBar(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         child: const Tooltip(
@@ -146,7 +147,7 @@ class _CaseListDataState extends State<CaseListData> {
           },
           cells: [
             DataCell(Text(
-                DateTimeHelper().isoToCmrDateFormat(e['created_at']) ?? '',
+                DateTimeHelper().isoToCmrDateOnly(e['created_at']) ?? '',
                 style: TableItemStyle,
                 textAlign: TextAlign.left)),
             DataCell(Column(

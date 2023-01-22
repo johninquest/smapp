@@ -111,7 +111,7 @@ class DateTimeHelper {
     }
   }
 
-  isoToCmrDateFormat(String? dbDateTime) {
+  isoToCmrDateTime(String? dbDateTime) {
     // print(dbDateTime.runtimeType);
     if (dbDateTime != null && dbDateTime != '') {
       DateTime parsedDateTime = DateTime.parse(dbDateTime);
@@ -123,7 +123,7 @@ class DateTimeHelper {
     }
   }
 
-  isoToCmrDateFormat2(String? dbDate) {
+  isoToCmrDateOnly(String? dbDate) {
     // print(dbDateTime.runtimeType);
     if (dbDate != null && dbDate != '') {
       DateTime parsedDateTime = DateTime.parse(dbDate);

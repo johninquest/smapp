@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-// import 'dart:developer';
 
 class VersionInfo extends StatelessWidget {
   const VersionInfo({super.key});
@@ -18,7 +17,7 @@ class VersionInfo extends StatelessWidget {
             return const Text('An error occured!');
           } else if (snapshot.hasData) {
             final vData = snapshot.data!;
-            // log('App version => ${vData.version}');
+            /*   log('App version => ${vData.version}'); */
             return Center(
               child: Text('v${vData.version}'),
             );

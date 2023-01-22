@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import '../../shared/lists.dart';
 import '../../shared/snackbar_messages.dart';
@@ -16,7 +14,6 @@ class UpdateCasePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('Received case data at update => $caseData');
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -70,8 +67,6 @@ class _UpdateCaseFormState extends State<UpdateCaseForm> {
         currentDate = picked;
         _pickedDate.text = DateTimeHelper().dateToCmrDateString(picked);
         _age.text = DateTimeHelper().ageFromDate(picked);
-        // print('Picked date => $picked');
-        // log('Age => $_age');
       });
     }
   }
@@ -79,15 +74,23 @@ class _UpdateCaseFormState extends State<UpdateCaseForm> {
   @override
   void initState() {
     super.initState();
-    _pickedDate.text = '--/--/----';
     _registrationNr.text =
-        widget.passedCaseData['student_data']['registration_number'];
-    _surname.text = widget.passedCaseData['student_data']['surname'];
-    _givenNames.text = widget.passedCaseData['student_data']['given_names'];
+        widget.passedCaseData['student_data']['registration_number'] ?? '';
+    _surname.text = widget.passedCaseData['student_data']['surname'] ?? '';
+    _givenNames.text =
+        widget.passedCaseData['student_data']['given_names'] ?? '';
     _classNumber = widget.passedCaseData['student_data']['class_number'];
     _classLetter = widget.passedCaseData['student_data']['class_letter'];
+    _pickedDate.text = DateTimeHelper().isoToCmrDateOnly(
+            widget.passedCaseData['student_data']['date_of_birth']) ??
+        '';
     _gender = widget.passedCaseData['student_data']['gender'];
     _studentStatus = widget.passedCaseData['student_data']['status'];
+    _problemCategory = widget.passedCaseData['problem']['problem_category'];
+    _problemDetails.text =
+        widget.passedCaseData['problem']['problem_details'] ?? '';
+    _method.text = widget.passedCaseData['method'] ?? '';
+    _solution.text = widget.passedCaseData['solution'] ?? '';
   }
 
   @override
@@ -380,7 +383,7 @@ class _UpdateCaseFormState extends State<UpdateCaseForm> {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(
-                        left: 10.0, right: 10.0, top: 5.0, bottom: 10.0),
+                        left: 10.0, right: 10.0, top: 5.0, bottom: 21.0),
                     child: ElevatedButton(
                       onPressed: () => Navigator.of(context).pop(),
                       child: const Text('CANCEL',
@@ -393,7 +396,7 @@ class _UpdateCaseFormState extends State<UpdateCaseForm> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(
-                        left: 10.0, right: 10.0, top: 5.0, bottom: 10.0),
+                        left: 10.0, right: 10.0, top: 5.0, bottom: 21.0),
                     child: ElevatedButton(
                       onPressed: () {
                         final dtHelper = DateTimeHelper();
@@ -413,35 +416,35 @@ class _UpdateCaseFormState extends State<UpdateCaseForm> {
                           "problem_category": _problemCategory,
                           "problem_details": _problemDetails.text
                         };
-                        Map<String, dynamic> casePayload = {
-                          "created_at": dtHelper.timestampForDB(DateTime.now()),
-                          "created_by": "demo",
+                        Map<String, dynamic> updateCasePayload = {
+                          "last_update_at":
+                              dtHelper.timestampForDB(DateTime.now()),
+                          "last_update_by": "demo",
                           "student_data": studentData,
                           "parent_data": parentData,
                           "problem": problemData,
                           "method": _method.text,
                           "solution": _solution.text,
                         };
+                        int updateRowId = widget.passedCaseData['id'];
                         if (_updateCaseFormKey.currentState!.validate()) {
-                          /*  var res =
-                              SupabaseService().addRow('cases', casePayload);
+                          final res = SupabaseService().updateRow(
+                              'cases', updateRowId, updateCasePayload);
                           res.then((value) {
                             if (value == true) {
                               SnackBarMessage().customSuccessMessage(
-                                  'Case added successfully!', context);
+                                  'Changes saved successfully!', context);
                               PageRouter().navigateToPage(
                                   const CaseListPage(), context);
                             }
-                          }); */
-                          log('Tapped update case button!');
+                          });
                         }
                       },
                       child: const Text(
                         'SAVE',
                         style: TextStyle(
-                            letterSpacing: 1.0, fontWeight: FontWeight.bold),
+                            letterSpacing: 2.0, fontWeight: FontWeight.bold),
                       ),
-                      /*  style: ElevatedButton.styleFrom(backgroundColor: myTeal), */
                     ),
                   )
                 ],

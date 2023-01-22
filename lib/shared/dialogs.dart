@@ -44,7 +44,7 @@ class InfoDialog extends StatelessWidget {
 class ErrorDialog extends StatelessWidget {
   // const ErrorDialog({ Key? key }) : super(key: key);
   final String errorMessage;
-  ErrorDialog(this.errorMessage);
+  const ErrorDialog(this.errorMessage, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +102,9 @@ class LogoutDialog extends StatelessWidget {
               child: const Text(
                 'NO',
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, color: textBlackColor),
+                    fontWeight: FontWeight.bold,
+                    color: textBlackColor,
+                    letterSpacing: 1.0),
               ),
             ),
             TextButton(
@@ -112,7 +114,9 @@ class LogoutDialog extends StatelessWidget {
                 child: const Text(
                   'YES',
                   style: TextStyle(
-                      color: primaryColor, fontWeight: FontWeight.bold),
+                      color: primaryColor,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.0),
                 ))
           ],
         ),

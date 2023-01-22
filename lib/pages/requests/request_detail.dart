@@ -5,6 +5,7 @@ import '../../styles/colors.dart';
 import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
 import '../../utils/router.dart';
+import '../bottom_nav_bar.dart';
 import '../cases/add_case.dart';
 
 class RequestDetailsPage extends StatelessWidget {
@@ -35,7 +36,7 @@ class RequestDetailsPage extends StatelessWidget {
             MyTableRow(
               rowName: 'Date',
               rowData:
-                  dateFormatter.isoToCmrDateFormat(rowData['created_at']) ?? '',
+                  dateFormatter.isoToCmrDateOnly(rowData['created_at']) ?? '',
             ),
             MyTableRow(
               rowName: 'Request category',
@@ -89,6 +90,7 @@ class RequestDetailsPage extends StatelessWidget {
           ],
         ),
       )),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

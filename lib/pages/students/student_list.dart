@@ -35,7 +35,7 @@ class StudentListPage extends StatelessWidget {
           'Students list!',
         ),
       ),
-      /* bottomNavigationBar: const BottomNavBar(), */
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/pages/cases/update_case.dart';
 import '../../shared/snackbar_messages.dart';
 import '../../styles/colors.dart';
 import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
 import '../../utils/router.dart';
 import '../../utils/web.dart';
+import '../bottom_nav_bar.dart';
 import 'case_list.dart';
+import 'update_case.dart';
 
 class CaseDetailsPage extends StatefulWidget {
   final Map rowData;
@@ -23,7 +24,6 @@ class _CaseDetailsPageState extends State<CaseDetailsPage> {
   Widget build(BuildContext context) {
     final dateFormatter = DateTimeHelper();
     rowId = widget.rowData['id'];
-    /*  log('Case data => ${widget.rowData}'); */
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -68,7 +68,7 @@ class _CaseDetailsPageState extends State<CaseDetailsPage> {
               ),
               MyTableRow(
                 rowName: 'Date of birth',
-                rowData: dateFormatter.isoToCmrDateFormat2(
+                rowData: dateFormatter.isoToCmrDateOnly(
                     widget.rowData['student_data']['date_of_birth']),
               ),
               MyTableRow(
@@ -137,8 +137,6 @@ class _CaseDetailsPageState extends State<CaseDetailsPage> {
                           PageRouter().navigateToPage(
                               UpdateCasePage(caseData: widget.rowData),
                               context);
-                          SnackBarMessage().customErrorMessage(
-                              'Tapped edit button!', context);
                         }),
                         child: const Text(
                           'EDIT',
@@ -159,7 +157,7 @@ class _CaseDetailsPageState extends State<CaseDetailsPage> {
           ),
         ),
       ),
-      /* bottomNavigationBar: const BottomNavBar(), */
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 

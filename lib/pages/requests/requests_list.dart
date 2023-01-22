@@ -5,6 +5,7 @@ import '../../utils/router.dart';
 import '../../utils/web.dart';
 import '../../shared/custom_widgets.dart';
 import '../../styles/style.dart';
+import '../bottom_nav_bar.dart';
 import 'request_detail.dart';
 
 class RequestsListPage extends StatelessWidget {
@@ -44,7 +45,7 @@ class RequestsListPage extends StatelessWidget {
           }
         }),
       ),
-      /*  bottomNavigationBar: const BottomNavBar(), */
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
@@ -131,7 +132,7 @@ class _RequestsListDataState extends State<RequestsListData> {
           },
           cells: [
             DataCell(Text(
-                DateTimeHelper().isoToCmrDateFormat(e['created_at']) ?? '',
+                DateTimeHelper().isoToCmrDateOnly(e['created_at']) ?? '',
                 style: TableItemStyle,
                 textAlign: TextAlign.left)),
             DataCell(Column(

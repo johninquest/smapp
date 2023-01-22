@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../utils/router.dart';
 import '../styles/colors.dart';
 import 'cases/case_list.dart';
-// import 'evaluations/evaluation_list.dart';
 import 'home.dart';
 import 'requests/requests_list.dart';
 import 'students/student_list.dart';
@@ -17,112 +16,138 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 0;
-  final pages = [
-    const HomePage(),
-    const CaseListPage(),
-    const StudentListPage(),
-    const RequestsListPage()
-  ];
-
-/*   @override
-  void initState() {
-    super.initState();
-    final spHelper = SharedPreferenceHelper();
-    spHelper.readData('navBarIndex').then((value) {
-      if (value != null) {
-        log('Index value => $value');
-        currentIndex = int.tryParse(value) ?? 0;
-      } else {
-        log('Index value => $value');
-      }
-    });
-  } */
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBarTheme(
-      data: const NavigationBarThemeData(
-          /* indicatorColor: primaryColor
-          backgroundColor: primaryColor */
+    return NavigationBar(
+      // height: 60,
+      selectedIndex: currentIndex,
+      onDestinationSelected: (index) => setState(() {
+        currentIndex = index;
+        /*  PageRouter().navigateToPage(pages[index], context); */
+        afterTap(index);
+      }),
+      destinations: const [
+        NavigationDestination(
+          icon: Icon(
+            Icons.home,
+            color: primaryColor,
+            size: 25.0,
           ),
-      child: NavigationBar(
-        // height: 60,
-        selectedIndex: currentIndex,
-        onDestinationSelected: (index) => setState(() {
-          currentIndex = index;
-          PageRouter().navigateToPage(pages[index], context);
-        }),
-        destinations: const [
-          NavigationDestination(
+          label: 'Home',
+        ),
+        NavigationDestination(
             icon: Icon(
-              Icons.home,
+              Icons.folder_copy,
               color: primaryColor,
               size: 25.0,
             ),
-            label: 'Home',
+            label: 'Cases'),
+        NavigationDestination(
+          icon: Icon(
+            Icons.group,
+            color: primaryColor,
+            size: 25.0,
           ),
-          NavigationDestination(
-              icon: Icon(
-                Icons.folder_copy,
-                color: primaryColor,
-                size: 25.0,
-              ),
-              label: 'Cases'),
-          /*  BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bar_chart,
-              color: Colors.white,
-              size: 25.0,
-            ),
-            label: 'Evaluations',
-          ), */
-          NavigationDestination(
-            icon: Icon(
-              Icons.group,
-              color: primaryColor,
-              size: 25.0,
-            ),
-            label: 'Students',
+          label: 'Students',
+        ),
+        NavigationDestination(
+          icon: Icon(
+            Icons.notifications,
+            color: primaryColor,
+            size: 25.0,
           ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.notifications,
-              color: primaryColor,
-              size: 25.0,
-            ),
-            label: 'Requests',
-          ),
-        ],
-        // onTap: (index) => afterTap(index),
-      ),
+          label: 'Requests',
+        ),
+      ],
+      // onTap: (index) => afterTap(index),
     );
   }
 
   void afterTap(int currentIndex) {
     if (currentIndex == 0) {
-      // log('To home page');
       PageRouter().navigateToPage(const HomePage(), context);
     }
     if (currentIndex == 1) {
-      // log('To case list');
       PageRouter().navigateToPage(const CaseListPage(), context);
     }
-    /*  if (currentIndex == 2) {
-      // log('To evaluation list');
-      PageRouter().navigateToPage(const EvaluationListPage(), context);
-    } */
+
     if (currentIndex == 2) {
-      // throw ('This is an error!');
-      // log('To student list');
       PageRouter().navigateToPage(const StudentListPage(), context);
     }
     if (currentIndex == 3) {
-      // throw ('This is an error!');
-      // log('To student list');
       PageRouter().navigateToPage(const RequestsListPage(), context);
     }
-    /* else {
-      print('No where to go');
-    } */
+  }
+} 
+/* 
+class BottomNavBar extends StatefulWidget {
+  @override
+  _BottomNavBarState createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      currentIndex: 0,
+      type: BottomNavigationBarType.fixed,
+
+      elevation: 1.0,
+      /* selectedItemColor: blackColor,
+      unselectedItemColor: blackColor,
+      selectedIconTheme: IconThemeData(color: Colors.black), */
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      // iconSize: 30,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home_outlined,
+            color: primaryColor,
+          ),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.folder_copy,
+            color: primaryColor,
+          ),
+          label: 'Cases',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.group,
+            color: primaryColor,
+          ),
+          label: 'Students',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.notifications,
+            color: primaryColor,
+          ),
+          label: 'Requests',
+        ),
+      ],
+      onTap: (index) => afterTap(index),
+    );
+  }
+
+  void afterTap(int currentIndex) {
+    if (currentIndex == 0) {
+      PageRouter().navigateToPage(const HomePage(), context);
+    }
+    if (currentIndex == 1) {
+      PageRouter().navigateToPage(const CaseListPage(), context);
+    }
+
+    if (currentIndex == 2) {
+      PageRouter().navigateToPage(const StudentListPage(), context);
+    }
+    if (currentIndex == 3) {
+      PageRouter().navigateToPage(const RequestsListPage(), context);
+    }
   }
 }
+ */

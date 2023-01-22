@@ -68,4 +68,19 @@ class SupabaseService {
       log('Delete exception => $e');
     }
   }
+
+  Future<dynamic> updateRow(
+      String tableName, int rowId, Map<String, dynamic> rowData) async {
+    try {
+      final updateResponse =
+          await _supabase.from(tableName).update(rowData).eq('id', rowId);
+      if (updateResponse == null) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      log('Update exception => $e');
+    }
+  }
 }

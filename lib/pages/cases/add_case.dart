@@ -65,8 +65,6 @@ class _AddCaseFormState extends State<AddCaseForm> {
         currentDate = picked;
         _pickedDate.text = DateTimeHelper().dateToCmrDateString(picked);
         _age.text = DateTimeHelper().ageFromDate(picked);
-        // print('Picked date => $picked');
-        // log('Age => $_age');
       });
     }
   }
