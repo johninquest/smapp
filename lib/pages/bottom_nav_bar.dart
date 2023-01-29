@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../utils/router.dart';
 import '../styles/colors.dart';
 import 'cases/case_list.dart';
+import 'evaluations/evaluation_list.dart';
 import 'home.dart';
 import 'requests/requests_list.dart';
 import 'students/student_list.dart';
@@ -44,6 +45,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
             label: 'Cases'),
         NavigationDestination(
+            icon: Icon(
+              Icons.folder_copy,
+              color: primaryColor,
+              size: 25.0,
+            ),
+            label: 'Evaluations'),
+        NavigationDestination(
           icon: Icon(
             Icons.group,
             color: primaryColor,
@@ -71,11 +79,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
     if (currentIndex == 1) {
       PageRouter().navigateToPage(const CaseListPage(), context);
     }
-
     if (currentIndex == 2) {
+      PageRouter().navigateToPage(const EvaluationsListPage(), context);
+    }
+
+    if (currentIndex == 3) {
       PageRouter().navigateToPage(const StudentListPage(), context);
     }
-    if (currentIndex == 3) {
+    if (currentIndex == 4) {
       PageRouter().navigateToPage(const RequestsListPage(), context);
     }
   }

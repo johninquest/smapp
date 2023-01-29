@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../shared/dialogs.dart';
-import '../shared/snackbar_messages.dart';
 import '../shared/version.dart';
 import '../styles/colors.dart';
 import '../utils/router.dart';
 import '../utils/web.dart';
 import 'bottom_nav_bar.dart';
 import 'cases/case_list.dart';
+import 'evaluations/evaluation_list.dart';
 import 'left_nav_bar.dart';
 import 'requests/requests_list.dart';
 import 'students/student_list.dart';
@@ -86,6 +86,23 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
             ),
             GestureDetector(
               onTap: () => PageRouter()
+                  .navigateToPage(const EvaluationsListPage(), context),
+              child: Card(
+                elevation: 21.0,
+                child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(3.0),
+                    height: 100,
+                    width: 120,
+                    child: Text(
+                      'evaluations'.toUpperCase(),
+                      style: const TextStyle(
+                          color: primaryColor, fontWeight: FontWeight.bold),
+                    )),
+              ),
+            ),
+            GestureDetector(
+              onTap: () => PageRouter()
                   .navigateToPage(const RequestsListPage(), context),
               child: Card(
                 elevation: 21.0,
@@ -122,21 +139,6 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
                     child: Text(
                       'Students'.toUpperCase(),
                       style: const TextStyle(
-                          color: primaryColor, fontWeight: FontWeight.bold),
-                    )),
-              ),
-            ),
-            GestureDetector(
-              onTap: () => SnackBarMessage().underConstruction(context),
-              child: Card(
-                elevation: 21.0,
-                child: Container(
-                    alignment: Alignment.center,
-                    height: 100,
-                    width: 120,
-                    child: const Text(
-                      'Other(s)',
-                      style: TextStyle(
                           color: primaryColor, fontWeight: FontWeight.bold),
                     )),
               ),

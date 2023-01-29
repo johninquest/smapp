@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import '../pages/login.dart';
+import '../pages/start_options.dart';
 import '../utils/router.dart';
 import '../styles/colors.dart';
 
 class InfoDialog extends StatelessWidget {
-  // const InfoDialog({ Key? key }) : super(key: key);
   final String infoMessage;
-  InfoDialog(this.infoMessage);
+  const InfoDialog(this.infoMessage, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +108,8 @@ class LogoutDialog extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () {
-                  PageRouter().navigateToPage(const LoginPage(), context);
+                  PageRouter()
+                      .navigateToPage(const StartOptionsPage(), context);
                 },
                 child: const Text(
                   'YES',

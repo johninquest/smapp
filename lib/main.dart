@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/login.dart';
+import 'pages/start_options.dart';
 import 'styles/colors.dart';
 /* import 'package:supabase_flutter/supabase_flutter.dart'; */
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Quicksand',
         // textTheme: const TextTheme(bodyText2: TextStyle(color: textBlackColor)),
       ),
-      home: const LoginPage(),
+      home: const StartOptionsPage(),
     );
   }
 }

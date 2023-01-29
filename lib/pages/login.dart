@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/pages/home.dart';
-import 'package:smapp/shared/snackbar_messages.dart';
+import '../shared/snackbar_messages.dart';
 import '../styles/colors.dart';
-import '../utils/router.dart';
-import 'nav_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 final supabase = Supabase.instance.client;
@@ -18,7 +15,7 @@ class LoginPage extends StatelessWidget {
         title: const Text('Counseye',
             style: TextStyle(letterSpacing: 1.0, color: primaryColor)),
         centerTitle: true,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       body: const LoginForm(),
     );
@@ -70,7 +67,7 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              /* Container(
                 margin:
                     const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 10.0),
                 child: const Text(
@@ -79,7 +76,7 @@ class _LoginFormState extends State<LoginForm> {
                   style: TextStyle(
                       letterSpacing: 0.5, fontWeight: FontWeight.bold),
                 ),
-              ),
+              ), */
               Container(
                   width: MediaQuery.of(context).size.width * 0.75,
                   margin: const EdgeInsets.only(bottom: 10.0, top: 40.0),
@@ -159,35 +156,6 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                   child: const Text(
                     'Log in',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, letterSpacing: 1.0),
-                  ),
-                ),
-              ),
-              const Divider(
-                indent: 34,
-                endIndent: 34,
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.50,
-                margin:
-                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 13.0),
-                child: OutlinedButton(
-                  onPressed: () {
-                    //  response.then((value) => log('Auth response => $value')).catchError((e) => log('Error => $e'));
-                    // log('Response => $response');
-                    /*  final Session? session = response.session;
-                    final User? user = response.user; */
-
-                    PageRouter().navigateToPage(const HomePage(), context);
-                    /*   final auth = AuthService();
-                    auth
-                        .signInUserViaEmailAndPassword(
-                            'audatest@web.de', 'TestAcc!49')
-                        .then((value) => log('Got some response from auth')); */
-                  },
-                  child: const Text(
-                    'Demo',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, letterSpacing: 1.0),
                   ),
