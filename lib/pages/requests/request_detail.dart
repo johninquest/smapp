@@ -90,7 +90,6 @@ class RequestDetailsPage extends StatelessWidget {
           ],
         ),
       )),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

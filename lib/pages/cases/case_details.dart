@@ -5,7 +5,6 @@ import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
 import '../../utils/router.dart';
 import '../../utils/web.dart';
-import '../bottom_nav_bar.dart';
 import 'case_list.dart';
 import 'update_case.dart';
 
@@ -157,7 +156,6 @@ class _CaseDetailsPageState extends State<CaseDetailsPage> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 
