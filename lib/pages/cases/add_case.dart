@@ -314,7 +314,8 @@ class _AddCaseFormState extends State<AddCaseForm> {
                                 decoration: const InputDecoration(
                                     labelText: 'Additional details'),
                                 keyboardType: TextInputType.text,
-                                textCapitalization: TextCapitalization.words,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
                                 maxLines: 3,
                                 /* validator: (val) => val!.isEmpty
                                     ? 'Please enter problem details'
@@ -335,7 +336,7 @@ class _AddCaseFormState extends State<AddCaseForm> {
                           decoration:
                               const InputDecoration(labelText: 'Method'),
                           keyboardType: TextInputType.text,
-                          textCapitalization: TextCapitalization.words,
+                          textCapitalization: TextCapitalization.sentences,
                           maxLines: 3,
                           /* validator: (val) =>
                               val!.isEmpty ? 'Please enter method!' : null, */
@@ -354,7 +355,7 @@ class _AddCaseFormState extends State<AddCaseForm> {
                           decoration:
                               const InputDecoration(labelText: 'Solution'),
                           keyboardType: TextInputType.text,
-                          textCapitalization: TextCapitalization.words,
+                          textCapitalization: TextCapitalization.sentences,
                           maxLines: 3,
                           /* validator: (val) =>
                               val!.isEmpty ? 'Please enter solution!' : null, */

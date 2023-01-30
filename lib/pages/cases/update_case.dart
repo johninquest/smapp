@@ -10,7 +10,7 @@ import 'case_list.dart';
 
 class UpdateCasePage extends StatelessWidget {
   final Map caseData;
-  UpdateCasePage({super.key, required this.caseData});
+  const UpdateCasePage({super.key, required this.caseData});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class UpdateCasePage extends StatelessWidget {
 
 class UpdateCaseForm extends StatefulWidget {
   final Map passedCaseData;
-  UpdateCaseForm({super.key, required this.passedCaseData});
+  const UpdateCaseForm({super.key, required this.passedCaseData});
 
   @override
   State<UpdateCaseForm> createState() => _UpdateCaseFormState();
@@ -82,6 +82,9 @@ class _UpdateCaseFormState extends State<UpdateCaseForm> {
     _classNumber = widget.passedCaseData['student_data']['class_number'];
     _classLetter = widget.passedCaseData['student_data']['class_letter'];
     _pickedDate.text = DateTimeHelper().isoToCmrDateOnly(
+            widget.passedCaseData['student_data']['date_of_birth']) ??
+        '';
+    _age.text = DateTimeHelper().ageFromDateStr(
             widget.passedCaseData['student_data']['date_of_birth']) ??
         '';
     _gender = widget.passedCaseData['student_data']['gender'];
@@ -329,7 +332,8 @@ class _UpdateCaseFormState extends State<UpdateCaseForm> {
                                 decoration: const InputDecoration(
                                     labelText: 'Additional details'),
                                 keyboardType: TextInputType.text,
-                                textCapitalization: TextCapitalization.words,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
                                 maxLines: 3,
                                 /* validator: (val) => val!.isEmpty
                                     ? 'Please enter problem details'
@@ -350,7 +354,7 @@ class _UpdateCaseFormState extends State<UpdateCaseForm> {
                           decoration:
                               const InputDecoration(labelText: 'Method'),
                           keyboardType: TextInputType.text,
-                          textCapitalization: TextCapitalization.words,
+                          textCapitalization: TextCapitalization.sentences,
                           maxLines: 3,
                           /* validator: (val) =>
                               val!.isEmpty ? 'Please enter method!' : null, */
@@ -369,7 +373,7 @@ class _UpdateCaseFormState extends State<UpdateCaseForm> {
                           decoration:
                               const InputDecoration(labelText: 'Solution'),
                           keyboardType: TextInputType.text,
-                          textCapitalization: TextCapitalization.words,
+                          textCapitalization: TextCapitalization.sentences,
                           maxLines: 3,
                           /* validator: (val) =>
                               val!.isEmpty ? 'Please enter solution!' : null, */

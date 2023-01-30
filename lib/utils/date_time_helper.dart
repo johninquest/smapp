@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'dart:developer';
 
 class DateTimeHelper {
   timestampForDB(DateTime dt) {
@@ -20,6 +18,7 @@ class DateTimeHelper {
 
   ageFromDateStr(String? storedDate) {
     if (storedDate != null && storedDate != '') {
+      /* log('Stored date => $storedDate'); */
       DateTime parsedDateTime = DateTime.parse(storedDate);
       DateTime currentDateTime = DateTime.now();
       int diffInDays = currentDateTime.difference(parsedDateTime).inDays;

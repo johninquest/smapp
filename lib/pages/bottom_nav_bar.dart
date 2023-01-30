@@ -46,7 +46,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: 'Cases'),
         NavigationDestination(
             icon: Icon(
-              Icons.folder_copy,
+              Icons.thumbs_up_down,
               color: primaryColor,
               size: 25.0,
             ),

@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SupabaseService().tableSize('students');
     return Scaffold(
       appBar: AppBar(
         title: const Text(''),
@@ -79,7 +80,9 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
                         SizedBox(
                           height: 5.0,
                         ),
-                        CasesTableSize()
+                        TableSize(
+                          tableName: 'cases',
+                        )
                       ],
                     )),
               ),
@@ -94,10 +97,21 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
                     padding: const EdgeInsets.all(3.0),
                     height: 100,
                     width: 120,
-                    child: Text(
-                      'evaluations'.toUpperCase(),
-                      style: const TextStyle(
-                          color: primaryColor, fontWeight: FontWeight.bold),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'EVALUATIONS',
+                          style: TextStyle(
+                              color: primaryColor, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        TableSize(
+                          tableName: 'evaluations',
+                        )
+                      ],
                     )),
               ),
             ),
@@ -113,16 +127,18 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
                     width: 120,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
-                          'Requests'.toUpperCase(),
-                          style: const TextStyle(
+                          'REQUESTS',
+                          style: TextStyle(
                               color: primaryColor, fontWeight: FontWeight.bold),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 5.0,
                         ),
-                        const RequestTableSize()
+                        TableSize(
+                          tableName: 'requests',
+                        )
                       ],
                     )),
               ),
@@ -136,10 +152,21 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
                     alignment: Alignment.center,
                     height: 100,
                     width: 120,
-                    child: Text(
-                      'Students'.toUpperCase(),
-                      style: const TextStyle(
-                          color: primaryColor, fontWeight: FontWeight.bold),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'STUDENTS',
+                          style: TextStyle(
+                              color: primaryColor, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        TableSize(
+                          tableName: 'students',
+                        )
+                      ],
                     )),
               ),
             ),
@@ -154,12 +181,13 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
   }
 }
 
-class RequestTableSize extends StatelessWidget {
-  const RequestTableSize({super.key});
+class TableSize extends StatelessWidget {
+  final String tableName;
+  const TableSize({super.key, required this.tableName});
 
   @override
   Widget build(BuildContext context) {
-    final reqData = SupabaseService().fetchData('requests');
+    final reqData = SupabaseService().fetchData(tableName);
     return FutureBuilder(
       future: reqData,
       builder: ((context, snapshot) {
@@ -169,51 +197,16 @@ class RequestTableSize extends StatelessWidget {
           );
         }
         if (snapshot.hasError) {
-          return const Center(
-            child: Text('An error occured!'),
+          return Container(
+            padding: const EdgeInsets.all(3.0),
+            child: const Center(
+              child: Text('An error occured!'),
+            ),
           );
         }
         if (snapshot.hasData) {
           List<dynamic> sbData = snapshot.data as List;
           int? rowCount = sbData.length;
-          // return TableOfContactRequests(tableData: sbData);
-          return Text(
-            '$rowCount',
-            style: const TextStyle(fontSize: 20.0),
-          );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      }),
-    );
-  }
-}
-
-class CasesTableSize extends StatelessWidget {
-  const CasesTableSize({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final reqData = SupabaseService().fetchData('cases');
-    return FutureBuilder(
-      future: reqData,
-      builder: ((context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.done) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-        if (snapshot.hasError) {
-          return const Center(
-            child: Text('An error occured!'),
-          );
-        }
-        if (snapshot.hasData) {
-          List<dynamic> sbData = snapshot.data as List;
-          int? rowCount = sbData.length;
-          // return TableOfContactRequests(tableData: sbData);
           return Text(
             '$rowCount',
             style: const TextStyle(fontSize: 20.0),

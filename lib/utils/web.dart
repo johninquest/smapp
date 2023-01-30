@@ -33,10 +33,14 @@ class SupabaseService {
   }
 
   Future<dynamic> tableSize(String tableName) async {
-    final res =
-        await _supabase.rpc('tableSize', params: {'table_name': tableName});
-    log('Table sitze => $res');
-    return res;
+    try {
+      final List res = await _supabase.from(tableName).select('*');
+      int noOfRowsInTable = res.length;
+      /* log('No. of rows in table => $noOfRowsInTable'); */
+      return noOfRowsInTable;
+    } catch (e) {
+      log('Read exception => $e');
+    }
   }
 
   Future<dynamic> addRow(String tableName, Map<String, dynamic> rowData) async {
