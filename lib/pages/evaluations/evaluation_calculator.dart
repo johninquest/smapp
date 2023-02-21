@@ -20,7 +20,7 @@ class _EvaluationCalculatorState extends State<EvaluationCalculator> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'average (mean) calculator'.toUpperCase(),
+          'average calculator'.toUpperCase(),
           style: appBarTitleStyle,
         ),
         centerTitle: true,

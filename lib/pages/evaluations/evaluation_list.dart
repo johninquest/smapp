@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:smapp/pages/evaluations/evaluation_calculator.dart';
 import '../../styles/colors.dart';
 import '../../styles/style.dart';
 import '../../utils/router.dart';
 import '../../utils/web.dart';
 import '../bottom_nav_bar.dart';
 import 'add_evaluation.dart';
+import 'evaluation_calculator.dart';
 
 class EvaluationsListPage extends StatelessWidget {
   const EvaluationsListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final reqData = SupabaseService().fetchData('cases');
+    final reqData = SupabaseService().fetchData('evaluations');
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -35,7 +35,9 @@ class EvaluationsListPage extends StatelessWidget {
             );
           }
           if (snapshot.hasData) {
-            // List<dynamic> sbData = snapshot.data as List;
+            List<dynamic> sbData = snapshot.data as List;
+            int? rowCount = sbData.length;
+            // log('Table size => $rowCount');
             /* return CaseListData(casesData: sbData); */
             return Center(
               child: Column(
@@ -46,6 +48,14 @@ class EvaluationsListPage extends StatelessWidget {
                     child: const Text(
                       'Under construction',
                       style: TextStyle(color: warnColor),
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(13.0),
+                    child: Text(
+                      '$rowCount',
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 21.0),
                     ),
                   ),
                   Container(
