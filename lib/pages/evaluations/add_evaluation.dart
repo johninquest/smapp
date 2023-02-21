@@ -1,15 +1,11 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import '../../styles/colors.dart';
 import '../../styles/style.dart';
+import '../../utils/calculator.dart';
 import '../bottom_nav_bar.dart';
 import '../../shared/lists.dart';
 import '../../shared/snackbar_messages.dart';
-import '../../styles/colors.dart';
-import '../../styles/style.dart';
 import '../../utils/date_time_helper.dart';
-import '../../utils/router.dart';
-import '../../utils/web.dart';
 
 class AddEvaluationPage extends StatelessWidget {
   const AddEvaluationPage({super.key});
@@ -48,14 +44,18 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
   final TextEditingController _pickedDate = TextEditingController();
   final TextEditingController _age = TextEditingController();
   final TextEditingController _problemDetails = TextEditingController();
-  final TextEditingController _method = TextEditingController();
-  final TextEditingController _solution = TextEditingController();
+  final TextEditingController _firstTermOverallAverage =
+      TextEditingController();
+  final TextEditingController _secondTermOverallAverage =
+      TextEditingController();
+  final TextEditingController _thirdTermOverallAverage =
+      TextEditingController();
+  final TextEditingController _parentsOpinion = TextEditingController();
+  final TextEditingController _parentsPhoneNumber = TextEditingController();
 
   String? _classNumber;
   String? _classLetter;
   String? _gender;
-  String? _studentStatus;
-  String? _problemCategory;
 
   DateTime currentDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
@@ -112,8 +112,8 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                           Container(
                               width: MediaQuery.of(context).size.width * 0.90,
                               margin: const EdgeInsets.only(bottom: 5.0),
-                              padding: const EdgeInsets.only(
-                                  left: 25.0, right: 25.0),
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
                               child: TextFormField(
                                 controller: _registrationNr,
                                 enabled: true,
@@ -128,8 +128,8 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                           Container(
                               width: MediaQuery.of(context).size.width * 0.90,
                               margin: const EdgeInsets.only(bottom: 5.0),
-                              padding: const EdgeInsets.only(
-                                  left: 25.0, right: 25.0),
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
                               child: TextFormField(
                                 controller: _surname,
                                 enabled: true,
@@ -147,8 +147,8 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                           Container(
                               width: MediaQuery.of(context).size.width * 0.90,
                               margin: const EdgeInsets.only(bottom: 5.0),
-                              padding: const EdgeInsets.only(
-                                  left: 25.0, right: 25.0),
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
                               child: TextFormField(
                                 controller: _givenNames,
                                 enabled: true,
@@ -169,8 +169,8 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                 Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.4,
-                                  margin: const EdgeInsets.only(right: 10.0),
-                                  padding: const EdgeInsets.only(left: 15.0),
+                                  margin: const EdgeInsets.only(right: 13.0),
+                                  padding: const EdgeInsets.only(left: 8.0),
                                   child: DropdownButtonFormField(
                                     decoration: const InputDecoration(
                                         labelText: 'Class number'),
@@ -186,8 +186,8 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                 Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.30,
-                                  margin: const EdgeInsets.only(left: 10.0),
-                                  padding: const EdgeInsets.only(right: 15.0),
+                                  margin: const EdgeInsets.only(left: 13.0),
+                                  padding: const EdgeInsets.only(right: 8.0),
                                   child: DropdownButtonFormField(
                                     decoration: const InputDecoration(
                                         labelText: 'Letter'),
@@ -212,8 +212,8 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                 Container(
                                     width: MediaQuery.of(context).size.width *
                                         0.45,
-                                    margin: const EdgeInsets.only(right: 10.0),
-                                    padding: const EdgeInsets.only(left: 15.0),
+                                    margin: const EdgeInsets.only(right: 13.0),
+                                    padding: const EdgeInsets.only(left: 8.0),
                                     child: TextFormField(
                                       controller: _pickedDate,
                                       enabled: true,
@@ -225,8 +225,8 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                 Container(
                                     width: MediaQuery.of(context).size.width *
                                         0.25,
-                                    margin: const EdgeInsets.only(left: 10.0),
-                                    padding: const EdgeInsets.only(right: 15.0),
+                                    margin: const EdgeInsets.only(left: 13.0),
+                                    padding: const EdgeInsets.only(right: 8.0),
                                     child: TextFormField(
                                       controller: _age,
                                       enabled: false,
@@ -240,7 +240,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                             width: MediaQuery.of(context).size.width * 0.90,
                             margin: const EdgeInsets.only(bottom: 5.0),
                             padding:
-                                const EdgeInsets.only(left: 25.0, right: 25.0),
+                                const EdgeInsets.only(left: 8.0, right: 8.0),
                             child: DropdownButtonFormField(
                               decoration:
                                   const InputDecoration(labelText: 'Sex'),
@@ -258,9 +258,91 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                   Step(
                       isActive: _currentStep >= 1,
                       title: const Text('Averages'),
-                      content: const Text(
-                        'Still under construction!',
-                        style: TextStyle(color: warnColor),
+                      content: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.18,
+                                    margin: const EdgeInsets.only(right: 5.0),
+                                    padding: const EdgeInsets.only(left: 1.0),
+                                    child: TextFormField(
+                                      controller: _firstTermOverallAverage,
+                                      enabled: true,
+                                      decoration: const InputDecoration(
+                                          labelText: '1st'),
+                                      onChanged: (value) => setState(() {
+                                        showCalculatedAvg();
+                                      }),
+                                    )),
+                                Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.18,
+                                    margin: const EdgeInsets.only(left: 5.0),
+                                    padding: const EdgeInsets.only(right: 3.0),
+                                    child: TextFormField(
+                                      controller: _secondTermOverallAverage,
+                                      enabled: true,
+                                      decoration: const InputDecoration(
+                                          labelText: '2nd'),
+                                      onChanged: (value) => setState(() {
+                                        showCalculatedAvg();
+                                      }),
+                                    )),
+                                Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.18,
+                                    margin: const EdgeInsets.only(left: 5.0),
+                                    padding: const EdgeInsets.only(right: 3.0),
+                                    child: TextFormField(
+                                      controller: _thirdTermOverallAverage,
+                                      enabled: true,
+                                      decoration: const InputDecoration(
+                                          labelText: '3rd'),
+                                      onChanged: (value) => setState(() {
+                                        showCalculatedAvg();
+                                      }),
+                                    )),
+/*                                 Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.17,
+                                    margin: const EdgeInsets.only(left: 5.0),
+                                    padding: const EdgeInsets.only(right: 1.0),
+                                    child: TextFormField(
+                                      controller: _avg,
+                                      enabled: false,
+                                      decoration: const InputDecoration(
+                                          labelText: 'Avg.'),
+                                    )), */
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.17,
+                                  margin: const EdgeInsets.only(
+                                      left: 5.0, top: 3.0),
+                                  padding: const EdgeInsets.only(
+                                      right: 1.0, top: 1.0),
+                                  child: InputDecorator(
+                                    decoration: const InputDecoration(
+                                      labelText: 'Avg.',
+                                      /*   border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ), */
+                                    ),
+                                    child: Text("${showCalculatedAvg()}"),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
                       )),
                   Step(
                       isActive: _currentStep >= 2,
@@ -272,10 +354,10 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                           Container(
                               width: MediaQuery.of(context).size.width * 0.90,
                               margin: const EdgeInsets.only(bottom: 5.0),
-                              padding: const EdgeInsets.only(
-                                  left: 25.0, right: 25.0),
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
                               child: TextFormField(
-                                controller: _problemDetails,
+                                controller: _parentsOpinion,
                                 enabled: true,
                                 decoration: const InputDecoration(
                                     labelText: "Parent's opinion"),
@@ -289,10 +371,10 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                           Container(
                               width: MediaQuery.of(context).size.width * 0.90,
                               margin: const EdgeInsets.only(bottom: 5.0),
-                              padding: const EdgeInsets.only(
-                                  left: 25.0, right: 25.0),
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
                               child: TextFormField(
-                                controller: _problemDetails,
+                                controller: _parentsPhoneNumber,
                                 enabled: true,
                                 decoration: const InputDecoration(
                                     labelText: "Parent's phone number"),
@@ -306,16 +388,16 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                       )),
                   Step(
                     isActive: _currentStep >= 3,
-                    title: const Text('Others'),
+                    title: const Text('Decision'),
                     content: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
                             width: MediaQuery.of(context).size.width * 0.90,
                             margin: const EdgeInsets.only(bottom: 5.0),
                             padding:
-                                const EdgeInsets.only(left: 25.0, right: 25.0),
+                                const EdgeInsets.only(left: 8.0, right: 8.0),
                             child: TextFormField(
                               controller: _problemDetails,
                               enabled: true,
@@ -332,7 +414,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                             width: MediaQuery.of(context).size.width * 0.90,
                             margin: const EdgeInsets.only(bottom: 5.0),
                             padding:
-                                const EdgeInsets.only(left: 25.0, right: 25.0),
+                                const EdgeInsets.only(left: 8.0, right: 8.0),
                             child: TextFormField(
                               controller: _problemDetails,
                               enabled: true,
@@ -345,7 +427,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                             width: MediaQuery.of(context).size.width * 0.90,
                             margin: const EdgeInsets.only(bottom: 5.0),
                             padding:
-                                const EdgeInsets.only(left: 25.0, right: 25.0),
+                                const EdgeInsets.only(left: 8.0, right: 8.0),
                             child: TextFormField(
                               controller: _problemDetails,
                               enabled: true,
@@ -397,5 +479,14 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
             ],
           )),
     );
+  }
+
+  showCalculatedAvg() {
+    double avg = CalculatorService().calculateMean([
+      double.tryParse(_firstTermOverallAverage.text) ?? 0,
+      double.tryParse(_secondTermOverallAverage.text) ?? 0,
+      double.tryParse(_thirdTermOverallAverage.text) ?? 0
+    ]);
+    return avg.toStringAsFixed(2);
   }
 }
