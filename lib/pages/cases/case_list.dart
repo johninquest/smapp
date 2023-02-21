@@ -84,15 +84,17 @@ class _CaseListDataState extends State<CaseListData> {
     List caseRecords = widget.casesData as List;
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            alignment: Alignment.center,
-            child: buildTable(caseRecords),
-          ),
-        ],
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              child: buildTable(caseRecords),
+            ),
+          ],
+        ),
       ),
     );
   }
