@@ -43,7 +43,6 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
   final TextEditingController _surname = TextEditingController();
   final TextEditingController _pickedDate = TextEditingController();
   final TextEditingController _age = TextEditingController();
-  final TextEditingController _problemDetails = TextEditingController();
   final TextEditingController _firstTermOverallAverage =
       TextEditingController();
   final TextEditingController _secondTermOverallAverage =
@@ -52,6 +51,9 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
       TextEditingController();
   final TextEditingController _parentsOpinion = TextEditingController();
   final TextEditingController _parentsPhoneNumber = TextEditingController();
+  final TextEditingController _orientationTestResult = TextEditingController();
+  final TextEditingController _counselorsOpinion = TextEditingController();
+  final TextEditingController _classCounselDecision = TextEditingController();
 
   String? _classNumber;
   String? _classLetter;
@@ -402,10 +404,10 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                             padding:
                                 const EdgeInsets.only(left: 8.0, right: 8.0),
                             child: TextFormField(
-                              controller: _problemDetails,
+                              controller: _orientationTestResult,
                               enabled: true,
                               decoration: const InputDecoration(
-                                  labelText: 'Orientation test results'),
+                                  labelText: 'Orientation test result'),
                               keyboardType: TextInputType.text,
                               textCapitalization: TextCapitalization.sentences,
 
@@ -419,7 +421,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                             padding:
                                 const EdgeInsets.only(left: 8.0, right: 8.0),
                             child: TextFormField(
-                              controller: _problemDetails,
+                              controller: _counselorsOpinion,
                               enabled: true,
                               decoration: const InputDecoration(
                                   labelText: "Counselor's opinion"),
@@ -432,7 +434,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                             padding:
                                 const EdgeInsets.only(left: 8.0, right: 8.0),
                             child: TextFormField(
-                              controller: _problemDetails,
+                              controller: _classCounselDecision,
                               enabled: true,
                               decoration: const InputDecoration(
                                   labelText: 'Class counsel decision'),
