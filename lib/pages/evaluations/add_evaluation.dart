@@ -276,6 +276,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                     child: TextFormField(
                                       controller: _firstTermOverallAverage,
                                       enabled: true,
+                                      keyboardType: TextInputType.number,
                                       decoration: const InputDecoration(
                                           labelText: '1st'),
                                       onChanged: (value) => setState(() {
@@ -290,6 +291,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                     child: TextFormField(
                                       controller: _secondTermOverallAverage,
                                       enabled: true,
+                                      keyboardType: TextInputType.number,
                                       decoration: const InputDecoration(
                                           labelText: '2nd'),
                                       onChanged: (value) => setState(() {
@@ -304,6 +306,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                     child: TextFormField(
                                       controller: _thirdTermOverallAverage,
                                       enabled: true,
+                                      keyboardType: TextInputType.number,
                                       decoration: const InputDecoration(
                                           labelText: '3rd'),
                                       onChanged: (value) => setState(() {
