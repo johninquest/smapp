@@ -43,12 +43,15 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
   final TextEditingController _surname = TextEditingController();
   final TextEditingController _pickedDate = TextEditingController();
   final TextEditingController _age = TextEditingController();
-  final TextEditingController _firstTermOverallAverage =
-      TextEditingController();
-  final TextEditingController _secondTermOverallAverage =
-      TextEditingController();
-  final TextEditingController _thirdTermOverallAverage =
-      TextEditingController();
+  final TextEditingController _term1OverallAverage = TextEditingController();
+  final TextEditingController _term2OverallAverage = TextEditingController();
+  final TextEditingController _term3OverallAverage = TextEditingController();
+  final TextEditingController _term1EconomicsGrade = TextEditingController();
+  final TextEditingController _term2EconomicsGrade = TextEditingController();
+  final TextEditingController _term3EconomicsGrade = TextEditingController();
+  final TextEditingController _term1GeographyGrade = TextEditingController();
+  final TextEditingController _term2GeographyGrade = TextEditingController();
+  final TextEditingController _term3GeographyGrade = TextEditingController();
   final TextEditingController _parentsOpinion = TextEditingController();
   final TextEditingController _parentsPhoneNumber = TextEditingController();
   final TextEditingController _orientationTestResult = TextEditingController();
@@ -264,7 +267,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          /*  SizedBox(
                             width: MediaQuery.of(context).size.width * 0.95,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -345,6 +348,196 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                   ),
                                 )
                               ],
+                            ),
+                          ), */
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            margin: const EdgeInsets.only(top: 5.0),
+                            child: InputDecorator(
+                              decoration: InputDecoration(
+                                labelText: 'Overall average',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(right: 5.0),
+                                      padding: const EdgeInsets.only(left: 1.0),
+                                      child: TextFormField(
+                                        controller: _term1OverallAverage,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '1st'),
+                                        onChanged: (value) => setState(() {
+                                          showCalculatedAvg();
+                                        }),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term2OverallAverage,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '2nd'),
+                                        onChanged: (value) => setState(() {
+                                          showCalculatedAvg();
+                                        }),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term3OverallAverage,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '3rd'),
+                                        onChanged: (value) => setState(() {
+                                          showCalculatedAvg();
+                                        }),
+                                      )),
+                                  /*                                 Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.17,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding: const EdgeInsets.only(right: 1.0),
+                                      child: TextFormField(
+                                        controller: _avg,
+                                        enabled: false,
+                                        decoration: const InputDecoration(
+                                            labelText: 'Avg.'),
+                                      )), */
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            margin: const EdgeInsets.only(top: 8.0),
+                            padding: const EdgeInsets.only(top: 3.0),
+                            child: InputDecorator(
+                              decoration: InputDecoration(
+                                labelText: 'Arts: Economics',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(right: 5.0),
+                                      padding: const EdgeInsets.only(left: 1.0),
+                                      child: TextFormField(
+                                        controller: _term1EconomicsGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '1st'),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term2EconomicsGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '2nd'),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term3EconomicsGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '3rd'),
+                                      ))
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            margin: const EdgeInsets.only(top: 8.0),
+                            padding: const EdgeInsets.only(top: 3.0),
+                            child: InputDecorator(
+                              decoration: InputDecoration(
+                                labelText: 'Arts: Geography',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(right: 5.0),
+                                      padding: const EdgeInsets.only(left: 1.0),
+                                      child: TextFormField(
+                                        controller: _term1GeographyGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '1st'),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term2GeographyGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '2nd'),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term3GeographyGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '3rd'),
+                                      )),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -488,9 +681,9 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
 
   showCalculatedAvg() {
     double avg = CalculatorService().calculateMean([
-      double.tryParse(_firstTermOverallAverage.text) ?? 0,
-      double.tryParse(_secondTermOverallAverage.text) ?? 0,
-      double.tryParse(_thirdTermOverallAverage.text) ?? 0
+      double.tryParse(_term1OverallAverage.text) ?? 0,
+      double.tryParse(_term2OverallAverage.text) ?? 0,
+      double.tryParse(_term3OverallAverage.text) ?? 0
     ]);
     return avg.toStringAsFixed(2);
   }
