@@ -12,6 +12,7 @@ class AddEvaluationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /*  log('1\u{02e2}\u{1d57} Term'); */
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -52,6 +53,10 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
   final TextEditingController _term1GeographyGrade = TextEditingController();
   final TextEditingController _term2GeographyGrade = TextEditingController();
   final TextEditingController _term3GeographyGrade = TextEditingController();
+  final TextEditingController _term1HistoryGrade = TextEditingController();
+  final TextEditingController _term2HistoryGrade = TextEditingController();
+  final TextEditingController _term3HistoryGrade = TextEditingController();
+
   final TextEditingController _parentsOpinion = TextEditingController();
   final TextEditingController _parentsPhoneNumber = TextEditingController();
   final TextEditingController _orientationTestResult = TextEditingController();
@@ -127,7 +132,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                 keyboardType: TextInputType.text,
                                 textCapitalization: TextCapitalization.words,
                                 /* validator: (val) => val!.isEmpty
-                                    ? 'Please enter registration number'
+                                    ? 'Registration number?'
                                     : null, */
                               )),
                           Container(
@@ -142,9 +147,8 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                     const InputDecoration(labelText: 'Surname'),
                                 keyboardType: TextInputType.text,
                                 textCapitalization: TextCapitalization.words,
-                                validator: (val) => val!.isEmpty
-                                    ? 'Please enter surname'
-                                    : null,
+                                validator: (val) =>
+                                    val!.isEmpty ? 'Surname?' : null,
                                 /* onChanged: (val) => setState(() {
                   surname = val;
                 }), */
@@ -161,9 +165,8 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                     labelText: 'Given names'),
                                 keyboardType: TextInputType.text,
                                 textCapitalization: TextCapitalization.words,
-                                validator: (val) => val!.isEmpty
-                                    ? 'Please enter given names'
-                                    : null,
+                                validator: (val) =>
+                                    val!.isEmpty ? 'Given names?' : null,
                               )),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.90,
@@ -178,7 +181,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                   padding: const EdgeInsets.only(left: 8.0),
                                   child: DropdownButtonFormField(
                                     decoration: const InputDecoration(
-                                        labelText: 'Class number'),
+                                        labelText: 'Class No.'),
                                     items: AppData().classNumberList,
                                     value: _classNumber,
                                     validator: (val) =>
@@ -251,8 +254,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                   const InputDecoration(labelText: 'Sex'),
                               items: AppData().genderList,
                               value: _gender,
-                              validator: (val) =>
-                                  val == null ? ' Please enter sex?' : null,
+                              validator: (val) => val == null ? ' Sex?' : null,
                               onChanged: (val) => setState(() {
                                 _gender = val as String?;
                               }),
@@ -374,7 +376,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                         enabled: true,
                                         keyboardType: TextInputType.number,
                                         decoration: const InputDecoration(
-                                            labelText: '1st'),
+                                            labelText: '1\u{02e2}\u{1d57}'),
                                         onChanged: (value) => setState(() {
                                           showCalculatedAvg();
                                         }),
@@ -390,7 +392,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                         enabled: true,
                                         keyboardType: TextInputType.number,
                                         decoration: const InputDecoration(
-                                            labelText: '2nd'),
+                                            labelText: '2\u{207f}\u{1d48}'),
                                         onChanged: (value) => setState(() {
                                           showCalculatedAvg();
                                         }),
@@ -406,7 +408,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                         enabled: true,
                                         keyboardType: TextInputType.number,
                                         decoration: const InputDecoration(
-                                            labelText: '3rd'),
+                                            labelText: '3\u{02b3}\u{1d48}'),
                                         onChanged: (value) => setState(() {
                                           showCalculatedAvg();
                                         }),
@@ -531,6 +533,63 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                           const EdgeInsets.only(right: 3.0),
                                       child: TextFormField(
                                         controller: _term3GeographyGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '3rd'),
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            margin: const EdgeInsets.only(top: 8.0),
+                            padding: const EdgeInsets.only(top: 3.0),
+                            child: InputDecorator(
+                              decoration: InputDecoration(
+                                labelText: 'Arts: History',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(right: 5.0),
+                                      padding: const EdgeInsets.only(left: 1.0),
+                                      child: TextFormField(
+                                        controller: _term1HistoryGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '1st'),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term2HistoryGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '2nd'),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term3HistoryGrade,
                                         enabled: true,
                                         keyboardType: TextInputType.number,
                                         decoration: const InputDecoration(
