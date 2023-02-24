@@ -56,6 +56,9 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
   final TextEditingController _term1HistoryGrade = TextEditingController();
   final TextEditingController _term2HistoryGrade = TextEditingController();
   final TextEditingController _term3HistoryGrade = TextEditingController();
+  final TextEditingController _term1LiteratureGrade = TextEditingController();
+  final TextEditingController _term2LiteratureGrade = TextEditingController();
+  final TextEditingController _term3LiteratureGrade = TextEditingController();
 
   final TextEditingController _parentsOpinion = TextEditingController();
   final TextEditingController _parentsPhoneNumber = TextEditingController();
@@ -264,7 +267,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                       )),
                   Step(
                       isActive: _currentStep >= 1,
-                      title: const Text('Averages'),
+                      title: const Text('Average(s)'),
                       content: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -357,7 +360,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                             margin: const EdgeInsets.only(top: 5.0),
                             child: InputDecorator(
                               decoration: InputDecoration(
-                                labelText: 'Overall average',
+                                labelText: 'Overall',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
@@ -376,7 +379,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                         enabled: true,
                                         keyboardType: TextInputType.number,
                                         decoration: const InputDecoration(
-                                            labelText: '1\u{02e2}\u{1d57}'),
+                                            labelText: '1st'),
                                         onChanged: (value) => setState(() {
                                           showCalculatedAvg();
                                         }),
@@ -392,7 +395,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                         enabled: true,
                                         keyboardType: TextInputType.number,
                                         decoration: const InputDecoration(
-                                            labelText: '2\u{207f}\u{1d48}'),
+                                            labelText: '2nd'),
                                         onChanged: (value) => setState(() {
                                           showCalculatedAvg();
                                         }),
@@ -408,7 +411,7 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                         enabled: true,
                                         keyboardType: TextInputType.number,
                                         decoration: const InputDecoration(
-                                            labelText: '3\u{02b3}\u{1d48}'),
+                                            labelText: '3rd'),
                                         onChanged: (value) => setState(() {
                                           showCalculatedAvg();
                                         }),
@@ -590,6 +593,63 @@ class _AddEvaluationFormState extends State<AddEvaluationForm> {
                                           const EdgeInsets.only(right: 3.0),
                                       child: TextFormField(
                                         controller: _term3HistoryGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '3rd'),
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            margin: const EdgeInsets.only(top: 8.0),
+                            padding: const EdgeInsets.only(top: 3.0),
+                            child: InputDecorator(
+                              decoration: InputDecoration(
+                                labelText: 'Arts: Literature',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(right: 5.0),
+                                      padding: const EdgeInsets.only(left: 1.0),
+                                      child: TextFormField(
+                                        controller: _term1LiteratureGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '1st'),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term2LiteratureGrade,
+                                        enabled: true,
+                                        keyboardType: TextInputType.number,
+                                        decoration: const InputDecoration(
+                                            labelText: '2nd'),
+                                      )),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                      margin: const EdgeInsets.only(left: 5.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 3.0),
+                                      child: TextFormField(
+                                        controller: _term3LiteratureGrade,
                                         enabled: true,
                                         keyboardType: TextInputType.number,
                                         decoration: const InputDecoration(
